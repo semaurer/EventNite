@@ -19,9 +19,9 @@ id                    | integer   | not null, primary key
 title                 | string    | not null, indexed
 start_date_time       | date      | not null, indexed 
 end_date_time         | date      | not null
-location              | string    | 
-author_id             | integer   | not null, foreign key (references users), indexed
 private               | boolean   | not null, default: false
+author_id             | integer   | not null, foreign key (references users), indexed
+location              | string    | 
 event_type            | string    | 
 
 ## tickets
