@@ -17,8 +17,8 @@ column name           | data type | details
 ----------------------|-----------|-----------------------
 id                    | integer   | not null, primary key
 title                 | string    | not null, indexed
-start_date_time       | date      | not null, indexed 
-end_date_time         | date      | not null
+start_date_time       | datetime  | not null, indexed 
+end_date_time         | datetime  | not null
 private               | boolean   | not null, default: false
 author_id             | integer   | not null, foreign key (references users), indexed
 location              | string    | 
