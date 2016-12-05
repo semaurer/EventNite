@@ -2,57 +2,50 @@
 {
   currentUser: {
     id: 1,
+    fname: "bob",
+    lname: "jacuzzi",
     email: "bob@gmail.com",
-    name: "bob jacuzzi"
-    birthday: 1987-Jan-10,
-    gender: "M",
-    address: "123 mcBerry Lane, new york NY, 10039",
-    phone: "917-944-9039"
-    image: TBD, 
+    password_digest: "flf2102012020f21f",
+    session_token: "fk102fk201fk12f0af",
+    organizer_name: "Jazzy Enterprises",
+    organizer_description: "We are a jazzy group devoted to hosting jazz events"
     },
-    forms: {
-      signUp: { errors: [] },
-      logIn: { errors: [] },
-      eventCreation: { errors: [] },
-      createEventTicketsForm: { errors: [] },
-      createTicketForm: {errors: [] }
+    errors: {
+      signUp: [],
+      logIn: [],
+      eventCreation: [],
+      createEventTicketsForm: [],
+      createTicketForm: []
     },
     events: {
       3: {
           title: "Salsa at Treetop 5",
-          location: "31 broadway, new york NY, 10001",
-          start_date: 2017-Dec-12, 
-          end_date: 2017-Dec-12, 
-          start_time: 15:00,
-          end_time: 18:00,
-          event_image: TBD,
-          organizer_id: 1,
-          organizer_name: "Salsa 5",
-          organizer_description: "We host salsa events every friday",
-          organizer_image: TBD,
+          start_date_time: <DateTime: 2017-02-03T19:00>, 
+          end_date_time: <DateTime: 2017-02-03T22:00>, 
           private: false,
-          type: "social gathering",
+          author_id: 1,         
+          location: "31 broadway, new york NY, 10001",
+          event_type: "social gathering"
           }
     },
     ticket: {
       2: {
-        event_id: 3,
-        buyer_id: 1,
-        buyer_fname: "jan",
-        buyer_lname: "valentine",
-        buyer_email: "janValentine@gmail.com",
-        event_title: "Salsa at Treetop 5",
-        event_date: 2016-Jan-13,
-        event_time: 15:00,
-        event_image: TBD,
-        order_number: 4013914,
         purchase_date: 2016-Dec-12,
+        buyer_id: 1,
+        event_id: 3,
         }
     }
     categories: {
       1: {
         name: "Music",
         event_id: 3
+      }
+    }
+    Sub_topics: {
+      1: {
+        name: food,
+        category_id: 3,
+        event_id: 1
       }
     }
 }
