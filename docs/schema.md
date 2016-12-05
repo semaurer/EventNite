@@ -17,9 +17,9 @@ column name           | data type | details
 ----------------------|-----------|-----------------------
 id                    | integer   | not null, primary key
 title                 | string    | not null, indexed
-location              | string    | 
 start_date_time       | date      | not null, indexed 
 end_date_time         | date      | not null
+location              | string    | 
 author_id             | integer   | not null, foreign key (references users), indexed
 private               | boolean   | not null, default: false
 event_type            | string    | 
