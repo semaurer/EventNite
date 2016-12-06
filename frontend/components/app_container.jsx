@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import App from './app';
 import { signUp, logIn, logOut } from '../actions/session_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ session }) => {
 
   return {
-    loggedIn: Boolean(state.session.currentUser),
-    errors: state.session.errors,
+    loggedIn: Boolean(session.currentUser),
+    errors: session.errors,
+    currentUser: session.currentUser,
   };
 };
 

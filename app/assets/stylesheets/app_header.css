@@ -1,0 +1,39 @@
+.header-main {
+
+}
+
+.header-nav {
+  border-bottom: 1px solid #eee;
+  height: 60px;
+  font-size: 13px;
+  font-family: "Sans One", sans-serif;
+}
+
+.header-items {
+  float: right;
+  text-transform: uppercase;
+}
+
+.header-nav-item-logo {
+  float: left;
+  padding: 16px 22px;
+  font-size: 24px;
+  color: #8B008B;
+  cursor: pointer;
+  border-right: 1px solid #eee;
+}
+
+.header-nav-item {
+  float: left;
+  padding: 22px 22px;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+}
+
+.header-nav-item-c {
+  float: left;
+  padding: 22px 22px;
+  color: #23b0fd;
+  border-left: 1px solid #eee;
+  cursor: pointer;
+}
