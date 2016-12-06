@@ -16,11 +16,11 @@
 
 class User < ActiveRecord::Base
   after_intialize :ensure_session_token
-  
+
   validates :email, :session_token, presence: true, uniqueness: true
   validates :fname, :lname, :password_digest, :organizer_name,
     :organizer_description, presence: true
-  validates :password, length: { minimum: 6 allow_nil: true }
+  validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
 
