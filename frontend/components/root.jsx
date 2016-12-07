@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import AppContainer from './app_container';
-// import SessionModalContainer from './session/session_modal_container';
+
 
 const Root = ({ store }) => {
 

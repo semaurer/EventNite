@@ -1,26 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
-import sessionModal from './session/session_modal';
+import ModalStyle from '../../app/assets/stylesheets/modal_style';
+import SessionModalForm from './session/session_modal_form';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalOpen: false }
+    this.state = { modalOpen: false,
+      signIn: false }
 
     this.loggedInEls = this.loggedInEls.bind(this);
     this.loggedOutEls = this.loggedOutEls.bind(this);
 
     this.openModal = this.openModal.bind(this);
-    this.closeModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
-  
-  openModal() {
-    this.setState({ modalOpen: true })
+
+  openModal(bool) {
+    this.setState({ modalOpen: true,
+      signIn: bool })
   }
 
   closeModal() {
-    debugger
     this.setState({ modalOpen: false })
   }
 
@@ -43,10 +45,12 @@ class App extends React.Component {
   loggedOutEls () {
     return (
       [
-        <li onClick={ this.openModal } key="321" className='header-nav-item'>
+        <li onClick={ this.openModal.bind(this, false) }
+          key="321" className='header-nav-item'>
           <div>Sign Up</div>
         </li>,
-        <li onClick={ this.openModal } key="322" className='header-nav-item'>
+        <li onClick={ this.openModal.bind(this, true) }
+          key="322" className='header-nav-item'>
           <div>Log In</div>
         </li>
       ]
@@ -75,8 +79,12 @@ class App extends React.Component {
           </nav>
         </header>
 
-        <Modal contentLabel="" isOpen={ this.state.modalOpen }
-          onRequestClose={ () => { this.closeModal } }>
+        <Modal style={ ModalStyle } contentLabel="" isOpen={ this.state.modalOpen }
+          onRequestClose={ this.closeModal }>
+          <button className="auth-modal-b" onClick={ this.closeModal }>X</button>
+          <SessionModalForm errors={ this.props.errors }
+            logIn={ this.props.logIn } signUp={ this.props.logOut }
+            formType={ this.state.signIn }/>
         </Modal>
 
 

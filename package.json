@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack -w",
-    "postinstall": "./node_modules/.bin/webpack"
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,6 @@
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
-    "webpack": "^1.13.3"
+    "webpack": "^1.14.0"
   }
 }
