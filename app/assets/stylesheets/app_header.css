@@ -7,6 +7,7 @@
   height: 60px;
   font-size: 13px;
   font-family: "Sans One", sans-serif;
+  margin: 0 auto;
 }
 
 .header-items {
@@ -37,15 +38,43 @@
 
 .header-nav-item {
   float: left;
-  padding: 22px 22px;
+  padding: 23px 22px;
   cursor: pointer;
   border-left: 1px solid #eee;
 }
 
 .header-nav-item-c {
   float: left;
-  padding: 22px 22px;
+  padding: 23px 22px;
   color: #23b0fd;
   border-left: 1px solid #eee;
   cursor: pointer;
+}
+
+.profile-dropdown {
+  display: none;
+}
+
+.header-nav-item.user-name {
+  position: relative;
+}
+
+.header-nav-item.user-name:hover .profile-dropdown {
+  display: block;
+  position: absolute;
+  right: -1px;
+  top: 60px;
+  border: 1px solid #ccc;
+  text-transform: none;
+  width: 230px;
+  font-size: 14px;
+}
+
+.prof-dropdown-b {
+  padding: 20px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.prof-dropdown-b:hover {
+  background-color: #ccc;
 }
