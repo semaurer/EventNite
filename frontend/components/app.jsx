@@ -15,6 +15,7 @@ class App extends React.Component {
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.swapSignInState = this.swapSignInState.bind(this);
   }
 
   openModal(bool) {
@@ -26,17 +27,25 @@ class App extends React.Component {
     this.setState({ modalOpen: false })
   }
 
+  swapSignInState () {
+    if (this.state.signIn === false) {
+      this.setState({ signIn: true })
+    } else {
+      this.setState({ signIn: false })
+    }
+  }
+
   loggedInEls () {
     return (
       [
         <li key="312" className='header-nav-item'>
           { this.props.currentUser.fname }</li>,
-        <dropdown className="profile-dropdown">
+        <dropdown key="310" className="profile-dropdown">
           <li key="313" className="prof-dropdown-b">Tickets 0</li>
           <li key="314" className="prof-dropdown-b">Saved 0</li>
           <li key="315" className="prof-dropdown-b">Managed Events</li>
-          <li key="316" className='header-nav-item'>
-            <button onClick={ this.props.logOut }></button></li>
+          <li key="316" className='header-nav-item'
+          onClick={ this.props.logOut }>Log Out</li>
         </dropdown>
       ]
     )
@@ -47,11 +56,11 @@ class App extends React.Component {
       [
         <li onClick={ this.openModal.bind(this, false) }
           key="321" className='header-nav-item'>
-          <div>Sign Up</div>
+          <div key="323">Sign Up</div>
         </li>,
         <li onClick={ this.openModal.bind(this, true) }
           key="322" className='header-nav-item'>
-          <div>Log In</div>
+          <div key="324">Log In</div>
         </li>
       ]
     )
@@ -83,8 +92,9 @@ class App extends React.Component {
           onRequestClose={ this.closeModal }>
           <button className="auth-modal-b" onClick={ this.closeModal }>X</button>
           <SessionModalForm errors={ this.props.errors }
-            logIn={ this.props.logIn } signUp={ this.props.logOut }
-            formType={ this.state.signIn }/>
+            logIn={ this.props.logIn } signUp={ this.props.signUp }
+            formType={ this.state.signIn } router={ this.props.router }
+            closeModal={ this.closeModal } swapSignInState={ this.swapSignInState }/>
         </Modal>
 
 
