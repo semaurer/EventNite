@@ -1,16 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Modal from 'react-modal';
+import sessionModal from './session/session_modal';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { modalOpen: false }
+
+    this.loggedInEls = this.loggedInEls.bind(this);
+    this.loggedOutEls = this.loggedOutEls.bind(this);
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.openModal.bind(this);
+  }
+  
+  openModal() {
+    this.setState({ modalOpen: true })
   }
 
-  render () {
-    let sessionItems;
+  closeModal() {
+    debugger
+    this.setState({ modalOpen: false })
+  }
 
-    if (this.props.loggedIn) {
-      sessionItems = [
+  loggedInEls () {
+    return (
+      [
         <li key="312" className='header-nav-item'>
           { this.props.currentUser.fname }</li>,
         <dropdown className="profile-dropdown">
@@ -20,14 +36,30 @@ class App extends React.Component {
           <li key="316" className='header-nav-item'>
             <button onClick={ this.props.logOut }></button></li>
         </dropdown>
-        ];
+      ]
+    )
+  }
+
+  loggedOutEls () {
+    return (
+      [
+        <li onClick={ this.openModal } key="321" className='header-nav-item'>
+          <div>Sign Up</div>
+        </li>,
+        <li onClick={ this.openModal } key="322" className='header-nav-item'>
+          <div>Log In</div>
+        </li>
+      ]
+    )
+  }
+
+  render () {
+    let sessionItems;
+
+    if (this.props.loggedIn) {
+      sessionItems = this.loggedInEls();
     } else {
-      sessionItems = [
-        <li key="321" className='header-nav-item'>
-          <Link to={`/sign-up`}>Sign Up</Link></li>,
-        <li key="322" className='header-nav-item'>
-          <Link to={`/log-in`}>Log In</Link></li>
-        ];
+      sessionItems = this.loggedOutEls();
     }
 
     return (
@@ -42,6 +74,12 @@ class App extends React.Component {
             </ul>
           </nav>
         </header>
+
+        <Modal contentLabel="" isOpen={ this.state.modalOpen }
+          onRequestClose={ () => { this.closeModal } }>
+        </Modal>
+
+
         {this.props.children}
       </section>
     );
