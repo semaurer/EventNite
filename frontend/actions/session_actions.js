@@ -22,7 +22,7 @@ export function logIn(user) {
     return APIUtil.logIn(user)
       .then(
         (currentUser) => dispatch(receiveCurrentUser(currentUser)),
-        (errors) => dispatch(receiveErrors(errors))
+        (errors) => dispatch(receiveErrors(errors.responseJSON))
       );
   };
 }
@@ -32,7 +32,7 @@ export function logOut () {
     return APIUtil.logOut()
       .then(
         () => dispatch(receiveCurrentUser(null)),
-        (errors) => dispatch(receiveErrors(errors))
+        (errors) => dispatch(receiveErrors(errors.responseJSON))
       );
   };
 }
@@ -42,7 +42,7 @@ export function signUp(user) {
     return APIUtil.signUp(user)
       .then(
         (currentUser) => dispatch(receiveCurrentUser(currentUser)),
-        (errors) => dispatch(receiveErrors(errors))
+        (errors) => dispatch(receiveErrors(errors.responseJSON))
       );
   };
 }

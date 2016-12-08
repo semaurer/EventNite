@@ -1,0 +1,94 @@
+.auth-modal-b {
+  text-align: right;
+  font-size: 12px;
+  float: right;
+  width: 3px;
+  height: 3px;
+  position: relative;
+}
+
+.exit-button-circle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  top: -2px;
+  left: -5px;
+  right: 0;
+}
+
+.auth-modal-b:hover {
+  cursor: pointer;
+}
+
+.modal-header {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.link-container {
+  display: block;
+  text-align: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.swap-form-link {
+  margin: 0 auto;
+  color: blue;
+}
+
+.swap-form-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.auth-form-item {
+  display: block;
+  font-size: 18px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 270px;
+}
+
+.auth-form-button {
+  text-align: center;
+  display: block;
+  background-color: #228B22;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 270px;
+  padding: 5px;
+}
+
+.auth-form-button:hover {
+  cursor: pointer;
+}
+
+.login-signup {
+  position: relative;
+}
+
+.l {
+  margin-top: 40px;
+}
+
+.log-in-fill {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+.errors {
+  display: block;
+  width: 270px;
+  padding: 5px;
+  color: red;
+}

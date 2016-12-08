@@ -10,13 +10,14 @@ const style = {
   },
   content : {
     position        : 'fixed',
-    height          : '250px',
+    height          : '360px',
     width           : '280px',
     margin          : '0 auto',
-    top             : '95px',
+    top             : '-300px',
     border          : '1px solid #ccc',
     padding         : '20px',
-    zIndex          : 11
+    zIndex          : 11,
+    transition      : "top 0.5s"
   }
 };
 

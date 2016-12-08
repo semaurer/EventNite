@@ -23,6 +23,7 @@ button, article, footer, small {
 body {
   color: #000;
   font-size: 16px;
+  font-family: "Sans One", sans-serif;
 }
 
 ul {

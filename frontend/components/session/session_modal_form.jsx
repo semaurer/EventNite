@@ -39,35 +39,40 @@ class SessionModalForm extends React.Component {
 
   signUpFormEls () {
     const formHeader = "Sign Up";
-    const linkRoute = "/login";
 
     return (
-      <div className="sign-up-form">
+      <div className="sign-up-form group">
         <h2 className="modal-header">{ formHeader }</h2>
+        <div className='link-container'>
+          Already signed up? <Link className="swap-form-link"
+          onClick={ this.props.swapSignInState }>
+            Log In</Link>
+        </div>
         <form onSubmit={this.handleSubmit} className="auth-modal-form">
-        <Link className="swap-form-link" onClick={ this.props.swapSignInState }>
-          {linkRoute.slice(1)}</Link>
-        Email: <input className="auth-form-item" type="text"
-                      value={this.state.email}
-                      onChange={this.updateUserState("email")}>
-                      </input>
-          First Name: <input className="auth-form-item" type="text"
-                      value={this.state.fname}
-                      onChange={this.updateUserState("fname")}>
-                      </input>
-          Last Name: <input className="auth-form-item" type="text"
-                      value={this.state.lname}
-                      onChange={this.updateUserState("lname")}>
-                      </input>
-          Password: <input className="auth-form-item" type="text"
-                      value={this.state.password}
-                      onChange={this.updateUserState("password")}>
-                      </input>
-
-          <input className="auth-form-button" type="submit" value="submit"></input>
+          <input className="auth-form-item" type="text"
+              value={this.state.email}
+              onChange={this.updateUserState("email")}
+              placeholder="Email">
+              </input>
+            <input className="auth-form-item" type="text"
+              value={this.state.fname}
+              onChange={this.updateUserState("fname")}
+              placeholder="First Name">
+              </input>
+            <input className="auth-form-item" type="text"
+              value={this.state.lname}
+              onChange={this.updateUserState("lname")}
+              placeholder="Last Name">
+              </input>
+           <input className="auth-form-item" type="text"
+              value={this.state.password}
+              onChange={this.updateUserState("password")}
+              placeholder="Password">
+              </input>
+          <input className="auth-form-button" type="submit" value="Submit"></input>
         </form>
-        <button className="auth-modal-guest-b" onClick={ this.guestDemoEntry }
-          >Guest Demo Sign Up</button>
+        <button className="auth-form-button" onClick={ this.guestDemoEntry }
+          >Guest Demo</button>
       </div>
 
     );
@@ -75,27 +80,31 @@ class SessionModalForm extends React.Component {
 
   logInFormEls () {
     const formHeader = "Log In";
-    const linkRoute = "/signup";
 
     return (
-      <div className="log-in-form">
+      <div className="log-in-form group">
         <h2 className="modal-header">{ formHeader }</h2>
-        <Link className="swap-form-link" onClick={ this.props.swapSignInState }>
-          {linkRoute.slice(1)}</Link>
+        <div className="link-container">
+          Don't have an account? <Link className="swap-form-link"
+          onClick={ this.props.swapSignInState }>
+          Sign Up</Link>
+        </div>
         <form onSubmit={this.handleSubmit} className="auth-modal-form">
-          Email: <input className="auth-form-item" type="text"
-                      value={this.state.email}
-                      onChange={this.updateUserState("email")}>
-                      </input>
-          Password: <input className="auth-form-item" type="text"
-                      value={this.state.password}
-                      onChange={this.updateUserState("password")}>
-                      </input>
-
-          <input className="auth-form-button" type="submit" value="submit"></input>
+          <input className="auth-form-item" type="text"
+            value={this.state.email}
+            onChange={this.updateUserState("email")}
+            placeholder="Email">
+          </input>
+          <input className="auth-form-item" type="text"
+            value={this.state.password}
+            onChange={this.updateUserState("password")}
+            placeholder="Password">
+            </input>
+          <input className="auth-form-button l" type="submit" value="Submit"></input>
         </form>
-        <button className="auth-modal-guest-b" onClick={ this.guestDemoEntry }
-          >Guest Demo Log In</button>
+        <button className="auth-form-button" onClick={ this.guestDemoEntry }
+          >Guest Demo</button>
+        <span className="log-in-fill">Welcome Back!</span>
       </div>
 
     );
@@ -105,7 +114,6 @@ class SessionModalForm extends React.Component {
     const formType = this.props.formType;
     let renderedForm = this.signUpFormEls();
     if (formType === true) renderedForm = this.logInFormEls();
-
     const errors = [];
     this.props.errors.forEach(error => {
       errors.push(<li>{ error }</li>);
@@ -113,8 +121,8 @@ class SessionModalForm extends React.Component {
 
     return (
       <div className="login-signup">
-        <ul>{errors}</ul>
         { renderedForm }
+        <ul className="errors">{errors}</ul>
       </div>
     );
   }
