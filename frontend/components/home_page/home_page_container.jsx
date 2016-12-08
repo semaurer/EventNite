@@ -4,7 +4,7 @@ import HomePage from './home_page';
 
 const mapStateToProps = (state) => {
   return {
-
+    
   };
 };
 
