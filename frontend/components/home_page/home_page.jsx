@@ -5,3 +5,5 @@ const homePage = () => {
     <div></div>
   );
 };
+
+export default homePage;
