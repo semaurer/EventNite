@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import App from './app';
-import { signUp, logIn, logOut } from '../actions/session_actions';
+import { signUp, logIn,
+  logOut, clearErrors } from '../actions/session_actions';
 
 const mapStateToProps = ({ session }) => {
 
@@ -18,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
       signUp: (user) => dispatch(signUp(user)),
       logIn: (user) => dispatch(logIn(user)),
       logOut: () => dispatch(logOut()),
+      clearErrors: (errors) => dispatch(clearErrors()),
     };
 };
 

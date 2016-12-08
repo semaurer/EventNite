@@ -91,4 +91,11 @@
   width: 270px;
   padding: 5px;
   color: red;
+  position: absolute;
+  left: 300px;
+  top: 80px;
+}
+
+.errors li {
+  margin-bottom: 20px;
 }

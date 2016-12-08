@@ -16,7 +16,6 @@ class App extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.swapSignInState = this.swapSignInState.bind(this);
-    this.onModalOpen = this.onModalOpen.bind(this);
   }
 
   openModal(bool) {
@@ -27,6 +26,7 @@ class App extends React.Component {
   closeModal() {
     this.setState({ modalOpen: false });
     ModalStyle.content.top = "-300px";
+    this.props.clearErrors();
   }
 
   onModalOpen () {
@@ -39,6 +39,7 @@ class App extends React.Component {
     } else {
       this.setState({ signIn: false });
     }
+    this.props.clearErrors();
   }
 
   loggedInEls () {

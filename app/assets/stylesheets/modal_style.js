@@ -17,7 +17,8 @@ const style = {
     border          : '1px solid #ccc',
     padding         : '20px',
     zIndex          : 11,
-    transition      : "top 0.5s"
+    transition      : "top 0.5s",
+    overflow        : "default"
   }
 };
 

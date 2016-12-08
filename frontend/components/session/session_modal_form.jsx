@@ -122,7 +122,7 @@ class SessionModalForm extends React.Component {
     return (
       <div className="login-signup">
         { renderedForm }
-        <ul className="errors">{errors}</ul>
+        <ul onClick={this.props.closeModal} className="errors">{errors}</ul>
       </div>
     );
   }
