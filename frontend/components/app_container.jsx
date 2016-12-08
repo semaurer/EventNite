@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
       signUp: (user) => dispatch(signUp(user)),
       logIn: (user) => dispatch(logIn(user)),
       logOut: () => dispatch(logOut()),
-      clearErrors: (errors) => dispatch(clearErrors()),
+      clearErrors: () => dispatch(clearErrors()),
     };
 };
 

@@ -115,8 +115,8 @@ class SessionModalForm extends React.Component {
     let renderedForm = this.signUpFormEls();
     if (formType === true) renderedForm = this.logInFormEls();
     const errors = [];
-    this.props.errors.forEach(error => {
-      errors.push(<li>{ error }</li>);
+    this.props.errors.forEach((error, _idx) => {
+      errors.push(<li key={ _idx }>{ error }</li>);
     });
 
     return (

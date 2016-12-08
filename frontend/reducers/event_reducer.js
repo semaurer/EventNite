@@ -1,19 +1,19 @@
 import React from 'react';
 import { merge, assign } from 'lodash';
-import { RECEIVE_CURRENT_USER,
-  RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
+import { RECEIVE_NEW_EVENT } from '../actions/event_actions';
+import { RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
 
 const defaultState = Object.freeze({
-  currentUser: null,
+  event: null,
   errors: [],
 });
 
-const sessionReducer = (state = defaultState, action) => {
+const eventReducer = (state = defaultState, action) => {
 
   switch(action.type) {
-    case RECEIVE_CURRENT_USER:
-     const currentUser = action.currentUser;
-     return merge({}, state, { currentUser });
+    case RECEIVE_NEW_EVENT:
+      const event = action.event;
+      return merge({}, state, { event });
 
     case RECEIVE_ERRORS:
       let errors = action.errors;
@@ -22,10 +22,10 @@ const sessionReducer = (state = defaultState, action) => {
     case CLEAR_ERRORS:
       errors = [];
       return Object.assign({}, state, { errors });
-      
+
     default:
-     return state;
+    return state;
   }
 };
 
-export default sessionReducer;
+export default eventReducer;

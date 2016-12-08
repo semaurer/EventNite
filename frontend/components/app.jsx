@@ -16,6 +16,7 @@ class App extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.swapSignInState = this.swapSignInState.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
 
   openModal(bool) {
@@ -42,10 +43,21 @@ class App extends React.Component {
     this.props.clearErrors();
   }
 
+  redirect (e) {
+    this.props.clearErrors();
+    if (e.currentTarget.className === "header-nav-item-logo") {
+      if (this.props.location.pathname !== "/") this.props.router.push("/")
+    } else {
+      this.props.router.push("events/new-event")
+    }
+  }
+
+
   loggedInEls () {
     return (
       <nav className='header-nav'>
-        <h2 className='header-nav-item-logo'>EventNite</h2>
+        <h2 onClick={ this.redirect }
+          className='header-nav-item-logo'>EventNite</h2>
         <ul className='header-items'>
           <li className='header-nav-item'>Browse Events</li>
           <li className='header-nav-item user-name'>
@@ -58,7 +70,8 @@ class App extends React.Component {
               onClick={ this.props.logOut }>Log Out</li>
             </ul>
           </li>
-          <li className='header-nav-item-c'>Create Event</li>
+          <li onClick={ this.redirect }
+            className='header-nav-item-c'>Create Event</li>
         </ul>
       </nav>
     );
@@ -67,7 +80,8 @@ class App extends React.Component {
   loggedOutEls () {
     return (
       <nav className='header-nav'>
-        <h2 className='header-nav-item-logo'>EventNite</h2>
+        <h2 onClick={ this.redirect }
+          className='header-nav-item-logo'>EventNite</h2>
         <ul className='header-items'>
           <li className='header-nav-item'>Browse Events</li>
           <li onClick={ this.openModal.bind(this, false) }
@@ -78,7 +92,8 @@ class App extends React.Component {
             className='header-nav-item'>
             <div>Log In</div>
           </li>
-          <li className='header-nav-item-c'>Create Event</li>
+          <li onClick={ this.openModal.bind(this, true) }
+            className='header-nav-item-c'>Create Event</li>
         </ul>
       </nav>
     );

@@ -15,7 +15,12 @@
 #
 
 class Event < ActiveRecord::Base
-  validates :author, presence: true, uniqueness: true
-  validates :title, :start_date_time, :end_date_time, presence: true
+  validates :author, :title, :start_date_time, :end_date_time, presence: true
   validates_inclusion_of :private, in: [true, false]
+
+  belongs_to :author,
+    class_name: :User,
+    primary_key: :id,
+    foreign_key: :author_id
+
 end

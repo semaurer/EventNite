@@ -21,6 +21,11 @@ class User < ActiveRecord::Base
   validates :fname, :lname, :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_many :events,
+    class_name: :Event,
+    primary_key: :id,
+    foreign_key: :author_id
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)
