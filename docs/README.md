@@ -19,11 +19,11 @@ via css styling.  By December 16th, 2016, this application will meet the followi
 - [ ] [Production README] (https://github.com/semaurer/EventNite/blob/master/README.md)
 
 ## Design Documents
-* [Wire frames] (https://github.com/semaurer/EventNite/tree/master/docs/wireframes)
-* [React Components] (https://github.com/semaurer/EventNite/tree/master/docs/component-hierarcy.md)
-* [API end points] (https://github.com/semaurer/EventNite/tree/master/docs/api-endpoints.md)
-* [DB schema] (https://github.com/semaurer/EventNite/tree/master/docs/schema.md)
-* [Sample State] (https://github.com/semaurer/EventNite/tree/master/docs/sample-state.md)
+* [Wire frames] (https://github.com/semaurer/EventNite/blob/master/docs/wireframes)
+* [React Components] (https://github.com/semaurer/EventNite/blob/master/docs/component-hierarcy.md)
+* [API end points] (https://github.com/semaurer/EventNite/blob/master/docs/api-endpoints.md)
+* [DB schema] (https://github.com/semaurer/EventNite/blob/master/docs/schema.md)
+* [Sample State] (https://github.com/semaurer/EventNite/blob/master/docs/sample-state.md)
 
 ## Implementation Timeline
 
