@@ -6,24 +6,24 @@
 
 ## Minimum Viable Product
 
-EventNite is a web application inspired by EventBrite, built using Ruby on Rails and React/Redux. This application will 
-allow for smooth and bug free navigation.  It will also utilize an adequate amout of seed data and be adequately styled 
+EventNite is a web application inspired by EventBrite, built using Ruby on Rails and React/Redux. This application will
+allow for smooth and bug free navigation.  It will also utilize an adequate amout of seed data and be adequately styled
 via css styling.  By December 16th, 2016, this application will meet the following criterion:
 
 - [ ] Hosted on Heroku
 - [ ] Provide account creation, login, and guest/demo login features
-- [ ] Events 
+- [ ] Events
 - [ ] Registration/Tickets
 - [ ] Categories
 - [ ] Bookmarking of Events
-- [ ] [Production README] (https://github.com/semaurer/FullStack/blob/master/EventNite/README.md) 
+- [ ] [Production README] (https://github.com/semaurer/EventNite/blob/master/README.md)
 
-## Design Documents 
-* [Wire frames] (https://github.com/semaurer/FullStack/tree/master/EventNite/docs/wireframes)
-* [React Components] (https://github.com/semaurer/FullStack/blob/master/EventNite/docs/component-hierarcy.md)
-* [API end points] (https://github.com/semaurer/FullStack/blob/master/EventNite/docs/api-endpoints.md)
-* [DB schema] (https://github.com/semaurer/FullStack/blob/master/EventNite/docs/schema.md)
-* [Sample State] (https://github.com/semaurer/FullStack/blob/master/EventNite/docs/sample-state.md)
+## Design Documents
+* [Wire frames] (https://github.com/semaurer/EventNite/tree/master/docs/wireframes)
+* [React Components] (https://github.com/semaurer/EventNite/tree/master/docs/component-hierarcy.md)
+* [API end points] (https://github.com/semaurer/EventNite/tree/master/docs/api-endpoints.md)
+* [DB schema] (https://github.com/semaurer/EventNite/tree/master/docs/schema.md)
+* [Sample State] (https://github.com/semaurer/EventNite/tree/master/docs/sample-state.md)
 
 ## Implementation Timeline
 

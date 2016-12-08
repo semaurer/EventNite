@@ -6,7 +6,6 @@
   border-bottom: 1px solid #eee;
   height: 60px;
   font-size: 13px;
-  
   margin: 0 auto;
 }
 
@@ -68,6 +67,7 @@
   text-transform: none;
   width: 230px;
   font-size: 14px;
+  background-color: #fff;
 }
 
 .prof-dropdown-b {
