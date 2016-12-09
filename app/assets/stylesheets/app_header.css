@@ -3,7 +3,7 @@
 }
 
 .header-nav {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ccc;
   height: 60px;
   font-size: 13px;
   margin: 0 auto;
@@ -68,6 +68,7 @@
   width: 230px;
   font-size: 14px;
   background-color: #fff;
+  z-index: 1;
 }
 
 .prof-dropdown-b {

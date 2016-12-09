@@ -31,7 +31,7 @@ class EventCreateForm extends React.Component {
 
   eventCreateEls() {
     return (
-      <div className="c-e-form">
+      <div className="c-e-form group">
         <header className="c-e-form-header">
           <article className="form-step">1</article>
           <h3 className="form-section-header">Event Details</h3>
@@ -45,31 +45,32 @@ class EventCreateForm extends React.Component {
           <label className="field-header">LOCATION</label>
           <input className="c-e-item" type="text"
             value={ this.state.location }
-            onChange={ this.updateEventState("location") }></input>
+            onChange={ this.updateEventState("location") }
+            placeholder="Specify where it's held."></input>
           <div className="time-section">
             <ul className="time-headers">
               <li className="time-header-l">STARTS</li>
               <li className="time-header-r">ENDS</li>
             </ul>
             <ul className="time-inputs">
-              <input className="c-e-item" type="datetime-local"
+              <input className="c-e-item-time" type="datetime-local"
                 value={ this.state.start_date_time }
                 onChange={ this.updateEventState("start_date_time") }></input>
-              <input className="c-e-item" type="datetime-local"
+              <input className="c-e-item-time" type="datetime-local"
                 value={ this.state.end_date_time }
                 onChange={ this.updateEventState("end_date_time") }></input>
             </ul>
           </div>
-          <label className="field-header">EVENT IMAGE</label>
+          <label className="field-header e-i">EVENT IMAGE</label>
           <span className="image-container">
             <div className="image-area">
               <li className="image-thumb">O</li>
               <li className="image-header">ADD EVENT IMAGE</li>
-              <li className="image-text">choose a compelling image that brings your event to life.</li>
+              <li className="image-text">Choose a compelling image that brings your event to life.</li>
             </div>
           </span>
-          <label className="field-header">EVENT DESCRIPTION</label>
-          <textarea rows="10" cols="100"
+          <label className="field-header ta">EVENT DESCRIPTION</label>
+          <textarea className="c-e-descript" rows="9" cols="74"
             value={ this.state.description }
             onChange={ this.updateEventState("description") }></textarea>
         </form>
@@ -85,20 +86,19 @@ class EventCreateForm extends React.Component {
     });
 
     return (
-      <div className="event-create-page">
-        <header>
+      <div className="event-create-page group">
+        <header className="header-container-c-e">
           <h2 className="event-create-header">Create An Event</h2>
           <button onClick={this.handleSubmit}
             className="header-e-create-submit">MAKE EVENT LIVE
           </button>
-          <span className="header-form-divider"></span>
         </header>
+        <span className="header-form-divider"></span>
         { formFieldsEls }
-        <footer>
+        <footer className="footer-container-c-e">
           <h2 className="create-event-header">Nice Job! You're almost done.</h2>
           <button onClick={ this.handleSubmit }
-            className="footer-e-create-submit">MAKE YOUR EVENT LIVE
-          </button>
+            className="footer-e-create-submit">MAKE YOUR EVENT LIVE</button>
           <ul className="c-e-errors">{ errors }</ul>
         </footer>
       </div>

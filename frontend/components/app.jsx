@@ -17,6 +17,7 @@ class App extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.swapSignInState = this.swapSignInState.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.logOutRedirect = this.logOutRedirect.bind(this);
   }
 
   openModal(bool) {
@@ -43,13 +44,18 @@ class App extends React.Component {
     this.props.clearErrors();
   }
 
-  redirect (e) {
+  redirect(e) {
     this.props.clearErrors();
     if (e.currentTarget.className === "header-nav-item-logo") {
       if (this.props.location.pathname !== "/") this.props.router.push("/")
     } else {
       this.props.router.push("events/new-event")
     }
+  }
+
+  logOutRedirect () {
+    this.props.logOut();
+    if (this.props.location.pathname !== "/") this.props.router.push("/")
   }
 
 
@@ -67,7 +73,7 @@ class App extends React.Component {
               <li className="prof-dropdown-b">Saved 0</li>
               <li className="prof-dropdown-b">Manage Events</li>
               <li className='prof-dropdown-b'
-              onClick={ this.props.logOut }>Log Out</li>
+              onClick={ this.logOutRedirect }>Log Out</li>
             </ul>
           </li>
           <li onClick={ this.redirect }
