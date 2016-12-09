@@ -2,8 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import AppContainer from './app_container';
-import HomePageContainer from './home_page/home_page_container'
-import EventCreateContainer from './events/event_create_container'
+import HomePageContainer from './home_page/home_page_container';
+import EventCreateContainer from './events/event_create_container';
+import EventShowContainer from './events/event_show_container';
 
 
 const Root = ({ store }) => {
@@ -17,6 +18,7 @@ const Root = ({ store }) => {
         <Route path="/" component={ AppContainer }>
           <IndexRoute component={ HomePageContainer } />
           <Route path="events/new-event" component={ EventCreateContainer } />
+          <Route path="events/:eventId" component={ EventShowContainer } />
         </Route>
       </Router>
     </Provider>

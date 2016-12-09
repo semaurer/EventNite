@@ -14,6 +14,7 @@ class EventCreateForm extends React.Component {
     this.eventCreateEls = this.eventCreateEls.bind(this);
     this.updateEventState = this.updateEventState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
 
   updateEventState(prop) {
@@ -26,7 +27,14 @@ class EventCreateForm extends React.Component {
     e.preventDefault();
     const event = Object.assign({}, this.state);
     this.props.createEvent(event)
-      .then(() => this.props.clearErrors());
+      .then(({ event }) => {
+        this.redirect(event);
+      });
+  }
+
+  redirect(event) {
+    this.props.clearErrors();
+    this.props.router.push(`/events/${event.id}`)
   }
 
   eventCreateEls() {
@@ -92,6 +100,7 @@ class EventCreateForm extends React.Component {
           <button onClick={this.handleSubmit}
             className="header-e-create-submit">MAKE EVENT LIVE
           </button>
+          <ul className="c-e-errors-top">{ errors }</ul>
         </header>
         <span className="header-form-divider"></span>
         { formFieldsEls }
@@ -99,7 +108,7 @@ class EventCreateForm extends React.Component {
           <h2 className="create-event-header">Nice Job! You're almost done.</h2>
           <button onClick={ this.handleSubmit }
             className="footer-e-create-submit">MAKE YOUR EVENT LIVE</button>
-          <ul className="c-e-errors">{ errors }</ul>
+          <ul className="c-e-errors-bot">{ errors }</ul>
         </footer>
       </div>
     );

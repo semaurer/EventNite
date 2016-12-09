@@ -12,6 +12,17 @@
   margin-bottom: 20px;
 }
 
+.header-container-c-e {
+  position: relative;
+}
+
+.c-e-errors-top {
+  position: absolute;
+  color: red;
+  left: 395px;
+  top: 20px;x
+}
+
 .event-create-page header {
   margin: 0 auto;
   width: 940px;
@@ -66,7 +77,7 @@
 }
 
 h3.form-section-header {
-  padding-top: 42px;
+  padding-top: 87px;
   margin-bottom: -2px;
   font-size: 24px;
   font-weight: 300;
@@ -193,6 +204,7 @@ h3.form-section-header {
   background-color: #fff;
   border-top: 1px solid #ccc;
   margin-top: 80px;
+  position: relative;
 }
 
 .create-event-header {
@@ -219,6 +231,11 @@ h3.form-section-header {
   cursor: pointer;
 }
 
-.c-e-errors {
+.c-e-errors-bot {
   display: block;
+  color: red;
+  float: left;
+  position: absolute;
+  bottom: 60px;
+  left: 135px;
 }
