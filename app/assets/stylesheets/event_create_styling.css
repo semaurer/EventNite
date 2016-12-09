@@ -102,7 +102,7 @@ h3.form-section-header {
 }
 
 .time-header-l {
-  float :left;
+  float: left;
 }
 
 .time-inputs {
@@ -115,7 +115,7 @@ h3.form-section-header {
 }
 
 .c-e-item-time {
-    border-radius: 5px;
+  border-radius: 5px;
   background-color: #fff;
   border: 1px solid #ccc;
   width: 220px;
