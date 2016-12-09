@@ -218,3 +218,7 @@ h3.form-section-header {
   background-color: #008000;
   cursor: pointer;
 }
+
+.c-e-errors {
+  display: block;
+}

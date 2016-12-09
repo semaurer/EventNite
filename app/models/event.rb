@@ -12,6 +12,7 @@
 #  event_type      :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  description     :text
 #
 
 class Event < ActiveRecord::Base
