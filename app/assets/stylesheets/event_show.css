@@ -82,3 +82,20 @@
   font-size: 14px;
   font-weight: bold;
 }
+
+.t-d-h-p-day {
+  font-size: 18px;
+  padding: 3px 5px;
+}
+
+.t-d-h-p-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.t-d-h-p-author {
+  
+}

@@ -40,11 +40,10 @@ class EventShow extends React.Component {
               { event_image }
               <div className="title-date-host-price-container">
                 <ul className="t-d-h-p-container-list">
-                  <li className="t-d-h-p-month">
-                    { startMonth }</li>
-                  <li>{ startDay }</li>
-                  <li>{ title }</li>
-                  <li>by { firstName }</li>
+                  <li className="t-d-h-p-month">{ startMonth }</li>
+                  <li className="t-d-h-p-day">{ startDay }</li>
+                  <li className="t-d-h-p-title">{ title }</li>
+                  <li className="t-d-h-p-author">by { firstName }</li>
                   <li>free </li>
                 </ul>
               </div>
