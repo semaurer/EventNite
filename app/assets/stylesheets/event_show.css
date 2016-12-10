@@ -75,6 +75,7 @@
 .t-d-h-p-container-list {
   padding: 25px 30px;
   color: #696969;
+  position: relative;
 }
 
 .t-d-h-p-month {
@@ -97,5 +98,11 @@
 }
 
 .t-d-h-p-author {
-  
+  position: absolute;
+  bottom: 0;
+}
+
+.pricing {
+  position: absolute;
+  bottom: -60px;
 }

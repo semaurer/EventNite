@@ -23,6 +23,7 @@ class EventShow extends React.Component {
     let startDay = "";
     let title = "";
     let firstName = "";
+
     if (this.props.event) {
       startMonth = this.props.event.start_month;
       startTime = this.props.event.start_time;
@@ -44,7 +45,7 @@ class EventShow extends React.Component {
                   <li className="t-d-h-p-day">{ startDay }</li>
                   <li className="t-d-h-p-title">{ title }</li>
                   <li className="t-d-h-p-author">by { firstName }</li>
-                  <li>free </li>
+                  <li className="pricing">free</li>
                 </ul>
               </div>
             </span>
