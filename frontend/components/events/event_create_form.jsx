@@ -60,9 +60,11 @@ class EventCreateForm extends React.Component {
   }
 
   eventCreateEls() {
-    let imageElsToggle = ""
+    let imageElsToggle = "img-absolute";
+    let previewToggle = "disp-none";
     if ( this.state.imageUrl !== "" ) {
       imageElsToggle = "img-none"
+      previewToggle = "img-preview";
     }
 
     return (
@@ -103,7 +105,7 @@ class EventCreateForm extends React.Component {
                 type="file"
                 onChange={ this.updateFile }>
               </input>
-              <img className="img-preview"
+              <img className={ previewToggle }
                 src={ this.state.imageUrl }/>
               <div className={ imageElsToggle }>
                 <li className="image-thumb">O</li>

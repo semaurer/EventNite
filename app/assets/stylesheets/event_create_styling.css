@@ -253,6 +253,16 @@ h3.form-section-header {
   width: 380px;
 }
 
+.disp-none {
+  display: none;
+}
+
 .img-none {
   display: none;
+}
+
+.img-absolute {
+  height: 180px;
+  width: 380px;
+  margin-top: 40px;
 }
