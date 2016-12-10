@@ -17,6 +17,21 @@ class EventShow extends React.Component {
       src={ this.props.event.image_url }
       className="event-img"></img>;
 
+    let startMonth = "";
+    let startTime = "";
+    let endTime = "";
+    let startDay = "";
+    let title = "";
+    let firstName = "";
+    if (this.props.event) {
+      startMonth = this.props.event.start_month;
+      startTime = this.props.event.start_time;
+      endTime = this.props.event.end_time;
+      startDay = this.props.event.start_day;
+      title = this.props.event.title;
+      firstName = this.props.event.author.first_name;
+    }
+
     return (
       <div className="show-page group">
         <div className="show-page-bg">
@@ -25,10 +40,12 @@ class EventShow extends React.Component {
               { event_image }
               <div className="title-date-host-price-container">
                 <ul className="t-d-h-p-container-list">
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
+                  <li className="t-d-h-p-month">
+                    { startMonth }</li>
+                  <li>{ startDay }</li>
+                  <li>{ title }</li>
+                  <li>by { firstName }</li>
+                  <li>free </li>
                 </ul>
               </div>
             </span>

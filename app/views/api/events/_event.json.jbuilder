@@ -1,6 +1,10 @@
 json.extract! event, :id, :title, :start_date_time,
   :end_date_time, :private, :location, :event_type,
   :description
+json.set! json.start_month event.format_month(event.start_date_time)
+json.set! json.start_time event.format_time(event.start_date_time)
+json.set! json.end_time event.format_time(event.end_date_time)
+json.set! json.start_day event.pad_day(event.start_date_time.day)
 json.set! json.image_url asset_path(event.image.url)
 json.set! :author do
   json.email event.author.email

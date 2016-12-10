@@ -71,3 +71,14 @@
   cursor: pointer;
   background-color: #008000;
 }
+
+.t-d-h-p-container-list {
+  padding: 25px 30px;
+  color: #696969;
+}
+
+.t-d-h-p-month {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
