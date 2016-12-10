@@ -1,0 +1,73 @@
+.show-page {
+  background-color: #F5F5F5;
+  height: 900px;
+  width: 100%;
+  position: relative;
+}
+
+.show-page-bg {
+  background-image:url(event_show_bg.png);
+  height: 500px;
+  width: 100%;
+  background-size: cover;
+}
+
+.show-template {
+  width: 1055px;
+  height: 700px;
+  background-color: #fff;
+  position: absolute;
+  left: 150px;
+  top: 40px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+}
+
+.image-and-info {
+  width: 1055px;
+  height: 350px;
+  display: block;
+  border-bottom: 1px solid #ccc;
+}
+
+.event-img {
+  width: 700px;
+  height: 350px;
+  float: left;
+}
+
+.title-date-host-price-container {
+  width: 355px;
+  height: 349px;
+  background-color: #eee;
+  float: right;
+}
+
+.bookmark-register {
+  width: 1055px;
+  height: 60px;
+  display: block;
+  border-bottom: 1px solid #ccc;
+}
+
+.bookmark {
+  float: left;
+  padding: 20px 30px;
+}
+
+.ticket-submit {
+  float: right;
+  margin-top: 8px;
+  margin-right: 14px;
+  background-color: #228B22;
+  padding: 12px 135px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.ticket-submit:hover {
+  cursor: pointer;
+  background-color: #008000;
+}

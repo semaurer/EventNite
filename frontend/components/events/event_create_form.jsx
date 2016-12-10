@@ -10,11 +10,14 @@ class EventCreateForm extends React.Component {
       start_date_time: "",
       end_date_time: "",
       description: "",
+      imageFile: "",
+      imageUrl: "",
     };
     this.eventCreateEls = this.eventCreateEls.bind(this);
     this.updateEventState = this.updateEventState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
   updateEventState(prop) {
@@ -25,11 +28,30 @@ class EventCreateForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    let formData = new FormData();
+    formData.append("event[title]", this.state.title)
+    formData.append("event[location]", this.state.location)
+    formData.append("event[start_date_time]", this.state.start_date_time)
+    formData.append("event[end_date_time]", this.state.end_date_time)
+    formData.append("event[description]", this.state.description)
+    formData.append("event[image]", this.state.imageFile)
+
     const event = Object.assign({}, this.state);
-    this.props.createEvent(event)
+    this.props.createEvent(formData)
       .then(({ event }) => {
         this.redirect(event);
       });
+  }
+
+  updateFile(e) {
+    let file = e.currentTarget.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = function () {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    }.bind(this);
+
+    if (file) fileReader.readAsDataURL(file);
   }
 
   redirect(event) {
@@ -38,6 +60,11 @@ class EventCreateForm extends React.Component {
   }
 
   eventCreateEls() {
+    let imageElsToggle = ""
+    if ( this.state.imageUrl !== "" ) {
+      imageElsToggle = "img-none"
+    }
+
     return (
       <div className="c-e-form group">
         <header className="c-e-form-header">
@@ -72,9 +99,17 @@ class EventCreateForm extends React.Component {
           <label className="field-header e-i">EVENT IMAGE</label>
           <span className="image-container">
             <div className="image-area">
-              <li className="image-thumb">O</li>
-              <li className="image-header">ADD EVENT IMAGE</li>
-              <li className="image-text">Choose a compelling image that brings your event to life.</li>
+              <input className="image-file-input"
+                type="file"
+                onChange={ this.updateFile }>
+              </input>
+              <img className="img-preview"
+                src={ this.state.imageUrl }/>
+              <div className={ imageElsToggle }>
+                <li className="image-thumb">O</li>
+                <li className="image-header">ADD EVENT IMAGE</li>
+                <li className="image-text">Choose a compelling image that brings your event to life.</li>
+              </div>
             </div>
           </span>
           <label className="field-header ta">EVENT DESCRIPTION</label>

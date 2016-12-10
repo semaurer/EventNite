@@ -1,8 +1,10 @@
-export const createEvent = (event) => {
+export const createEvent = (formData) => {
   return $.ajax ({
     method: "POST",
     url: "api/events",
-    data: { event: event },
+    data: formData,
+    contentType: false,
+    processData: false,
   });
 };
 

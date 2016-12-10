@@ -239,3 +239,20 @@ h3.form-section-header {
   bottom: 60px;
   left: 135px;
 }
+
+.image-file-input {
+  height: 180px;
+  width: 380px;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.img-preview {
+  height: 180px;
+  width: 380px;
+}
+
+.img-none {
+  display: none;
+}
