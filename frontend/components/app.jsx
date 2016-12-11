@@ -50,6 +50,8 @@ class App extends React.Component {
       if (this.props.location.pathname !== "/") this.props.router.push("/");
     } else if (e.currentTarget.className === "header-nav-item brow") {
       this.props.router.push("events");
+    } else if (e.currentTarget.className === "prof-dropdown-b m") {
+      this.props.router.push("/users/manage-events")
     } else {
       this.props.router.push("events/new-event");
     }
@@ -74,7 +76,7 @@ class App extends React.Component {
             <ul className="profile-dropdown">
               <li className="prof-dropdown-b">Tickets 0</li>
               <li className="prof-dropdown-b">Saved 0</li>
-              <li className="prof-dropdown-b">Manage Events</li>
+              <li onClick={ this.redirect } className="prof-dropdown-b m">Manage Events</li>
               <li className='prof-dropdown-b'
               onClick={ this.logOutRedirect }>Log Out</li>
             </ul>
