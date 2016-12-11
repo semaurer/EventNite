@@ -16,6 +16,10 @@ class Api::EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def index
+    @events = Event.all
+  end
+
   private
 
   def event_params

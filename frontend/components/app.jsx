@@ -47,9 +47,11 @@ class App extends React.Component {
   redirect(e) {
     this.props.clearErrors();
     if (e.currentTarget.className === "header-nav-item-logo") {
-      if (this.props.location.pathname !== "/") this.props.router.push("/")
+      if (this.props.location.pathname !== "/") this.props.router.push("/");
+    } else if (e.currentTarget.className === "header-nav-item brow") {
+      this.props.router.push("events");
     } else {
-      this.props.router.push("events/new-event")
+      this.props.router.push("events/new-event");
     }
   }
 
@@ -65,7 +67,8 @@ class App extends React.Component {
         <h2 onClick={ this.redirect }
           className='header-nav-item-logo'>EventNite</h2>
         <ul className='header-items'>
-          <li className='header-nav-item'>Browse Events</li>
+          <li onClick={ this.redirect }
+            className='header-nav-item brow'>Browse Events</li>
           <li className='header-nav-item user-name'>
             { this.props.currentUser.fname }
             <ul className="profile-dropdown">

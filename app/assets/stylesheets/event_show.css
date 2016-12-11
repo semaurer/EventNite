@@ -14,7 +14,7 @@
 
 .show-template {
   width: 1055px;
-  height: 700px;
+  height: auto;
   background-color: #fff;
   position: absolute;
   left: 150px;
@@ -105,4 +105,50 @@
 .pricing {
   position: absolute;
   bottom: -60px;
+}
+
+.description-date-loc {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
+.info-left {
+  width: 60%;
+  display: block;
+  float: left;
+
+}
+
+.description-info-list {
+  padding: 20px 110px;
+  font-size: 16px;
+  width: 100px;
+
+}
+
+.d-i-description {
+  width: 400px;
+  display: block;
+  height: auto;
+}
+
+.info-right {
+  width: 40%;
+  display: block;
+  float: right;
+}
+
+.info-right section {
+  display: block;
+  float: left;
+  width: 100%;
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
+.info-right info {
+  display: block;
+  margin-top: 5px;
+  width: 300px;
 }

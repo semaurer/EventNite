@@ -1,0 +1,100 @@
+.browse-page {
+  background-color:	#f8f8fa;;
+  height: auto;
+  display: block;
+  width: 100%;
+}
+
+.browse-content {
+  display: block;
+  width: 1050px;
+  height :auto;
+  margin: 0 auto;
+}
+
+.browse-content aside {
+  float: left;
+  display: block;
+  width: 25%;
+}
+
+.events {
+  float: right;
+  display: block;
+  width: 75%
+}
+
+.events h2 {
+   margin-top: 50px;
+   margin-bottom: 50px;
+   font-size: 36px;
+   font-weight: bold;
+}
+
+.events ul {
+  width: 100%;
+
+}
+
+.each-event {
+  margin-top: 7px;
+  border-radius: 2px;
+}
+
+.event-top-bar {
+  display: block;
+  height: 100px;
+  background-color: #fff;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.event-top-bar img {
+  width: 200px;
+  height: 100px;
+  float: left;
+}
+
+.event-top-bar ul {
+  padding-top: 15px;
+  height: 100%;
+}
+
+.event-top-bar li {
+  padding: 5px 0 0 220px;
+}
+
+.top-li {
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.e-i-title {
+  font-weight: bold;
+}
+
+.e-i-location {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.event-bot-bar {
+  background-color: #fff;
+  width: 100%;
+  height: 35px;
+  display: block;
+  border-bottom: 1px solid #ccc;
+}
+
+.e-b-pricing {
+  float: left;
+  width: 190px;
+  padding: 10px 0 9px 10px;
+  font-size: 14px;
+  background-color: #eee;
+}
+
+.e-b-bookmark {
+  text-align: right;
+  padding: 10px 15px 10px 10px;
+}

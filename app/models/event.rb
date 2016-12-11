@@ -56,6 +56,8 @@ class Event < ActiveRecord::Base
 
     if time[0].to_i > 0 && time[0..1].to_i < 12
       formatted_time = time + " AM"
+    elsif time[0..1] == "00"
+      formatted_time = "12" + time[2..4] + " AM"
     elsif time[0] == "0"
       formatted_time = time.slice(1..-1) + " AM"
     else

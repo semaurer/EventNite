@@ -2,9 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 
 class EventShow extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.fetchEvent(this.props.params.eventId);
@@ -23,6 +20,10 @@ class EventShow extends React.Component {
     let startDay = "";
     let title = "";
     let firstName = "";
+    let description = "";
+    let startDate = "";
+    let endDate = "";
+    let location = "";
 
     if (this.props.event) {
       startMonth = this.props.event.start_month;
@@ -31,6 +32,10 @@ class EventShow extends React.Component {
       startDay = this.props.event.start_day;
       title = this.props.event.title;
       firstName = this.props.event.author.first_name;
+      description = this.props.event.description;
+      startDate = new Date(this.props.event.start_date_time).toDateString();
+      endDate = new Date(this.props.event.end_date_time).toDateString();
+      location = this.props.event.location;
     }
 
     return (
@@ -55,23 +60,20 @@ class EventShow extends React.Component {
             </span>
             <span className="description-date-loc">
               <div className="info-left">
-                <h3 className="info-section-header"></h3>
                 <ul className="description-info-list">
-                  <li className="d-i-title"></li>
-                  <li></li>
-                  <li className="d-i-location"></li>
-                  <li className="d-i-description"></li>
+                  <h3 className="info-section-header">Description</h3>
+                  <li className="d-i-description">{ description }</li>
                 </ul>
               </div>
               <div className="info-right">
                 <section>
-                  <h3></h3>
-                  <info></info>
-                  <info></info>
+                  <h3>Date and Time</h3>
+                  <info>{ startDate } { startTime } -</info>
+                  <info>{ endDate } { endTime }</info>
                 </section>
                 <section>
-                  <h3></h3>
-                  <info></info>
+                  <h3>Location</h3>
+                  <info>{ location }</info>
                 </section>
                 <section>
                   <h3></h3>
