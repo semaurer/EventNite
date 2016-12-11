@@ -1,0 +1,89 @@
+.manage-events-page {
+  background-color:	#f8f8fa;
+  height: 600px;
+  width: 100%;
+}
+
+.manage-main {
+  margin: 0 auto;
+  display: block;
+  height: auto;
+  width: 1062px;
+}
+
+.manage-main div {
+  width: 79%;
+  display: block;
+  float: left;
+  height: auto;
+}
+
+.manage-events-page aside {
+  width: 21%;
+  display: block;
+  float: left;
+}
+
+.manage-main div h2 {
+  margin-top: 35px;
+  margin-bottom: 60px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.manage-events-container {
+  border-top: 1px solid #ccc;
+  width: 100%;
+  display: block;
+  height: auto;
+  float: left;
+}
+
+.manage-events-container li {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  display: block;
+  border-bottom: 1px solid #eee;
+  margin-top: 10px;
+  float: left;
+}
+
+.manage-events-container li h3 {
+  color: #4682B4;
+  margin: 0px;
+  display: block;
+  padding: 15px 0 5px 10px;
+}
+
+.manage-events-container li h3:hover {
+  color: #1E90FF;
+}
+
+.manage-event-time {
+  padding-left: 10px;
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  color: #aaa;
+}
+
+.management-links {
+  display: block;
+  width: 100%;
+  height: auto;
+  float: left;
+  padding: 15px 0 10px 15px;
+  font-size: 15px;
+  color: #aaa;
+}
+
+.management-links a {
+  padding-right: 15px;
+}
+
+.management-links a:hover {
+  color: #1E90FF;
+  text-decoration: underline;
+}

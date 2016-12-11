@@ -94,7 +94,8 @@ class App extends React.Component {
         <h2 onClick={ this.redirect }
           className='header-nav-item-logo'>EventNite</h2>
         <ul className='header-items'>
-          <li className='header-nav-item'>Browse Events</li>
+          <li onClick={ this.redirect }
+            className='header-nav-item brow'>Browse Events</li>
           <li onClick={ this.openModal.bind(this, false) }
             className='header-nav-item'>
             <div>Sign Up</div>
