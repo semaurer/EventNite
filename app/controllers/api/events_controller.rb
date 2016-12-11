@@ -5,7 +5,7 @@ class Api::EventsController < ApplicationController
     @event.author_id = current_user.id
 
     if @event.save
-      render json: @event
+      render :show
     else
       render json: @event.errors.full_messages, status: 422
     end
@@ -18,6 +18,17 @@ class Api::EventsController < ApplicationController
 
   def index
     @events = Event.all
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update_attributes(event_params)
+      render json: @event
+    else
+      render json: @event.errors.full_messages, status: 422
+    end
+
   end
 
   private
