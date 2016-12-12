@@ -10,29 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209143911) do
+ActiveRecord::Schema.define(version: 20161212212439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "events", force: :cascade do |t|
-    t.string   "title",                              null: false
-    t.datetime "start_date_time",                    null: false
-    t.datetime "end_date_time",                      null: false
-    t.boolean  "private",            default: false, null: false
-    t.integer  "author_id",                          null: false
+    t.string   "title",                               null: false
+    t.datetime "start_date_time",                     null: false
+    t.datetime "end_date_time",                       null: false
+    t.boolean  "private",            default: false,  null: false
+    t.integer  "author_id",                           null: false
     t.string   "location"
     t.string   "event_type"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.text     "description"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "price",              default: "free", null: false
     t.index ["author_id"], name: "index_events_on_author_id", using: :btree
     t.index ["start_date_time"], name: "index_events_on_start_date_time", using: :btree
     t.index ["title"], name: "index_events_on_title", using: :btree
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.date     "purchase_date", null: false
+    t.integer  "buyer_id",      null: false
+    t.integer  "event_id",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["buyer_id"], name: "index_tickets_on_buyer_id", unique: true, using: :btree
+    t.index ["event_id"], name: "index_tickets_on_event_id", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|

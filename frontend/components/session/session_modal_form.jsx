@@ -64,7 +64,7 @@ class SessionModalForm extends React.Component {
               onChange={this.updateUserState("lname")}
               placeholder="Last Name">
               </input>
-           <input className="auth-form-item" type="text"
+           <input className="auth-form-item" type="password"
               value={this.state.password}
               onChange={this.updateUserState("password")}
               placeholder="Password">
@@ -95,7 +95,7 @@ class SessionModalForm extends React.Component {
             onChange={this.updateUserState("email")}
             placeholder="Email">
           </input>
-          <input className="auth-form-item" type="text"
+          <input className="auth-form-item" type="password"
             value={this.state.password}
             onChange={this.updateUserState("password")}
             placeholder="Password">

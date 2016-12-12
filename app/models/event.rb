@@ -17,6 +17,7 @@
 #  image_content_type :string
 #  image_file_size    :integer
 #  image_updated_at   :datetime
+#  price              :string           default("free"), not null
 #
 
 class Event < ActiveRecord::Base
@@ -45,7 +46,7 @@ class Event < ActiveRecord::Base
     7 => "Sun",
   }
 
-  validates :author, :title, :start_date_time, :end_date_time, presence: true
+  validates :author, :title, :start_date_time, :end_date_time, :price, presence: true
   validates_inclusion_of :private, in: [true, false]
 
   has_attached_file :image, default_url: "missing.jpg"
@@ -55,6 +56,11 @@ class Event < ActiveRecord::Base
     class_name: :User,
     primary_key: :id,
     foreign_key: :author_id
+
+  has_many :tickets,
+    class_name: :Ticket,
+    primary_key: :id,
+    foreign_key: :event_id
 
   def format_month(date_time)
     MONTHS[date_time.month]

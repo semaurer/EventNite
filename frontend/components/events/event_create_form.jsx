@@ -10,14 +10,17 @@ class EventCreateForm extends React.Component {
       start_date_time: "",
       end_date_time: "",
       description: "",
+      price: "free",
       imageFile: "",
       imageUrl: "",
+      pricingToggle: "",
     };
     this.eventCreateEls = this.eventCreateEls.bind(this);
     this.updateEventState = this.updateEventState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirect = this.redirect.bind(this);
     this.updateFile = this.updateFile.bind(this);
+    this.pricingEls = this.pricingEls.bind(this);
   }
 
   updateEventState(prop) {
@@ -30,12 +33,13 @@ class EventCreateForm extends React.Component {
     e.preventDefault();
 
     let formData = new FormData();
-    formData.append("event[title]", this.state.title)
-    formData.append("event[location]", this.state.location)
-    formData.append("event[start_date_time]", this.state.start_date_time)
-    formData.append("event[end_date_time]", this.state.end_date_time)
-    formData.append("event[description]", this.state.description)
-    formData.append("event[image]", this.state.imageFile)
+    formData.append("event[title]", this.state.title);
+    formData.append("event[location]", this.state.location);
+    formData.append("event[start_date_time]", this.state.start_date_time);
+    formData.append("event[end_date_time]", this.state.end_date_time);
+    formData.append("event[description]", this.state.description);
+    formData.append("event[price]", this.state.price);
+    formData.append("event[image]", this.state.imageFile);
 
     const event = Object.assign({}, this.state);
     this.props.createEvent(formData)
@@ -59,12 +63,36 @@ class EventCreateForm extends React.Component {
     this.props.router.push(`/events/${event.id}`)
   }
 
+  pricingEls(e) {
+    if (e.currentTarget.className === "free-button") {
+      this.setState({ price: "free", pricingToggle: "freeEls" });
+    } else {
+      this.setState({ pricingToggle: "pricingEls"});
+    }
+  }
+
+
   eventCreateEls() {
     let imageElsToggle = "img-absolute";
     let previewToggle = "disp-none";
     if ( this.state.imageUrl !== "" ) {
       imageElsToggle = "img-none"
       previewToggle = "img-preview";
+    }
+
+    let pricingEls = "";
+    if (this.state.pricingToggle === "freeEls") {
+      pricingEls =
+        <div className="freeEls">
+          <h4>Your event will be free!</h4>
+        </div>
+    } else if (this.state.pricingToggle === "pricingEls") {
+      pricingEls =
+        <div className="pricedEls">
+          <input type="text" placeholder="0"
+            onChange={ this.updateEventState("price")}>
+          </input>
+        </div>
     }
 
     return (
@@ -119,9 +147,24 @@ class EventCreateForm extends React.Component {
             value={ this.state.description }
             onChange={ this.updateEventState("description") }></textarea>
         </form>
+        <section className="c-e-form-header-2">
+          <article className="form-step">2</article>
+          <h3 className="form-section-header-middle">Tickets</h3>
+        </section>
+        <form className="ticket-pricing">
+          <h4>Set a price for your tickets</h4>
+          <div className="pricing-buttons">
+            <button className="free-button"
+              onClick={ this.pricingEls }>Free</button>
+            <button className="priced-button"
+              onClick={ this.pricingEls }>Priced</button>
+            { pricingEls }
+          </div>
+        </form>
       </div>
     );
   }
+
 
   render () {
     const formFieldsEls = this.eventCreateEls();

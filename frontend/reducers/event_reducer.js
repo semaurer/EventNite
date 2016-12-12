@@ -24,7 +24,7 @@ const eventReducer = (state = defaultState, action) => {
       return Object.assign({}, state, { errors });
 
     default:
-    return state;
+      return state;
   }
 };
 

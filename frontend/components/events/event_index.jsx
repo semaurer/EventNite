@@ -15,7 +15,8 @@ class EventIndex extends React.Component {
   eventEls () {
     return this.props.events.map((event) => {
       const startDate = new Date(event.start_date_time).toDateString();
-
+      let price = "FREE";
+      if (event.price !== "free") price = "$" + event.price;
       return (
         <li key={ event.id } className="each-event group">
           <Link to={ `events/${event.id}`}>
@@ -29,7 +30,7 @@ class EventIndex extends React.Component {
             </span>
           </Link>
           <span className="event-bot-bar">
-            <div className="e-b-pricing">FREE</div>
+            <div className="e-b-pricing">{ price }</div>
             <div>
               <div className="e-b-bookmark">O</div>
             </div>

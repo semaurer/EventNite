@@ -1,10 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Modal from 'react-modal';
+import ModalStyle from '../../../app/assets/stylesheets/modal_style';
+import TicketModal from '../tickets/ticket_modal';
 
 class EventShow extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { modalOpen: false }
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
 
   componentDidMount() {
     this.props.fetchEvent(this.props.params.eventId);
+  }
+
+  openModal(bool) {
+    this.setState({ modalOpen: true,
+      signIn: bool });
+  }
+
+  closeModal() {
+    this.setState({ modalOpen: false });
+    ModalStyle.content.top = "-300px";
+    this.props.clearErrors();
+  }
+
+  onModalOpen () {
+    ModalStyle.content.top = "95px";
   }
 
   render () {
@@ -14,6 +38,7 @@ class EventShow extends React.Component {
       src={ this.props.event.image_url }
       className="event-img"></img>;
 
+    let price = "";
     let startMonth = "";
     let startTime = "";
     let endTime = "";
@@ -24,6 +49,8 @@ class EventShow extends React.Component {
     let startDate = "";
     let endDate = "";
     let location = "";
+    let ticketText = "Tickets"
+
     if (this.props.event) {
       startMonth = this.props.event.start_month;
       startTime = this.props.event.start_time;
@@ -34,7 +61,10 @@ class EventShow extends React.Component {
       startDate = this.props.event.formatted_start_date_time
       endDate = this.props.event.formatted_end_date_time
       location = this.props.event.location;
+      price = this.props.event.price;
+      if (this.props.event.price !== "free") price = "$" + this.props.event.price;
       if (this.props.event.author) firstName = this.props.event.author.first_name;
+      if (price === "free") ticketText = "Register"
     }
     return (
       <div className="show-page group">
@@ -48,13 +78,13 @@ class EventShow extends React.Component {
                   <li className="t-d-h-p-day">{ startDay }</li>
                   <li className="t-d-h-p-title">{ title }</li>
                   <li className="t-d-h-p-author">by { firstName }</li>
-                  <li className="pricing">free</li>
+                  <li className="pricing">{ price }</li>
                 </ul>
               </div>
             </span>
             <span className="bookmark-register">
               <button className="bookmark">O</button>
-              <button className="ticket-submit">Tickets</button>
+              <button onClick={ this.openModal } className="ticket-submit">{ ticketText }</button>
             </span>
             <span className="description-date-loc">
               <div className="info-left">
@@ -80,6 +110,15 @@ class EventShow extends React.Component {
             </span>
           </div>
         </div>
+
+        <Modal onAfterOpen={ this.onModalOpen } style={ ModalStyle }
+          contentLabel="" isOpen={ this.state.modalOpen }
+          onRequestClose={ this.closeModal }>
+
+          <TicketModal>
+            
+          </TicketModal>
+        </Modal>
       </div>
     );
   }

@@ -26,6 +26,11 @@ class User < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :author_id
 
+  has_many :tickets,
+    class_name: :Ticket,
+    primary_key: :id,
+    foreign_key: :buyer_id
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)
