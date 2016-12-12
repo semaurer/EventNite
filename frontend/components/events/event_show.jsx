@@ -24,7 +24,6 @@ class EventShow extends React.Component {
     let startDate = "";
     let endDate = "";
     let location = "";
-
     if (this.props.event) {
       startMonth = this.props.event.start_month;
       startTime = this.props.event.start_time;
@@ -32,12 +31,11 @@ class EventShow extends React.Component {
       startDay = this.props.event.start_day;
       title = this.props.event.title;
       description = this.props.event.description;
-      startDate = new Date(this.props.event.start_date_time).toDateString();
-      endDate = new Date(this.props.event.end_date_time).toDateString();
+      startDate = this.props.event.formatted_start_date_time
+      endDate = this.props.event.formatted_end_date_time
       location = this.props.event.location;
       if (this.props.event.author) firstName = this.props.event.author.first_name;
     }
-
     return (
       <div className="show-page group">
         <div className="show-page-bg">

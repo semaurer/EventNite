@@ -151,7 +151,7 @@ class EventUpdate extends React.Component {
     let startTime = "";
     let endTime = "";
     if (this.props.event) {
-      startDate = new Date(this.props.event.start_date_time).toDateString();
+      startDate = this.props.event.formatted_start_date_time
       startTime = this.props.event.start_time;
       endTime = this.props.event.end_time;
     }

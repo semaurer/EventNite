@@ -35,6 +35,16 @@ class Event < ActiveRecord::Base
     12 => "Dec"
   }
 
+  DAYS_OF_THE_WEEK = {
+    1 => "Mon",
+    2 => "Tues",
+    3 => "Wed",
+    4 => "Thurs",
+    5 => "Fri",
+    6 => "Sat",
+    7 => "Sun",
+  }
+
   validates :author, :title, :start_date_time, :end_date_time, presence: true
   validates_inclusion_of :private, in: [true, false]
 
@@ -73,6 +83,18 @@ class Event < ActiveRecord::Base
   def pad_day(date_day)
     return "0" + date_day.to_s if date_day < 10
     date_day
+  end
+
+  def get_day_of_the_week(calendar_week_day)
+    DAYS_OF_THE_WEEK[calendar_week_day]
+  end
+
+  def format_date_time(date_time)
+    day_of_the_week = self.get_day_of_the_week(date_time.wday)
+    month = MONTHS[date_time.month]
+    day = self.pad_day(date_time.day)
+    year = date_time.year
+    "#{day_of_the_week} #{month} #{day}, #{year}"
   end
 
 end
