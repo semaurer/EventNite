@@ -87,3 +87,62 @@
   color: #1E90FF;
   text-decoration: underline;
 }
+
+.e-m-modal-b:hover {
+  cursor: pointer;
+}
+
+.manage-modal-header {
+  text-align: center;
+  display: block;
+  font-size: 22px;
+}
+
+.warning {
+  text-align: center;
+  display: block;
+  font-size: 14px;
+  color: red;
+  margin-bottom: 40px;
+}
+
+.delete-buttons {
+  width: 100%;
+  text-align: center;
+
+}
+
+.delete-buttons button {
+  padding: 10px 20px;
+}
+
+.really-delete {
+  border: 2px solid red;
+  color: red;
+  margin-right: 25px;
+  background-color: none;
+  transition: background-color 0.5s;
+  font-weight: bold;
+}
+
+.really-delete:hover {
+  cursor: pointer;
+  background-color: red;
+  color: #fff;
+  transition: background-color 0.5s;
+}
+
+.delete-cancel {
+  border: 2px solid #4682B4;
+  color: #4682B4;
+  background-color: none;
+  transition: background-color 0.5s;
+  font-weight: bold;
+}
+
+.delete-cancel:hover {
+  cursor: pointer;
+  background-color: #4682B4;
+  color: #fff;
+  transition: background-color 0.5s;
+}

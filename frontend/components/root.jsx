@@ -6,6 +6,7 @@ import HomePageContainer from './home_page/home_page_container';
 import EventCreateContainer from './events/event_create_container';
 import EventShowContainer from './events/event_show_container';
 import EventIndexContainer from './events/event_index_container';
+import EventUpdateContainer from './events/event_update_container';
 import ManageEventsContainer from './events/manage_events_container';
 
 
@@ -23,6 +24,7 @@ const Root = ({ store }) => {
           <Route path="events" component ={ EventIndexContainer } />
           <Route path="events/new-event" component={ EventCreateContainer } />
           <Route path="events/:eventId" component={ EventShowContainer } />
+          <Route path="events/:eventId/edit" component={ EventUpdateContainer } />
           <Route path="users/manage-events" component={ ManageEventsContainer } />
         </Route>
       </Router>

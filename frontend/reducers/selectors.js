@@ -14,8 +14,8 @@ export const selectCurrentUserEvents = (state) => {
 
   if (state.events.events !== null) {
     Object.keys(state.events.events).forEach(eventId => {
-      if (state.events.events[eventId].author.first_name ===
-        state.session.currentUser.fname) {
+      if (state.events.events[eventId].author.email ===
+        state.session.currentUser.email) {
         events.push(state.events.events[eventId]);
         }
     });

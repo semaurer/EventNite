@@ -31,11 +31,11 @@ class EventShow extends React.Component {
       endTime = this.props.event.end_time;
       startDay = this.props.event.start_day;
       title = this.props.event.title;
-      firstName = this.props.event.author.first_name;
       description = this.props.event.description;
       startDate = new Date(this.props.event.start_date_time).toDateString();
       endDate = new Date(this.props.event.end_date_time).toDateString();
       location = this.props.event.location;
+      if (this.props.event.author) firstName = this.props.event.author.first_name;
     }
 
     return (
