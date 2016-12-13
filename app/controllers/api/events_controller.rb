@@ -3,7 +3,8 @@ class Api::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.author_id = current_user.id
-
+    ##@category = category.find(params[:id])
+    ##@event.categories << @category
     if @event.save
       render json: @event
     else

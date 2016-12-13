@@ -62,6 +62,15 @@ class Event < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :event_id
 
+  has_many :event_categories,
+    class_name: :EventCategory,
+    primary_key: :id,
+    foreign_key: :event_id
+
+  has_many :categories,
+    through: :event_categories,
+    source: :category
+
   def format_month(date_time)
     MONTHS[date_time.month]
   end
