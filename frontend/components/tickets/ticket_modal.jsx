@@ -18,8 +18,13 @@ class TicketModal extends React.Component {
   }
 
   handleSubmit() {
-    for (var i = 0; i < this.state.ticketQuantity; i++) {
-      this.props.createTicket({ event_id: this.props.eventId  });
+    for (let i = 0; i < this.state.ticketQuantity; i++) {
+      this.props.createTicket({ event_id: this.props.eventId  })
+        .then(() => {
+          if (i === this.state.ticketQuantity - 1) {
+            this.props.router.push("/users/tickets");
+          }
+        });
     }
   }
 

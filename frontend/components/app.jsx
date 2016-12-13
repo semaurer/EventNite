@@ -19,6 +19,15 @@ class App extends React.Component {
     this.redirect = this.redirect.bind(this);
     this.logOutRedirect = this.logOutRedirect.bind(this);
   }
+  //
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.location.pathname.slice(0, 7) === "/events") {
+  //     if (prevProps.params.eventId) {
+  //       if (prevProps.currentUser === null) {
+  //       }
+  //     }
+  //   }
+  // }
 
   openModal(bool) {
     this.setState({ modalOpen: true,
@@ -52,6 +61,8 @@ class App extends React.Component {
       this.props.router.push("events");
     } else if (e.currentTarget.className === "prof-dropdown-b m") {
       this.props.router.push("/users/manage-events")
+    } else if (e.currentTarget.className === "prof-dropdown-b t") {
+      this.props.router.push("users/tickets")
     } else {
       this.props.router.push("events/new-event");
     }
@@ -74,7 +85,7 @@ class App extends React.Component {
           <li className='header-nav-item user-name'>
             { this.props.currentUser.fname }
             <ul className="profile-dropdown">
-              <li className="prof-dropdown-b">Tickets 0</li>
+              <li onClick={ this.redirect }className="prof-dropdown-b t">Tickets 0</li>
               <li className="prof-dropdown-b">Saved 0</li>
               <li onClick={ this.redirect } className="prof-dropdown-b m">Manage Events</li>
               <li className='prof-dropdown-b'

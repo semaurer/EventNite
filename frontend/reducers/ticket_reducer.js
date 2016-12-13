@@ -13,8 +13,10 @@ const ticketReducer = (state = defaultState, action) => {
       const ticket = action.ticket;
       const oldState = merge({}, state, { ticket });
       return oldState;
-      
+
     default:
       return state;
   }
 };
+
+export default ticketReducer;

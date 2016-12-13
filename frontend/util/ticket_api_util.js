@@ -5,3 +5,10 @@ export const createTicket = (ticket) => {
     data: { ticket: ticket }
   });
 };
+
+export const fetchTickets = () => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/tickets",
+  });
+};

@@ -17,8 +17,10 @@ class EventShow extends React.Component {
   }
 
   openModal(bool) {
-    this.setState({ modalOpen: true,
-      signIn: bool });
+    if (this.props.currentUser === null) {
+      this.props.router.push("/")
+    }
+    this.setState({ modalOpen: true });
   }
 
   closeModal() {
@@ -67,6 +69,7 @@ class EventShow extends React.Component {
       if (this.props.event.author) firstName = this.props.event.author.first_name;
       if (price === "free") ticketText = "Register"
     }
+
     return (
       <div className="show-page group">
         <div className="show-page-bg">
@@ -116,11 +119,10 @@ class EventShow extends React.Component {
           contentLabel="" isOpen={ this.state.modalOpen }
           onRequestClose={ this.closeModal }>
 
-          <TicketModal createTicket={ this.props.createTicket }
+          <TicketModal router={ this.props.router} createTicket={ this.props.createTicket }
             ticketText={ ticketText } price={ price }
-            endDate={ endDateTicket } eventId={ this.props.params.eventId }>
+            endDate={ endDateTicket } eventId={ this.props.params.eventId } />
 
-          </TicketModal>
         </Modal>
       </div>
     );

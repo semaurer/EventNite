@@ -14,7 +14,7 @@ class Api::TicketsController < ApplicationController
   end
 
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.where("tickets.buyer_id = ? ", current_user.id)
   end
 
   private

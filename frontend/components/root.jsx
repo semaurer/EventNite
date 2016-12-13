@@ -8,6 +8,7 @@ import EventShowContainer from './events/event_show_container';
 import EventIndexContainer from './events/event_index_container';
 import EventUpdateContainer from './events/event_update_container';
 import ManageEventsContainer from './events/manage_events_container';
+import UserTicketContainer from './tickets/user_ticket_container';
 
 
 const Root = ({ store }) => {
@@ -26,6 +27,7 @@ const Root = ({ store }) => {
           <Route path="events/:eventId" component={ EventShowContainer } />
           <Route path="events/:eventId/edit" component={ EventUpdateContainer } />
           <Route path="users/manage-events" component={ ManageEventsContainer } />
+          <Route path="users/tickets" component={ UserTicketContainer } />
         </Route>
       </Router>
     </Provider>
