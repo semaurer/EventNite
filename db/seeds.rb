@@ -33,7 +33,7 @@ e2 = Event.create(title: "Webster Hall Rock Concert", start_date_time: DateTime.
   location: "Webster Hall, 125 E 11th St, New York, NY 10003",
   description: "The legendary rock band A-7 is coming back to NYC with live in concert
   'The Best Of' at Webster Hall! One and only concert!
-  Start 7 PM. 18+ Show.",
+  Start 7 PM. 18+ Show.", price: "10",
   image: File.open('app/assets/images/event_seed_images/web_hall_rock.png'))
 e3 = Event.create(title: "Datsik Ninja Nation", start_date_time: DateTime.new(2017, 2, 3, 19),
   end_date_time: DateTime.new(2017, 2, 3, 23), author_id: nancy.id,
@@ -42,6 +42,7 @@ e3 = Event.create(title: "Datsik Ninja Nation", start_date_time: DateTime.new(20
   tour in support of his upcoming “Sensei” EP slated to be released in December.
   He will introduce his new stage production 'The Shogun' which he says is “The next chapter for Datsik,
   and is an amalgamation of my wildest vision to date.",
+  price: "5",
   image: File.open('app/assets/images/event_seed_images/datsik_ninja_event.png'))
 e4 = Event.create(title: "Outside concert at Central Park", start_date_time: DateTime.new(2017, 1, 3, 19),
   end_date_time: DateTime.new(2017, 1, 3, 23), author_id: bob.id,
@@ -63,6 +64,7 @@ e6 = Event.create(title: "The Royal Slumber Party", start_date_time: DateTime.ne
   celebration at The Palace of Feelings. The palace will be decorated with art installations,
   visual stimulations and state of the art sound. Patrons are required to wear their royal,
   creative costumes, and get ready for a Slumber Party to remember!",
+  price: "20",
   image: File.open('app/assets/images/event_seed_images/slumber_party.png'))
 e7 = Event.create(title: "The DL Rooftop", start_date_time: DateTime.new(2017, 2, 17, 18),
   end_date_time: DateTime.new(2017, 2, 18, 1), author_id: henry.id,
@@ -117,4 +119,5 @@ e10 = Event.create(title: "SPECIAL GUEST DJ @ CENTRAL LOUNGE (ASTORIA) ",
   THE QUEENS - $800.00 for 3 Premium Bottles, 1 Champagne (up to 12 guests)
   THE IMPERIAL - $1,200.00 for 4 Premium Bottles, 1 Moet Imperial (up to 16 guests)
   THE LUCKY 7 - $1,600.00 for 5 Premium Bottles, 2 Motel Imperial (up to 22 guests)",
+  price: "50",
   image: File.open('app/assets/images/event_seed_images/central_lounge.png'))
