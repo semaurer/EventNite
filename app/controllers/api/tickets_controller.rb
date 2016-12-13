@@ -14,6 +14,7 @@ class Api::TicketsController < ApplicationController
   end
 
   def index
+    @tickets = Ticket.all
   end
 
   private

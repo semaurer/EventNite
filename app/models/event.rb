@@ -103,4 +103,8 @@ class Event < ActiveRecord::Base
     "#{day_of_the_week} #{month} #{day}, #{year}"
   end
 
+  def format_end_date_day(date_time)
+    self.format_month(date_time) + " " + (self.pad_day(date_time.day)).to_s
+  end
+
 end

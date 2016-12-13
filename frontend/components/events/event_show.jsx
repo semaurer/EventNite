@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
-import ModalStyle from '../../../app/assets/stylesheets/modal_style';
+import ModalStyle from '../../../app/assets/stylesheets/ticket_modal_style';
 import TicketModal from '../tickets/ticket_modal';
 
 class EventShow extends React.Component {
@@ -24,7 +24,6 @@ class EventShow extends React.Component {
   closeModal() {
     this.setState({ modalOpen: false });
     ModalStyle.content.top = "-300px";
-    this.props.clearErrors();
   }
 
   onModalOpen () {
@@ -50,6 +49,7 @@ class EventShow extends React.Component {
     let endDate = "";
     let location = "";
     let ticketText = "Tickets"
+    let endDateTicket = "";
 
     if (this.props.event) {
       startMonth = this.props.event.start_month;
@@ -62,6 +62,7 @@ class EventShow extends React.Component {
       endDate = this.props.event.formatted_end_date_time
       location = this.props.event.location;
       price = this.props.event.price;
+      endDateTicket = this.props.event.end_date_ticket;
       if (this.props.event.price !== "free") price = "$" + this.props.event.price;
       if (this.props.event.author) firstName = this.props.event.author.first_name;
       if (price === "free") ticketText = "Register"
@@ -115,8 +116,10 @@ class EventShow extends React.Component {
           contentLabel="" isOpen={ this.state.modalOpen }
           onRequestClose={ this.closeModal }>
 
-          <TicketModal>
-            
+          <TicketModal createTicket={ this.props.createTicket }
+            ticketText={ ticketText } price={ price }
+            endDate={ endDateTicket } eventId={ this.props.params.eventId }>
+
           </TicketModal>
         </Modal>
       </div>

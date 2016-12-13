@@ -11,8 +11,8 @@
 #
 
 class Ticket < ActiveRecord::Base
-  validates :purchase_date, presence: true
-  validates :buyer, :event, presence: true, uniqueness: true
+  validates :purchase_date, :buyer, :event, presence: true
+
 
   belongs_to :buyer,
     class_name: :User,

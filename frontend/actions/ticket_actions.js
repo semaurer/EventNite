@@ -13,8 +13,7 @@ export function createTicket(ticket) {
   return (dispatch) => {
     return APIUtil.createTicket(ticket)
       .then(
-        (ticket) => dispatch(receiveTicket(ticket)),
-        (errors) => dispatch(receiveErrors(errors))
+        (ticket) => dispatch(receiveTicket(ticket))
       );
   };
 }
