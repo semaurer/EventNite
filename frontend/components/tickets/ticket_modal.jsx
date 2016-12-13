@@ -26,7 +26,7 @@ class TicketModal extends React.Component {
   render () {
     let priceText = "Free";
     let ticketText = this.props.ticketText;
-    let totalCostText = "";
+    let totalCostText = "0";
     if (this.props.price !== "free") {
       ticketText = "Select " + ticketText;
       priceText = this.props.price;
