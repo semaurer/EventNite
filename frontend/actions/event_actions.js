@@ -26,9 +26,9 @@ export const removeEvent = (eventId) => {
   };
 };
 
-export function createEvent(event) {
+export function createEvent(event, catIds) {
   return (dispatch) => {
-    return APIUtil.createEvent(event)
+    return APIUtil.createEvent(event, catIds)
       .then(
         (event) => dispatch(receiveEvent(event)),
         (errors) => dispatch(receiveErrors(errors.responseJSON))

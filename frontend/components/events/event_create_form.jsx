@@ -49,6 +49,8 @@ class EventCreateForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    const catIds = [this.state.parentCatId, this.state.subCatId];
+
     let formData = new FormData();
     formData.append("event[title]", this.state.title);
     formData.append("event[location]", this.state.location);
@@ -59,7 +61,7 @@ class EventCreateForm extends React.Component {
     formData.append("event[image]", this.state.imageFile);
 
     const event = Object.assign({}, this.state);
-    this.props.createEvent(formData)
+    this.props.createEvent(formData, catIds)
       .then(({ event }) => {
         this.redirect(event);
       });

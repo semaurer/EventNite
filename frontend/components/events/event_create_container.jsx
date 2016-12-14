@@ -17,7 +17,7 @@ const mapStateToProps = ( state ) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createEvent: (event) => dispatch(createEvent(event)),
+    createEvent: (event, catIds) => dispatch(createEvent(event, catIds)),
     clearErrors: () => dispatch(clearErrors()),
     fetchCategories: () => dispatch(fetchCategories()),
   };

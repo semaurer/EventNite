@@ -1,7 +1,10 @@
-export const createEvent = (formData) => {
+export const createEvent = (formData, catIds) => {
+  const parentCatId = catIds[0];
+  const subCatId = catIds[1];
+
   return $.ajax ({
     method: "POST",
-    url: "api/events",
+    url: `api/events?filter=${parentCatId}_${subCatId}`,
     data: formData,
     contentType: false,
     processData: false,
