@@ -123,7 +123,20 @@ e10 = Event.create(title: "SPECIAL GUEST DJ @ CENTRAL LOUNGE (ASTORIA) ",
   image: File.open('app/assets/images/event_seed_images/central_lounge.png'))
 
 Ticket.destroy_all
-
+t1 = Ticket.create(event_id: e10.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t2 = Ticket.create(event_id: e10.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t3 = Ticket.create(event_id: e10.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t4 = Ticket.create(event_id: e1.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t5 = Ticket.create(event_id: e1.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t6 = Ticket.create(event_id: e2.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t7 = Ticket.create(event_id: e2.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t8 = Ticket.create(event_id: e2.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t9 = Ticket.create(event_id: e5.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t10 = Ticket.create(event_id: e7.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t11 = Ticket.create(event_id: e8.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t12 = Ticket.create(event_id: e4.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t13 = Ticket.create(event_id: e4.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
+t14 = Ticket.create(event_id: e4.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
 
 Category.destroy_all
 music = Category.create(name: "Music")
@@ -151,7 +164,7 @@ yoga = Category.create(name: "Yoga", parent_category_id: health.id)
 foodanddrink = Category.create(name: "Food & Drink")
 
 food = Category.create(name: "Food", parent_category_id: foodanddrink.id)
-spirits = Category.create(name: "spirits", parent_category_id: foodanddrink.id)
+spirits = Category.create(name: "Spirits", parent_category_id: foodanddrink.id)
 beer = Category.create(name: "Beer", parent_category_id: foodanddrink.id)
 
 arts = Category.create(name: "Arts")
@@ -162,3 +175,16 @@ other = Category.create(name: "Other")
 holiday = Category.create(name: "Holiday")
 community = Category.create(name: "Community")
 spirituality = Category.create(name: "Spirituality")
+
+EventCategory.destroy_all
+
+ec1 = EventCategory.create(event_id: e10.id, category_id: hiphopandrap.id)
+ec2 = EventCategory.create(event_id: e1.id, category_id: music.id)
+ec3 = EventCategory.create(event_id: e2.id, category_id: music.id)
+ec4 = EventCategory.create(event_id: e3.id, category_id: top40.id)
+ec5 = EventCategory.create(event_id: e4.id, category_id: community.id)
+ec6 = EventCategory.create(event_id: e5.id, category_id: bluesandjazz.id)
+ec7 = EventCategory.create(event_id: e6.id, category_id: holiday.id)
+ec8 = EventCategory.create(event_id: e7.id, category_id: top40.id)
+ec9 = EventCategory.create(event_id: e8.id, category_id: community.id)
+ec10 = EventCategory.create(event_id: e9.id, category_id: music.id)

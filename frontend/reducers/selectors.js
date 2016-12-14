@@ -1,6 +1,7 @@
 export const selectEvents = (state) => {
   const events = [];
 
+  if (state.events.events === undefined) return events;
   if (state.events.events !== null) {
     Object.keys(state.events.events).forEach(eventId => {
       events.push(state.events.events[eventId]);

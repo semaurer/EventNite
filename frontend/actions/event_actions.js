@@ -4,6 +4,7 @@ import { receiveErrors } from './session_actions';
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
 export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
 export const REMOVE_EVENT = "REMOVE_EVENT";
+export const REMOVE_EVENTS = "REMOVE_EVENTS";
 
 export const receiveEvent = (event) => {
   return {
@@ -23,6 +24,12 @@ export const removeEvent = (eventId) => {
   return {
     type: REMOVE_EVENT,
     eventId
+  };
+};
+
+export const removeEvents = () => {
+  return {
+    type: REMOVE_EVENTS,
   };
 };
 
@@ -58,7 +65,7 @@ export function fetchEvents() {
 
 export function categoryFilterFetchEvents(catId) {
   return (dispatch) => {
-    return APIUtil.fetchEvents(catId)
+    return APIUtil.categoryFilterFetchEvents(catId)
       .then(
         (events) => dispatch(receiveEvents(events)),
         (errors) => dispatch(receiveErrors(errors))

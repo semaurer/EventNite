@@ -26,6 +26,7 @@ export const fetchEvents = () => {
 };
 
 export const categoryFilterFetchEvents = (catId) => {
+
   return $.ajax ({
     method: "GET",
     url: `api/events/categories/${catId}`

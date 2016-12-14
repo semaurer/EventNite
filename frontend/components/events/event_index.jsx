@@ -15,6 +15,15 @@ class EventIndex extends React.Component {
     this.subCatMenu = this.subCatMenu.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.location.pathname.includes("categories")) {
+      if (nextProps.location.pathname === "events") {
+        this.props.fetchEvents();
+        this.setState({ categoryOpen: "closed" });
+      }
+    }
+  }
+
   componentDidMount () {
     this.props.fetchEvents();
     this.props.fetchCategories();
@@ -23,6 +32,7 @@ class EventIndex extends React.Component {
   returnToFull() {
     this.setState({ categoryOpen: "full" });
     this.props.router.push("/events/categories");
+    this.props.fetchEvents();
   }
 
   parentCatMenu() {
@@ -72,7 +82,7 @@ class EventIndex extends React.Component {
     });
     fullMenuEls.push(parentCatEl);
     fullMenuEls.push(subCatEl);
-    
+
     return fullMenuEls;
   }
 
@@ -93,11 +103,15 @@ class EventIndex extends React.Component {
     });
     this.setState({ categoryOpen: "subSelected" });
     this.props.router.push(`events/categories/${parentCat.name}/${childCat.name}`);
+    this.props.removeEvents();
+    this.props.categoryFilterFetchEvents(e.currentTarget.id);
   }
 
   configureMenuForCats(e) {
     this.setState({ categoryOpen: "parentSelected" });
     this.props.router.push(`events/categories/${e.currentTarget.innerText}`);
+    this.props.removeEvents();
+    this.props.categoryFilterFetchEvents(e.currentTarget.id);
   }
 
   changeMenuState(e) {
@@ -160,7 +174,6 @@ class EventIndex extends React.Component {
     if (this.state.categoryOpen === "full") fullMenu = this.fullMenuEls();
     if (this.state.categoryOpen === "parentSelected") fullMenu = this.parentCatMenu();
     if (this.state.categoryOpen === "subSelected") fullMenu = this.subCatMenu();
-
 
     return (
       <div className="browse-page group">

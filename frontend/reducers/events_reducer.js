@@ -1,6 +1,6 @@
 import React from 'react';
 import { merge, assign } from 'lodash';
-import { RECEIVE_EVENTS, REMOVE_EVENT } from '../actions/event_actions';
+import { RECEIVE_EVENTS, REMOVE_EVENT, REMOVE_EVENTS } from '../actions/event_actions';
 import { RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
 
 const defaultState = Object.freeze({
@@ -16,8 +16,13 @@ const eventsReducer = (state = defaultState, action) => {
       return merge({}, state, { events });
 
     case REMOVE_EVENT:
-      const newState = merge({}, state);
+    let newState = merge({}, state);
       delete newState.events[action.eventId];
+      return newState;
+
+    case REMOVE_EVENTS:
+      newState = merge({}, state);
+      delete newState.events;
       return newState;
 
     case RECEIVE_ERRORS:

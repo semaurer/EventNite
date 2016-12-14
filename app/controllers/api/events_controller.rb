@@ -45,6 +45,7 @@ class Api::EventsController < ApplicationController
   end
 
   def category_filter
+    @events = Category.find(params[:id]).events
     render :index
   end
 
