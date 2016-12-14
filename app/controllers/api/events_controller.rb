@@ -45,7 +45,13 @@ class Api::EventsController < ApplicationController
   end
 
   def category_filter
-    @events = Category.find(params[:id]).events
+
+    categories = Category.where("id = ? OR parent_category_id = ?", params[:id], params[:id])
+    @events = []
+    categories.each do |category|
+      @events.concat(category.events)
+    end
+
     render :index
   end
 
