@@ -25,6 +25,13 @@ export const fetchEvents = () => {
   });
 };
 
+export const categoryFilterFetchEvents = (catId) => {
+  return $.ajax ({
+    method: "GET",
+    url: `api/events/categories/${catId}`
+  });
+};
+
 export const updateEvent = (formData, eventId) => {
   return $.ajax ({
     method: "PATCH",

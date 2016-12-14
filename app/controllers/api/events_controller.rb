@@ -44,6 +44,10 @@ class Api::EventsController < ApplicationController
     render json: params[:id].to_i
   end
 
+  def category_filter
+    render :index
+  end
+
   private
 
   def event_params

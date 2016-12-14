@@ -56,6 +56,16 @@ export function fetchEvents() {
   };
 }
 
+export function categoryFilterFetchEvents(catId) {
+  return (dispatch) => {
+    return APIUtil.fetchEvents(catId)
+      .then(
+        (events) => dispatch(receiveEvents(events)),
+        (errors) => dispatch(receiveErrors(errors))
+      );
+  };
+}
+
 export function updateEvent(event, eventId) {
   return (dispatch) => {
     return APIUtil.updateEvent(event, eventId)
