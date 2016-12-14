@@ -1,12 +1,17 @@
 class Api::EventsController < ApplicationController
 
   def create
-    ##@category = category.find(params[:id])
-    ##@event.categories << @category
-    debugger
     @event = Event.new(event_params)
     @event.author_id = current_user.id
+
     if @event.save
+      catIds = params[:filter].split("_")
+      catIds.each do |id|
+        if id != "null" && id != ""
+          EventCategory.create(category_id: id.to_i, event_id: @event.id)
+        end
+      end
+
       render json: @event
     else
       render json: @event.errors.full_messages, status: 422

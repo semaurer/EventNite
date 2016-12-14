@@ -10,6 +10,7 @@ class EventIndex extends React.Component {
 
   componentDidMount () {
     this.props.fetchEvents();
+    this.props.fetchCategories();
   }
 
   eventEls () {
@@ -41,6 +42,7 @@ class EventIndex extends React.Component {
   }
 
   render () {
+    debugger
     let events = "";
     if (this.props.events) events = this.eventEls();
 
