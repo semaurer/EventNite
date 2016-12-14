@@ -16,6 +16,52 @@
   float: left;
   display: block;
   width: 25%;
+  height: 300px;
+}
+
+.category-selector {
+  width: 80%;
+  height: 50px;
+  display: block;
+  margin: 142px auto 0 auto;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+
+.category-selector h3 {
+  padding: 15px 0;
+  color: #1E90FF;
+  font-size: 16px;
+}
+
+.category-selector h3:hover {
+  cursor: pointer;
+  color: #00CED1;
+}
+
+.all-c {
+  margin: 10px 0;
+}
+
+.all-c h4 {
+  background-color: #fff;
+  padding: 5px 0;
+}
+
+.non-active {
+  color: #1E90FF;
+  background-color: #fff;
+}
+
+.non-active h4 {
+  padding: 5px 0;
+}
+
+.non-active:hover {
+  cursor: pointer;
+  color: #00CED1;
 }
 
 .events {

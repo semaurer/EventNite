@@ -22,7 +22,13 @@ const Root = ({ store }) => {
       <Router history={ hashHistory }>
         <Route path="/" component={ AppContainer }>
           <IndexRoute component={ HomePageContainer } />
-          <Route path="events" component ={ EventIndexContainer } />
+          <Route path="events" component={ EventIndexContainer } >
+            <Route path="categories">
+              <Route path=":categoryName">
+                <Route path=":subCategoryName" />
+              </Route>
+            </Route>
+          </Route>
           <Route path="events/new-event" component={ EventCreateContainer } />
           <Route path="events/:eventId" component={ EventShowContainer } />
           <Route path="events/:eventId/edit" component={ EventUpdateContainer } />
