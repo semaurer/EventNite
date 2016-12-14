@@ -15,6 +15,8 @@ class EventCreateForm extends React.Component {
       imageFile: "",
       imageUrl: "",
       pricingToggle: "",
+      parentCatId: null,
+      subCatId: null,
     };
     this.eventCreateEls = this.eventCreateEls.bind(this);
     this.updateEventState = this.updateEventState.bind(this);
@@ -22,6 +24,16 @@ class EventCreateForm extends React.Component {
     this.redirect = this.redirect.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.pricingEls = this.pricingEls.bind(this);
+    this.setParentId = this.setParentId.bind(this);
+    this.setSubId = this.setSubId.bind(this);
+  }
+
+  setParentId(id) {
+    this.setState({ parentCatId: id })
+  }
+
+  setSubId(id) {
+    this.setState({ subCatId: id })
   }
 
   componentDidMount () {
@@ -102,7 +114,8 @@ class EventCreateForm extends React.Component {
     let categoryExtension = "";
 
     if (this.props.categories.length !== 0) {
-      categoryExtension = <CategoryExtension categories={ this.props.categories }/>;
+      categoryExtension = <CategoryExtension categories={ this.props.categories }
+        setParentId={ this.setParentId } setSubId={ this.setSubId }/>;
     }
 
     return (

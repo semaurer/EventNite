@@ -137,7 +137,7 @@ bluesandjazz = Category.create(name: "Blues & Jazz", parent_category_id: music.i
 business = Category.create(name: "Business")
 
 startups = Category.create(name: "Startups", parent_category_id: business.id)
-career = Category.create(name: "career", parent_category_id: business.id)
+career = Category.create(name: "Career", parent_category_id: business.id)
 realestate = Category.create(name: "Real Estate", parent_category_id: business.id)
 finance = Category.create(name: "Finance", parent_category_id: business.id)
 design = Category.create(name: "Design", parent_category_id: business.id)

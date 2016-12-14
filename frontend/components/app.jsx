@@ -19,15 +19,6 @@ class App extends React.Component {
     this.redirect = this.redirect.bind(this);
     this.logOutRedirect = this.logOutRedirect.bind(this);
   }
-  //
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.location.pathname.slice(0, 7) === "/events") {
-  //     if (prevProps.params.eventId) {
-  //       if (prevProps.currentUser === null) {
-  //       }
-  //     }
-  //   }
-  // }
 
   openModal(bool) {
     this.setState({ modalOpen: true,

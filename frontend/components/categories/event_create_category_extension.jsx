@@ -7,15 +7,24 @@ class CategoryExtension extends React.Component {
     this.parentCatEls = this.parentCatEls.bind(this);
     this.updateSubsToggle = this.updateSubsToggle.bind(this);
     this.subCatEls = this.subCatEls.bind(this);
+    this.updateSubId= this.updateSubId.bind(this);
+  }
+
+  updateSubId(e) {
+    this.props.categories.forEach(category => {
+      if (category.name === e.currentTarget.value) {
+        this.props.setSubId(category.id);
+      }
+    });
   }
 
   updateSubsToggle(e) {
     this.props.categories.forEach(category => {
       if (category.name === e.currentTarget.value) {
         this.setState({ parentId: category.id });
+        this.props.setParentId(category.id);
       }
     });
-
     if (e.currentTarget.value !== "Select a topic") {
       this.setState({ subEls: true });
     } else {
@@ -47,7 +56,7 @@ class CategoryExtension extends React.Component {
     return (
       <span className="sub-topic">
         <h3>EVENT SUB-TOPIC</h3>
-        <select className="sub-topic-select">
+        <select onChange={ this.updateSubId } className="sub-topic-select">
           <option>Select a sub-topic</option>
           { subEls }
         </select>
