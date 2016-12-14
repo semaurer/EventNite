@@ -76,8 +76,8 @@ class App extends React.Component {
           <li className='header-nav-item user-name'>
             { this.props.currentUser.fname }
             <ul className="profile-dropdown">
-              <li onClick={ this.redirect }className="prof-dropdown-b t">Tickets 0</li>
-              <li className="prof-dropdown-b">Saved 0</li>
+              <li onClick={ this.redirect }className="prof-dropdown-b t">Tickets</li>
+              <li className="prof-dropdown-b">Saved</li>
               <li onClick={ this.redirect } className="prof-dropdown-b m">Manage Events</li>
               <li className='prof-dropdown-b'
               onClick={ this.logOutRedirect }>Log Out</li>
