@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import CategoryExtension from '../categories/event_create_category_extension';
 
 class EventCreateForm extends React.Component {
   constructor(props) {
@@ -21,6 +22,10 @@ class EventCreateForm extends React.Component {
     this.redirect = this.redirect.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.pricingEls = this.pricingEls.bind(this);
+  }
+
+  componentDidMount () {
+    this.props.fetchCategories();
   }
 
   updateEventState(prop) {
@@ -94,6 +99,11 @@ class EventCreateForm extends React.Component {
           </input>
         </div>
     }
+    let categoryExtension = "";
+
+    if (this.props.categories.length !== 0) {
+      categoryExtension = <CategoryExtension categories={ this.props.categories }/>;
+    }
 
     return (
       <div className="c-e-form group">
@@ -161,6 +171,11 @@ class EventCreateForm extends React.Component {
             { pricingEls }
           </div>
         </form>
+        <section className="c-e-form-header-3">
+          <article className="form-step">3</article>
+          <h3 className="form-section-header-bot">Additional Settings</h3>
+        </section>
+        { categoryExtension }
       </div>
     );
   }

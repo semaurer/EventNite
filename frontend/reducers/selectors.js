@@ -56,3 +56,13 @@ function condenseTickets(tickets) {
   });
   return condensedTickets;
 }
+
+export const selectCategories = (state) => {
+  const categories = [];
+  if (state.categories.categories !== null) {
+    Object.keys(state.categories.categories).forEach(categoryId => {
+      categories.push(state.categories.categories[categoryId]);
+    });
+  }
+  return categories;
+};

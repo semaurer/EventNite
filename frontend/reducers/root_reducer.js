@@ -4,6 +4,7 @@ import EventReducer from './event_reducer';
 import EventsReducer from './events_reducer';
 import TicketReducer from './ticket_reducer';
 import TicketsReducer from './tickets_reducer';
+import CategoriesReducer from './categories_reducer';
 
 const rootReducer = combineReducers({
   session: SessionReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   events: EventsReducer,
   ticket: TicketReducer,
   tickets: TicketsReducer,
+  categories: CategoriesReducer,
 });
 
 export default rootReducer;

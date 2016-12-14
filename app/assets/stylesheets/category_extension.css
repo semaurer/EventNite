@@ -1,0 +1,54 @@
+.additional-settings {
+  width: 100%;
+  height: auto;
+  display: block;
+  float: left;
+  position: relative;
+}
+
+.topics {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.additional-settings h3 {
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+.topic-select {
+  width: 35%;
+  height: 35px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  font-size: 16px;
+  padding: 5px 5px;
+}
+
+.topic-select:hover {
+  cursor: pointer;
+}
+
+.topic-select option {
+  font-size: 16px;
+}
+
+.sub-topic {
+  position: absolute;
+  bottom: 0;
+  left: 400px;
+}
+
+.sub-topic-select {
+  width: 322px;
+  height: 35px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  font-size: 16px;
+  padding: 5px 5px;
+}
+
+.sub-topic-select:hover {
+  cursor: pointer;
+}

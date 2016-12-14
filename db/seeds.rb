@@ -121,3 +121,44 @@ e10 = Event.create(title: "SPECIAL GUEST DJ @ CENTRAL LOUNGE (ASTORIA) ",
   THE LUCKY 7 - $1,600.00 for 5 Premium Bottles, 2 Motel Imperial (up to 22 guests)",
   price: "50",
   image: File.open('app/assets/images/event_seed_images/central_lounge.png'))
+
+Ticket.destroy_all
+
+
+Category.destroy_all
+music = Category.create(name: "Music")
+
+hiphopandrap = Category.create(name: "Hip Hop & Rap", parent_category_id: music.id)
+top40 = Category.create(name: "Top 40", parent_category_id: music.id)
+reggae = Category.create(name: "Reggae", parent_category_id: music.id)
+latin = Category.create(name: "Latin", parent_category_id: music.id)
+bluesandjazz = Category.create(name: "Blues & Jazz", parent_category_id: music.id)
+
+business = Category.create(name: "Business")
+
+startups = Category.create(name: "Startups", parent_category_id: business.id)
+career = Category.create(name: "career", parent_category_id: business.id)
+realestate = Category.create(name: "Real Estate", parent_category_id: business.id)
+finance = Category.create(name: "Finance", parent_category_id: business.id)
+design = Category.create(name: "Design", parent_category_id: business.id)
+
+health = Category.create(name: "Health")
+
+personalhealth = Category.create(name: "Personal Health", parent_category_id: health.id)
+mentalhealth = Category.create(name: "Mental Health", parent_category_id: health.id)
+yoga = Category.create(name: "Yoga", parent_category_id: health.id)
+
+foodanddrink = Category.create(name: "Food & Drink")
+
+food = Category.create(name: "Food", parent_category_id: foodanddrink.id)
+spirits = Category.create(name: "spirits", parent_category_id: foodanddrink.id)
+beer = Category.create(name: "Beer", parent_category_id: foodanddrink.id)
+
+arts = Category.create(name: "Arts")
+familyandeducation = Category.create(name: "Family & Education")
+filmandmedia = Category.create(name: "Film & Media")
+sportsandfitness = Category.create(name: "Sports & Fitness")
+other = Category.create(name: "Other")
+holiday = Category.create(name: "Holiday")
+community = Category.create(name: "Community")
+spirituality = Category.create(name: "Spirituality")

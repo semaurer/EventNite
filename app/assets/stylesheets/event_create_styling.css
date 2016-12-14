@@ -359,3 +359,19 @@ h3.form-section-header {
   border: 1px solid #ccc;
   margin-left: 7px;
 }
+
+.c-e-form-header-3 {
+  width: 100%;
+  height: auto;
+  float: left;
+  display: block;
+  border-bottom: 1px solid #ccc;
+}
+
+.form-section-header-bot {
+  padding: 0;
+  margin: 12px 0 0 0;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000;
+}

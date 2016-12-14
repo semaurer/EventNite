@@ -2,12 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import EventCreateForm from './event_create_form';
 import { createEvent } from '../../actions/event_actions';
-import { clearErrors } from '../../actions/session_actions'
+import { clearErrors } from '../../actions/session_actions';
+import { fetchCategories } from '../../actions/category_actions';
+import { selectCategories } from '../../reducers/selectors';
 
-const mapStateToProps = ({ event }) => {
+const mapStateToProps = ( state ) => {
+
   return {
-    event: event.event,
-    errors: event.errors,
+    event: state.event.event,
+    errors: state.event.errors,
+    categories: selectCategories(state),
   };
 };
 
@@ -15,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     createEvent: (event) => dispatch(createEvent(event)),
     clearErrors: () => dispatch(clearErrors()),
+    fetchCategories: () => dispatch(fetchCategories()),
   };
 };
 
