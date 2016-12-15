@@ -8,10 +8,16 @@ import { fetchCategories } from '../../actions/category_actions';
 import { selectCategories } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
+
+  let userSavedEvents = [];
+  if (state.session.currentUser) {
+    userSavedEvents = state.session.currentUser.saved_events;
+  }
+
   return {
     events: selectEvents(state),
     categories: selectCategories(state),
-    savedEvents: state.session.currentUser.saved_events,
+    savedEvents: userSavedEvents,
     currentUser: state.session.currentUser,
   };
 };

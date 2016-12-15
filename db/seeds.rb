@@ -121,6 +121,36 @@ e10 = Event.create(title: "SPECIAL GUEST DJ @ CENTRAL LOUNGE (ASTORIA) ",
   THE LUCKY 7 - $1,600.00 for 5 Premium Bottles, 2 Motel Imperial (up to 22 guests)",
   price: "50",
   image: File.open('app/assets/images/event_seed_images/central_lounge.png'))
+e11 = Event.create(title: "Carib spotlight birthday bash: Royal Edition",
+  start_date_time: DateTime.new(2016, 12, 21, 16),
+  end_date_time: DateTime.new(2016, 12, 21, 20), author_id: ingrid.id,
+  location: "Garden Plaza Hotel
+  129 Pehle Avenue
+  Saddle Brook, NJ 07663",
+  description: "Carib Spotlight presents it's 3rd Annual birthday bash: The Royal Edition."
+  price: "15",
+  image: File.open('app/assets/images/event_seed_images/reggae_royal_bash.png'))
+e12 = Event.create(title: "Habana Nights",
+  start_date_time: DateTime.new(2017, 1, 3, 20),
+  end_date_time: DateTime.new(2017, 1, 4, 4), author_id: ingrid.id,
+  location: "Subrosa
+  63 Gansevoort Street
+  New York, NY 10014",
+  description: "Dancing all night long at Subrosa!"
+  price: "5",
+  image: File.open('app/assets/images/event_seed_images/subrosa.png'))
+e13 = Event.create(title: "Arthur Sadowsky and The Trouvadours",
+  start_date_time: DateTime.new(2017, 1, 3, 18),
+  end_date_time: DateTime.new(2017, 1, 4, 2), author_id: ingrid.id,
+  location: "Club Bonafide
+  212 East 52nd Street
+  New York, NY 10022",
+  description: "Arthur Sadowsky is now considered one of the top electric bass
+  players on the New York scene. He is the musical director of “Arthur Sadowsky
+  & The Troubadours” regularly gigging in Manhattan. Currently he is performing,
+  composing, and arranging."
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/troubadorsblues.png'))
 
 Ticket.destroy_all
 t1 = Ticket.create(event_id: e10.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
@@ -179,12 +209,27 @@ spirituality = Category.create(name: "Spirituality")
 EventCategory.destroy_all
 
 ec1 = EventCategory.create(event_id: e10.id, category_id: hiphopandrap.id)
-ec2 = EventCategory.create(event_id: e1.id, category_id: music.id)
-ec3 = EventCategory.create(event_id: e2.id, category_id: music.id)
+ec10 = EventCategory.create(event_id: e9.id, category_id: hiphopandrap.id)
 ec4 = EventCategory.create(event_id: e3.id, category_id: top40.id)
-ec5 = EventCategory.create(event_id: e4.id, category_id: community.id)
-ec6 = EventCategory.create(event_id: e5.id, category_id: bluesandjazz.id)
-ec7 = EventCategory.create(event_id: e6.id, category_id: holiday.id)
 ec8 = EventCategory.create(event_id: e7.id, category_id: top40.id)
+ec3 = EventCategory.create(event_id: e2.id, category_id: reggae.id)
+ec11 = EventCategory.create(event_id: e11.id, category_id: reggae.id)
+ec2 = EventCategory.create(event_id: e1.id, category_id: latin.id)
+ec12 = EventCategory.create(event_id: e12.id, category_id: latin.id)
+ec6 = EventCategory.create(event_id: e5.id, category_id: bluesandjazz.id)
+e13 = EventCategory.create(event_id: e13.id, category_id: bluesandjazz.id)
+
+ec7 = EventCategory.create(event_id: e6.id, category_id: holiday.id)
+
+ec5 = EventCategory.create(event_id: e4.id, category_id: community.id)
 ec9 = EventCategory.create(event_id: e8.id, category_id: community.id)
-ec10 = EventCategory.create(event_id: e9.id, category_id: music.id)
+
+SavedEvent.destroy_all
+
+s1 = SavedEvent.create(event_id: e4.id, user_id: bob.id)
+s2 = SavedEvent.create(event_id: e5.id, user_id: bob.id)
+s3 = SavedEvent.create(event_id: e8.id, user_id: bob.id)
+s4 = SavedEvent.create(event_id: e9.id, user_id: bob.id)
+s5 = SavedEvent.create(event_id: e3.id, user_id: bob.id)
+s6 = SavedEvent.create(event_id: e1.id, user_id: bob.id)
+s7 = SavedEvent.create(event_id: e7.id, user_id: bob.id)
