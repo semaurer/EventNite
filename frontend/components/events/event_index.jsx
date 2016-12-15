@@ -142,15 +142,13 @@ class EventIndex extends React.Component {
   }
 
   updateSavedStatus(e) {
-    let savedEventIds = [];
-    this.props.savedEvents.forEach(savedEvent => {
-      savedEventIds.push(savedEvent.id);
-    });
-
     let updateBool = false;
     const currentEventId = parseInt(e.currentTarget.id);
-    if (savedEventIds.includes(currentEventId)) updateBool = true;
-    console.log(savedEventIds);
+
+    this.props.savedEvents.forEach(savedEventId => {
+      if (savedEventId === currentEventId) updateBool = true;
+    });
+
     if (updateBool === true) {
       this.props.unsaveEvent(e.currentTarget.id);
     } else {
@@ -161,8 +159,8 @@ class EventIndex extends React.Component {
   eventEls (savedEvents) {
     return this.props.events.map((event) => {
       let bookmarkBool = false;
-      savedEvents.forEach(savedEvent => {
-        if (event.id === savedEvent.id) {
+      savedEvents.forEach(savedEventId => {
+        if (event.id === savedEventId) {
           bookmarkBool = true;
         }
       });
@@ -206,7 +204,6 @@ class EventIndex extends React.Component {
   }
 
   render () {
-    debugger
     let events = "";
     let fullMenu = "";
     if (this.props.events) events = this.eventEls(this.props.savedEvents);

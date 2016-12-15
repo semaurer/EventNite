@@ -25,8 +25,8 @@ class EventShow extends React.Component {
   }
 
   checkBookmark() {
-    this.props.savedEvents.forEach(event => {
-      if (event.id === this.props.event.id) {
+    this.props.savedEvents.forEach(eventId => {
+      if (eventId === this.props.event.id) {
         this.setState({ bookmarked: true })
       }
     })

@@ -54,6 +54,8 @@ class App extends React.Component {
       this.props.router.push("/users/manage-events")
     } else if (e.currentTarget.className === "prof-dropdown-b t") {
       this.props.router.push("users/tickets")
+    } else if (e.currentTarget.className === "prof-dropdown-b s") {
+      this.props.router.push("users/saved-events")
     } else {
       this.props.router.push("events/new-event");
     }
@@ -77,7 +79,7 @@ class App extends React.Component {
             { this.props.currentUser.fname }
             <ul className="profile-dropdown">
               <li onClick={ this.redirect }className="prof-dropdown-b t">Tickets</li>
-              <li className="prof-dropdown-b">Saved</li>
+              <li onClick={ this.redirect } className="prof-dropdown-b s">Saved</li>
               <li onClick={ this.redirect } className="prof-dropdown-b m">Manage Events</li>
               <li className='prof-dropdown-b'
               onClick={ this.logOutRedirect }>Log Out</li>

@@ -1,3 +1,5 @@
+import { merge } from 'lodash';
+
 export const selectEvents = (state) => {
   const events = [];
 
@@ -66,4 +68,15 @@ export const selectCategories = (state) => {
     });
   }
   return categories;
+};
+
+export const removeSavedEvent = (state, targetId) => {
+  const newSavedEvents = [];
+  state.currentUser.saved_events.forEach(savedEventId => {
+    if (targetId !== savedEventId) {
+      newSavedEvents.push(savedEventId);
+    }
+  });
+  const newCurrentUser = Object.assign({}, state.currentUser, { saved_events: newSavedEvents });
+  return Object.assign({}, state, { currentUser: newCurrentUser });
 };

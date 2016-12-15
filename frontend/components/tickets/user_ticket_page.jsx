@@ -15,7 +15,7 @@ class UserTicketPage extends React.Component {
 
   redirect () {
     if (this.props.location.pathname === "/users/tickets") {
-
+      this.props.router.push("/users/saved-events");
     } else {
       this.props.router.push("/users/tickets");
     }
@@ -76,7 +76,7 @@ class UserTicketPage extends React.Component {
           </li>
           <li onClick={ this.redirect } className="u-e-tab-active">
             <ul>
-              <li>Saved Events</li>
+              <li onClick={ this.redirect }>Saved Events</li>
             </ul>
           </li>
         </div>

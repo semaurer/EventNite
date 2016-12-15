@@ -70,7 +70,7 @@ class Api::EventsController < ApplicationController
 
   def fetch_saved_events
     @events = current_user.saved_events
-    render json: @events
+    render :index
   end
 
   private

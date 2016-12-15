@@ -13,10 +13,11 @@ const eventsReducer = (state = defaultState, action) => {
   switch(action.type) {
     case RECEIVE_EVENTS:
       const events = action.events;
-      return merge({}, state, { events });
+      let newState = Object.assign({}, state, { events: events });
+      return newState;
 
     case REMOVE_EVENT:
-    let newState = merge({}, state);
+      newState = merge({}, state);
       delete newState.events[action.eventId];
       return newState;
 

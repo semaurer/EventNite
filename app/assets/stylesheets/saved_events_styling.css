@@ -1,0 +1,20 @@
+.user-saved-events {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.user-saved-events main {
+  margin: 0 auto;
+  width: 80%;
+  display: block;
+  height: auto;
+}
+
+.each-saved-event {
+  width: 330px;
+  height: 310px;
+  float: left;
+  background-color: blue;
+  margin: 20px 15px 20px 15px;
+}

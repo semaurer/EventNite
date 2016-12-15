@@ -78,11 +78,13 @@ class EventCreateForm extends React.Component {
   }
 
   redirect(event) {
+    debugger
     this.props.clearErrors();
     this.props.router.push(`/events/${event.id}`)
   }
 
   pricingEls(e) {
+    e.preventDefault();
     if (e.currentTarget.className === "free-button") {
       this.setState({ price: "free", pricingToggle: "freeEls" });
     } else {
@@ -99,7 +101,7 @@ class EventCreateForm extends React.Component {
       previewToggle = "img-preview";
     }
 
-    let pricingEls = "";
+    let pricingEls = <div></div>;
     if (this.state.pricingToggle === "freeEls") {
       pricingEls =
         <div className="freeEls">

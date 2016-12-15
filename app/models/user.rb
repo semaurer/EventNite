@@ -42,6 +42,18 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  def parse_saved_event_ids
+    saved_events = self.saved_events
+    saved_event_ids = []
+    if saved_events
+      saved_events.each do |event|
+        saved_event_ids.push(event.id)
+      end
+    end
+    saved_event_ids
+  end
+
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil unless user && user.is_password?(password)
