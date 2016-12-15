@@ -7,10 +7,16 @@ class UserSavedEvents extends React.Component {
     this.tabEls = this.tabEls.bind(this);
     this.savedEventEls = this.savedEventEls.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.unsaveEvent = this.unsaveEvent.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchSavedEvents();
+  }
+
+  unsaveEvent(e) {
+    this.props.unsaveEvent(e.currentTarget.id);
+    this.props.removeEvent(e.currentTarget.id);
   }
 
   redirect () {
@@ -36,7 +42,7 @@ class UserSavedEvents extends React.Component {
             </span>
           </Link>
           <span className="bookmark-bar">
-            <button
+            <button id={ event.id } onClick={ this.unsaveEvent }
               className="bookmark-saved"></button>
           </span>
         </div>
