@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class UserSavedEvents extends React.Component {
   constructor(props) {
@@ -22,10 +23,22 @@ class UserSavedEvents extends React.Component {
 
   savedEventEls() {
     return this.props.events.map(event => {
-
+      let startDateTime = event.formatted_start_date_time
+        .slice(0, event.formatted_start_date_time.length - 6);
       return (
         <div key={ event.id} className="each-saved-event">
-
+          <Link to={ `events/${event.id}` }>
+            <img src={ event.image_url }></img>
+            <span className="saved-main-info">
+              <article className="saved-time">{ startDateTime } { event.start_time }</article>
+              <article className="saved-title">{ event.title }</article>
+              <article className="saved-location">{ event.location }</article>
+            </span>
+          </Link>
+          <span className="bookmark-bar">
+            <button
+              className="bookmark-saved"></button>
+          </span>
         </div>
       );
     });
@@ -83,7 +96,7 @@ class UserSavedEvents extends React.Component {
             { tabEls }
           </ul>
         </header>
-        <span className="user-saved-events">
+        <span className="user-saved-events group">
           <main>
             { savedEventEls }
           </main>

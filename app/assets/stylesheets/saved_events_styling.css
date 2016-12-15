@@ -2,6 +2,8 @@
   display: block;
   width: 100%;
   height: auto;
+  background-color: #f5f8fb;
+  float: left;
 }
 
 .user-saved-events main {
@@ -15,6 +17,109 @@
   width: 330px;
   height: 310px;
   float: left;
-  background-color: blue;
   margin: 20px 15px 20px 15px;
+  background-color: #fff;
+}
+
+.each-saved-event img {
+  width: 100%;
+  height: 170px;
+  display: block;
+}
+
+.saved-main-info {
+  width: 100%;
+  height: 100px;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+.saved-main-info article {
+  margin-left: 15px;
+}
+
+.saved-time {
+  padding-top: 10px;
+  text-transform: uppercase;
+  color: #4d4d4d;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.saved-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.saved-location {
+  font-size: 13px;
+  margin-right: 10px;
+  margin-top: 25px;
+  color: #666666;
+}
+
+.bookmark-bar {
+  width: 100%;
+  height: 40px;
+  display: block;
+  border-bottom: 0.5px solid #ccc;
+  position: relative;
+}
+
+.bookmark-saved {
+  position: absolute;
+  top: 26px;
+  right: 15px;
+  z-index: 1;
+  color: #eee;
+  font-size: 2em;
+  cursor: pointer;
+  width: 1.5em;
+  line-height: 0.5em;
+  -webkit-transition: line-height 0.5s;
+  transition: line-height 0.5s;
+}
+
+.bookmark-saved:after {
+  content: "";
+  font-size: 0.5em;
+  position: absolute;
+  height: 0px;
+  border: 7px solid #1E90FF;
+  z-index: -1;
+  top: -1em;
+  border-top-width: 15px;
+  border-bottom-color: transparent;
+  right: 0;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
+}
+
+.bookmark-cover-saved {
+  position: absolute;
+  top: 38px;
+  left: -2px;
+  z-index: 1;
+  color: #eee;
+  font-size: 2em;
+  cursor: pointer;
+  width: 1.5em;
+  line-height: 0.5em;
+  -webkit-transition: line-height 0.5s;
+  transition: line-height 0.5s;
+}
+
+.bookmark-cover-saved:after {
+  content: "";
+  font-size: 0.5em;
+  position: absolute;
+  height: 0px;
+  border: 5px solid #fff;
+  z-index: -1;
+  top: -1em;
+  border-top-width: 10px;
+  border-bottom-color: transparent;
+  right: 0;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
 }
