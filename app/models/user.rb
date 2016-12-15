@@ -31,6 +31,15 @@ class User < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :buyer_id
 
+  has_many :saved_events_records,
+    class_name: :SavedEvent,
+    primary_key: :id,
+    foreign_key: :user_id
+
+  has_many :saved_events,
+    through: :saved_event_records,
+    source: :event
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)

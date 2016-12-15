@@ -55,6 +55,24 @@ class Api::EventsController < ApplicationController
     render :index
   end
 
+  def mark_saved
+    @event = Event.find(params[:id])
+    SavedEvent.create(user_id: current_user.id, event_id: @event.id)
+    render json: @event
+  end
+
+  def mark_unsaved
+    @event = find([params[:id])
+    @saved_event = SavedEvent.where("user_id = ?, event_id = ?", current_user.id, @event.id)
+    @saved_event.destroy unless @saved_event.nil?
+    render json: @event
+  end
+
+  def fetch_saved_events
+    @events = current_user.events
+    render json: @events
+  end
+
   private
 
   def event_params
