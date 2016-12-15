@@ -13,6 +13,7 @@ class EventIndex extends React.Component {
     this.fullMenuEls = this.fullMenuEls.bind(this);
     this.parentCatMenu = this.parentCatMenu.bind(this);
     this.subCatMenu = this.subCatMenu.bind(this);
+    this.updateSavedStatus = this.updateSavedStatus.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -140,12 +141,46 @@ class EventIndex extends React.Component {
     return fullMenuEls;
   }
 
+  updateSavedStatus(e) {
+    let savedEventIds = [];
+    this.props.savedEvents.forEach(savedEvent => {
+      savedEventIds.push(savedEvent.id);
+    });
 
-  eventEls () {
+    let updateBool = false;
+    const currentEventId = parseInt(e.currentTarget.id);
+    if (savedEventIds.includes(currentEventId)) updateBool = true;
+    console.log(savedEventIds);
+    if (updateBool === true) {
+      this.props.unsaveEvent(e.currentTarget.id);
+    } else {
+      this.props.saveEvent(e.currentTarget.id);
+    }
+  }
+
+  eventEls (savedEvents) {
     return this.props.events.map((event) => {
+      let bookmarkBool = false;
+      savedEvents.forEach(savedEvent => {
+        if (event.id === savedEvent.id) {
+          bookmarkBool = true;
+        }
+      });
+
+      let bookmark = <button id={ event.id }
+        onClick={ this.updateSavedStatus }
+        className="bookmark-ind"></button>;
+
+      let bookmarkCover = <button id={ event.id }
+        onClick={ this.updateSavedStatus }
+        className="bookmark-ind-cover-false"></button>;
+        if (bookmarkBool === false) bookmarkCover = <button id={ event.id }
+          onClick={ this.updateSavedStatus } className="bookmark-ind-cover"></button>;
+
       const startDate = new Date(event.start_date_time).toDateString();
       let price = "FREE";
       if (event.price !== "free") price = "$" + event.price;
+
       return (
         <li key={ event.id } className="each-event group">
           <Link to={ `events/${event.id}`}>
@@ -161,7 +196,8 @@ class EventIndex extends React.Component {
           <span className="event-bot-bar">
             <div className="e-b-pricing">{ price }</div>
             <div>
-              <div className="e-b-bookmark">O</div>
+              { bookmark }
+              { bookmarkCover }
             </div>
           </span>
         </li>
@@ -170,9 +206,10 @@ class EventIndex extends React.Component {
   }
 
   render () {
+    debugger
     let events = "";
     let fullMenu = "";
-    if (this.props.events) events = this.eventEls();
+    if (this.props.events) events = this.eventEls(this.props.savedEvents);
     if (this.state.categoryOpen === "full") fullMenu = this.fullMenuEls();
     if (this.state.categoryOpen === "parentSelected") fullMenu = this.parentCatMenu();
     if (this.state.categoryOpen === "subSelected") fullMenu = this.subCatMenu();

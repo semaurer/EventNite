@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
   return {
     events: selectEvents(state),
     categories: selectCategories(state),
-    savedEvents: state.session.currentUser.savedEvents
+    savedEvents: state.session.currentUser.saved_events,
+    currentUser: state.session.currentUser,
   };
 };
 

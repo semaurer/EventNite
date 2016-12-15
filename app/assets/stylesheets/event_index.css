@@ -130,6 +130,7 @@
   height: 35px;
   display: block;
   border-bottom: 1px solid #ccc;
+  position: relative;
 }
 
 .e-b-pricing {
@@ -140,7 +141,60 @@
   background-color: #eee;
 }
 
-.e-b-bookmark {
-  text-align: right;
-  padding: 10px 15px 10px 10px;
+.bookmark-ind {
+  position: absolute;
+  top: 21px;
+  right: 20px;
+  z-index: 1;
+  color: #eee;
+  font-size: 2em;
+  cursor: pointer;
+  width: 1.5em;
+  line-height: 0.5em;
+  -webkit-transition: line-height 0.5s;
+  transition: line-height 0.5s;
+}
+
+.bookmark-ind:after {
+  content: "";
+  font-size: 0.5em;
+  position: absolute;
+  height: 0px;
+  border: 7px solid #1E90FF;
+  z-index: -1;
+  top: -1em;
+  border-top-width: 15px;
+  border-bottom-color: transparent;
+  right: 0;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
+}
+
+.bookmark-ind-cover {
+  position: absolute;
+  top: 23px;
+  right: 22px;
+  z-index: 1;
+  color: #eee;
+  font-size: 2em;
+  cursor: pointer;
+  width: 1.5em;
+  line-height: 0.5em;
+  -webkit-transition: line-height 0.5s;
+  transition: line-height 0.5s;
+}
+
+.bookmark-ind-cover:after {
+  content: "";
+  font-size: 0.5em;
+  position: absolute;
+  height: 0px;
+  border: 5px solid #fff;
+  z-index: -1;
+  top: -1em;
+  border-top-width: 10px;
+  border-bottom-color: transparent;
+  right: 0;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
 }

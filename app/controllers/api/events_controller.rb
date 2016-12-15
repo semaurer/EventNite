@@ -69,7 +69,7 @@ class Api::EventsController < ApplicationController
   end
 
   def fetch_saved_events
-    @events = current_user.events
+    @events = current_user.saved_events
     render json: @events
   end
 

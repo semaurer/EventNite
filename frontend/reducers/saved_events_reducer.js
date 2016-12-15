@@ -8,7 +8,7 @@ const defaultState = Object.freeze({
   errors: [],
 });
 
-const savedEventReducer = (state = defaultState, action) => {
+const savedEventsReducer = (state = defaultState, action) => {
 
   switch(action.type) {
 
@@ -28,4 +28,4 @@ const savedEventReducer = (state = defaultState, action) => {
   }
 };
 
-export default savedEventReducer;
+export default savedEventsReducer;
