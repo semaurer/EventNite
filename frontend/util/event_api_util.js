@@ -49,3 +49,24 @@ export const deleteEvent = (eventId) => {
     url: `api/events/${eventId}`,
   });
 };
+
+export const saveEvent = (eventId) => {
+  return $.ajax ({
+      method: "POST",
+      url: `api/users/events/${eventId}/save`
+  });
+};
+
+export const unsaveEvent = (eventId) => {
+  return $.ajax ({
+    method: "DELETE",
+    url: `api/users/events${eventId}/unsave`
+  });
+};
+
+export const fetchSavedEvents = () => {
+  return $.ajax ({
+    method: "GET",
+    url: `api/users/events/saved`
+  });
+};

@@ -121,7 +121,7 @@ class EventIndex extends React.Component {
     } else {
       this.setState({ categoryOpen: "closed" });
       this.props.router.push("/events");
-      this.props.removeEvets();
+      this.props.removeEvents();
       this.props.fetchEvents();
     }
   }

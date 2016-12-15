@@ -7,13 +7,21 @@ import TicketModal from '../tickets/ticket_modal';
 class EventShow extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { modalOpen: false }
+    this.state = { modalOpen: false, bookmarked: false }
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.updateBookmark = this.updateBookmark.bind(this);
+  }
+
+  updateBookmark () {
+
   }
 
   componentDidMount() {
     this.props.fetchEvent(this.props.params.eventId);
+    if (this.props.savedEvents.includes(this.props.params.id)) {
+      this.setState({ bookmarked: true });
+    }
   }
 
   openModal(bool) {
@@ -33,6 +41,10 @@ class EventShow extends React.Component {
   }
 
   render () {
+    let bookmark = "";
+    let bookmarkCover = <button className="bookmark-cover"></button>;
+    if (this.state.bookmarked === false) bookmark = <button
+      onClick={ this.updateBookmark } className="bookmark"></button>;
 
     let event_image = <img className="event-img"></img>;
     if (this.props.event) event_image = <img
@@ -87,7 +99,8 @@ class EventShow extends React.Component {
               </div>
             </span>
             <span className="bookmark-register">
-              <button className="bookmark">O</button>
+              { bookmark }
+              { bookmarkCover }
               <button onClick={ this.openModal } className="ticket-submit">{ ticketText }</button>
             </span>
             <span className="description-date-loc">

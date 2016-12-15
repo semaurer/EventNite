@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :buyer_id
 
-  has_many :saved_events_records,
+  has_many :saved_event_records,
     class_name: :SavedEvent,
     primary_key: :id,
     foreign_key: :user_id
