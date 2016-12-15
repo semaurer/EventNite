@@ -127,7 +127,7 @@ e11 = Event.create(title: "Carib spotlight birthday bash: Royal Edition",
   location: "Garden Plaza Hotel
   129 Pehle Avenue
   Saddle Brook, NJ 07663",
-  description: "Carib Spotlight presents it's 3rd Annual birthday bash: The Royal Edition."
+  description: "Carib Spotlight presents it's 3rd Annual birthday bash: The Royal Edition.",
   price: "15",
   image: File.open('app/assets/images/event_seed_images/reggae_royal_bash.png'))
 e12 = Event.create(title: "Habana Nights",
@@ -136,7 +136,7 @@ e12 = Event.create(title: "Habana Nights",
   location: "Subrosa
   63 Gansevoort Street
   New York, NY 10014",
-  description: "Dancing all night long at Subrosa!"
+  description: "Dancing all night long at Subrosa!",
   price: "5",
   image: File.open('app/assets/images/event_seed_images/subrosa.png'))
 e13 = Event.create(title: "Arthur Sadowsky and The Trouvadours",
@@ -148,7 +148,7 @@ e13 = Event.create(title: "Arthur Sadowsky and The Trouvadours",
   description: "Arthur Sadowsky is now considered one of the top electric bass
   players on the New York scene. He is the musical director of “Arthur Sadowsky
   & The Troubadours” regularly gigging in Manhattan. Currently he is performing,
-  composing, and arranging."
+  composing, and arranging.",
   price: "free",
   image: File.open('app/assets/images/event_seed_images/troubadorsblues.png'))
 
