@@ -60,7 +60,7 @@ export const saveEvent = (eventId) => {
 export const unsaveEvent = (eventId) => {
   return $.ajax ({
     method: "DELETE",
-    url: `api/users/events${eventId}/unsave`
+    url: `api/users/events/${eventId}/unsave`
   });
 };
 

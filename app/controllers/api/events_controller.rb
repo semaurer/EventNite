@@ -63,8 +63,8 @@ class Api::EventsController < ApplicationController
 
   def mark_unsaved
     @event = Event.find(params[:id])
-    @saved_event = SavedEvent.where("user_id = ?, event_id = ?", current_user.id, @event.id)
-    @saved_event.destroy unless @saved_event.nil?
+    @saved_event = SavedEvent.where("user_id = ? AND event_id = ?", current_user.id, @event.id)
+    SavedEvent.destroy(@saved_event) unless @saved_event.nil?
     render json: @event
   end
 

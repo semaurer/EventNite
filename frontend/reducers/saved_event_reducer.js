@@ -17,10 +17,7 @@ const savedEventReducer = (state = defaultState, action) => {
       return merge({}, state, { event });
 
     case REMOVE_SAVED_EVENT:
-      const eventId = action.event.id;
-      const newState = merge({}, state);
-      delete newState.savedEvent[eventId];
-      return newState;
+      return state;
 
     case RECEIVE_ERRORS:
       let errors = action.errors;

@@ -11,17 +11,32 @@ class EventShow extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.updateBookmark = this.updateBookmark.bind(this);
+    this.checkBookmark = this.checkBookmark.bind(this);
   }
 
   updateBookmark () {
+    if (this.state.bookmarked === false) {
+      this.setState({ bookmarked: true });
+      this.props.saveEvent(this.props.event.id);
+    } else {
+      this.setState({ bookmarked: false });
+      this.props.unsaveEvent(this.props.event.id);
+    }
+  }
 
+  checkBookmark() {
+    this.props.savedEvents.forEach(event => {
+      if (event.id === this.props.event.id) {
+        this.setState({ bookmarked: true })
+      }
+    })
   }
 
   componentDidMount() {
-    this.props.fetchEvent(this.props.params.eventId);
-    if (this.props.savedEvents.includes(this.props.params.id)) {
-      this.setState({ bookmarked: true });
-    }
+    this.props.fetchEvent(this.props.params.eventId)
+      .then(() => {
+        this.checkBookmark();
+      })
   }
 
   openModal(bool) {
@@ -41,10 +56,13 @@ class EventShow extends React.Component {
   }
 
   render () {
-    let bookmark = "";
-    let bookmarkCover = <button className="bookmark-cover"></button>;
-    if (this.state.bookmarked === false) bookmark = <button
-      onClick={ this.updateBookmark } className="bookmark"></button>;
+    let bookmark = <button
+      onClick={ this.updateBookmark }
+      className="bookmark"></button>;
+
+    let bookmarkCover = <button className="bookmark-cover-false"></button>;
+    if (this.state.bookmarked === false) bookmarkCover = <button
+      onClick={ this.updateBookmark } className="bookmark-cover"></button>;
 
     let event_image = <img className="event-img"></img>;
     if (this.props.event) event_image = <img
