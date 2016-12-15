@@ -30,4 +30,36 @@ The ticket order form is rendered using a modal component which receives props f
 
 ![image of ticket modal](https://github.com/semaurer/EventNite/blob/master/docs/wireframes/ticket_selection_modal.png)  
 
-### Categories 
+### Categories
+
+On the browse events page users can filter events by categories and sub-categories to find events that
+better match their interests.  Categories are rendered on the events index component, using state to
+dynamically render the menu.  
+
+Categories are connected to events using a joins table called EventCategories.  EventCategories have an
+event id as well as a category id.  Using the joins table, events are filtered using active record within
+rails controller actions.
+
+### Bookmarks
+
+If a user is interested in an event, but does not want to buy tickets at the time, they can bookmark (save)
+an event.  This places the event in the users saved events page, which they can then view at any time.  
+
+Bookmarks are implemented using a joins table, which reference an event id and a user id.  Bookmarked events
+are retrieved using the association created by the joins table.
+
+
+## Future Directions for the Project
+
+### Pagination
+
+Starting immediately, I will begin implementing pagination for the browse events page.
+
+### Search
+
+A search bar will be added to the home page as well as the header, so that users can quickly search for
+specific events.
+
+### Map
+
+A map will be added to the browse events page so that users can search for an event in a specific area.
