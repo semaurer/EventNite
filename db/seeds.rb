@@ -258,6 +258,260 @@ e23 = Event.create(title: "Cooper: Leading Creative Ideation NYC",
   momentum.",
   price: "550",
   image: File.open('app/assets/images/event_seed_images/design_2.png'))
+e24 = Event.create(title: "Move Better - Feel Better - Live Better",
+  start_date_time: DateTime.new(2017, 1, 16, 18),
+  end_date_time: DateTime.new(2017, 1, 16, 21), author_id: bob.id,
+  location: "Spoke the Hub Dancing, Inc.
+  748 Union Street
+  3rd floor
+  Brooklyn, NY 11215",
+  description: "Goal of this class is help create lasting improvements in students'
+  health and well-being. Reducing tension, eliminating pain, improving balance
+  and coordination is achieved by creating conditions for nervous system do what
+    it does best - learn by discovering new possiblities through sensing and
+    feeling. This kind of process is efficient, engaging and enjoyable!",
+  price: "25",
+  image: File.open('app/assets/images/event_seed_images/personal_health_1.png'))
+e25 = Event.create(title: "Shake it all off! Active Meditation for Stress Release
+  and Well-Being",
+  start_date_time: DateTime.new(2017, 1, 16, 17),
+  end_date_time: DateTime.new(2017, 1, 16, 21), author_id: bob.id,
+  location: "Breather
+  TBD
+  New York, New York ",
+  description: "Enter Osho's powerful Kundalini meditation, a kind of active
+  meditation specifically designed for modern life that helps us to release stress
+  and unblock our energy.
+
+  Comprised of 15 minutes of shaking, 15 minutes of dancing, 15 minutes of stillness
+  (sitting or standing), and 15 minutes of silence (shavasana), this meditation is
+  a really amazing way to shake everything off, get past self-doubts and limiting
+  beliefs.",
+  price: "15",
+  image: File.open('app/assets/images/event_seed_images/personal_health_2.png'))
+e26 = Event.create(title: "Seongwun Free Healing Workshop",
+  start_date_time: DateTime.new(2017, 1, 16, 17),
+  end_date_time: DateTime.new(2017, 1, 16, 21), author_id: bob.id,
+  location: "TBD
+  New York, New York ",
+  description: "Get healed in Seongwun.
+  Find yourself, live a life with purpose, and fulfill your dreams.
+  Peace, happiness and love in your mind.",
+  price: "1000",
+  image: File.open('app/assets/images/event_seed_images/mental_health_1.png'))
+e27 = Event.create(title: "2017 Clearing & Energy Healing Workshop",
+  start_date_time: DateTime.new(2017, 1, 16, 17),
+  end_date_time: DateTime.new(2017, 1, 16, 21), author_id: bob.id,
+  location: "A+ Changes Nutritional Therapy And Personal Training
+  14 Rockland Avenue
+  Staten Island, NY 10306",
+  description: "Hypnosis for burning the leaves of the past and planting new
+  seeds for the future Soothing 528hz music, known as the love frequecy,
+  which is said to actually repair broken DNA.  The Zone of Serenity, a tool to
+  help you instamntly return to a familiar place of relaxation whenever you feel
+  off or stressed out.  Deeksha - The Oneness Blessing - The transfer of Divine
+  Energy which, over time is designed to bring about the state of Oneness in the recipient.
+  More Hypnosis for breaking through those invisible barriers",
+  price: "44",
+  image: File.open('app/assets/images/event_seed_images/mental_health_2.png'))
+e28 = Event.create(title: "Winter Reboot Yoga + Healing Arts Mini-Retreat Series",
+  start_date_time: DateTime.new(2017, 1, 17, 17),
+  end_date_time: DateTime.new(2017, 1, 17, 18), author_id: trevor.id,
+  location: "Balance Arts Center
+  34 West 28th Street
+  New York, NY 10001",
+  description: "1 hour of healing arts to banish stress, anxiety, and tension
+  Each week's retreat experience will be unique. We'll explore: Reiki, guided
+  deep relaxation meditaitons, aromatherapy, the Yoga Sutras, breathing techniques
+  to optimize your body and mind, and much more.",
+  price: "180",
+  image: File.open('app/assets/images/event_seed_images/yoga_1.png'))
+e29 = Event.create(title: "Soul Qi",
+  start_date_time: DateTime.new(2017, 1, 18, 17),
+  end_date_time: DateTime.new(2017, 1, 18, 18), author_id: trevor.id,
+  location: "The Yoga Collective NYC
+  135 West 29th
+  Room 603
+  New York, NY",
+  description: "60 minutes guided Mediation and Sivasana including a purposeful ACUPUNCTURE",
+  price: "35",
+  image: File.open('app/assets/images/event_seed_images/yoga_2.png'))
+e30 = Event.create(title: "Arthur Avenue Italian Food Tour",
+  start_date_time: DateTime.new(2017, 1, 17, 17),
+  end_date_time: DateTime.new(2017, 1, 17, 22), author_id: rupert.id,
+  location: "Arthur Avenue Retail Market
+  2344 Arthur Avenue
+  Bronx, NY 10458",
+  description: "Little Italy in the Bronx is like a time capsule of Italian foods,
+  with many dishes and delicacies that can no longer be found in Italy. Settled by
+  Italian immigrants who came to the Bronx to build the New York Botanical Garden
+  and the Bronx Zoo, this is New York's largest remaining Little Italy.",
+  price: "75",
+  image: File.open('app/assets/images/event_seed_images/food_1.png'))
+e31 = Event.create(title: "JEWISH FOOD TOUR OF NEW YORK",
+  start_date_time: DateTime.new(2017, 1, 17, 17),
+  end_date_time: DateTime.new(2017, 1, 17, 22), author_id: rupert.id,
+  location: "2nd Ave & E Houston St
+  New York, NY 10003",
+  description: "Jewish Cuisine: Bagels and lox, Knish, Matzo, Bialy, and much more!",
+  price: "50",
+  image: File.open('app/assets/images/event_seed_images/food_2.png'))
+e32 = Event.create(title: "NY Cocktail Expo - Queens",
+  start_date_time: DateTime.new(2017, 1, 18, 17),
+  end_date_time: DateTime.new(2017, 1, 18, 22), author_id: rupert.id,
+  location: "Beer Garden at Bohemian Hall
+  2919 24th Ave
+  Astoria, NY 11102",
+  description: "Sweet, fizzy, bubbly, bold, smokey, spicy and yummy Craft Cocktails
+  are on the rise! Good times are ahead with the premier spirit & cocktail exhibition
+  & exclusive tasting event, featuring the top cocktail bars and spirits in Queens
+  and more!",
+  price: "50",
+  image: File.open('app/assets/images/event_seed_images/spirits_2.png'))
+e33 = Event.create(title: "GENUINE Liquorette Master Class",
+  start_date_time: DateTime.new(2017, 1, 19, 19),
+  end_date_time: DateTime.new(2017, 1, 19, 22), author_id: rupert.id,
+  location: "Genuine Liquorette
+  191 Grand Street
+  New York, NY 10013",
+  description: "Students learn how to set up and take care of a proper mixing station,
+  the must-have tools in any mixologist's arsenal, Grade-A techniques on mixing,
+  stirring and shaking, the mathematics / science behind your favorite cocktails.",
+  price: "80",
+  image: File.open('app/assets/images/event_seed_images/spirits_1.png'))
+e34 = Event.create(title: "Beer Appreciation Class and Tasting",
+  start_date_time: DateTime.new(2017, 1, 9, 19),
+  end_date_time: DateTime.new(2017, 1, 9, 22), author_id: jane.id,
+  location: "The Cannibal Beer & Butcher
+  113 East 29th Street
+  New York, NY 10016",
+  description: "All participants will:
+·	SUBMIT to the principle that beer is the world’s greatest beverage
+·	RECEIVE beer samples, a little buzz, and some snacks; charcuterie, cheese, and salty bits
+·	NAVIGATE the craft beer aisle under the watchful eyes of our seasoned professionals
+·	LEARN what particular flavor profiles and attributes they like best in beer",
+  price: "75",
+  image: File.open('app/assets/images/event_seed_images/beer_1.png'))
+e35 = Event.create(title: "New York City Oktoberfest",
+  start_date_time: DateTime.new(2017, 10, 7, 17),
+  end_date_time: DateTime.new(2017, 10, 7, 22), author_id: jane.id,
+  location: "TBD",
+  description: "Celebrate Oktoberfest in style as you go on a beer-fueled tour
+  of NYC's best venues. A different 12-ounce Oktoberfest beer at each and every
+  venue is INCLUDED in the ticket price.",
+  price: "55",
+  image: File.open('app/assets/images/event_seed_images/beer_2.png'))
+e36 = Event.create(title: "Bronx Youth Fine Arts Gala",
+  start_date_time: DateTime.new(2017, 10, 7, 18),
+  end_date_time: DateTime.new(2017, 10, 7, 20), author_id: jane.id,
+  location: "The Bronx Museum of the Arts
+  1040 Grand Concourse
+  Bronx, NY 10456",
+  description: "The Bronx Youth is taking over the Bronx Museum with our Fine
+  Arts Gala!! Join us in supporting and redfining the arts with Christ featuring
+  the talent found in our very own Bronx Section. ",
+  price: "50",
+  image: File.open('app/assets/images/event_seed_images/arts_1.png'))
+e37 = Event.create(title: "You Can Dance Again: The Choreo Series",
+  start_date_time: DateTime.new(2017, 3, 7, 17),
+  end_date_time: DateTime.new(2017, 3, 7, 21), author_id: jane.id,
+  location: "Keystone Studio
+  252 West 30th Street
+  4-B
+  New York, NY 10001",
+  description: "Each week will have a different focus, geared at supporting your
+  process in choreographing something new this month:
+  WEEK 1 - Start with what you know: Learn how to adapt every day movements and steps
+  from dances you already know into fresh new material.
+  WEEK 2 - Let the music guide you: Explore different ways to approach music and
+  how it can influence your movement.
+  WEEK 3 - Incorporate other art forms: Take a multidisciplinary approach to dance
+  with inspiration from visual art and text, plus props and costumes pieces.",
+  price: "95",
+  image: File.open('app/assets/images/event_seed_images/arts_2.png'))
+e38 = Event.create(title: "Silent Christmas Shorts with a Live Score!",
+  start_date_time: DateTime.new(2016, 12, 23, 17),
+  end_date_time: DateTime.new(2016, 12, 23, 21), author_id: rupert.id,
+  location: "Videology Bar & Cinema
+  308 Bedford Avenue
+  Brooklyn, NY 11249",
+  description: "We're partnering up with Tenth Intervention to bring you the
+  newest installation of their Silent House series, featuring our favorite
+  Christmas shorts with a contemporary live score! The program will consist
+  of silent Christmas classics to more recent holiday favorites to help usher
+  in all those Yuletide feels.",
+  price: "20",
+  image: File.open('app/assets/images/event_seed_images/filmandmedia_1.png'))
+e39 = Event.create(title: "OPEN HOUSE at Manhattan Edit Workshop ",
+  start_date_time: DateTime.new(2017, 2, 23, 17),
+  end_date_time: DateTime.new(2017, 2, 23, 21), author_id: rupert.id,
+  location: "Manhattan Edit Workshop
+  119 W 23rd St
+  Suite 700
+  New York, NY 10011",
+  description: "Join Manhattan Edit Workshop for our February Open House!
+  This is an opportunity for you to learn more about our Six Week Intensive
+  Workshop and all of our classes. You’ll get a chance to meet some of our
+  instructors, administration, other potential students, and to get a tour of
+  our facilities. Refreshments and snacks will be served!",
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/filmandmedia_2.png'))
+e40 = Event.create(title: "Kickboxing | 300 Park",
+  start_date_time: DateTime.new(2017, 2, 23, 17),
+  end_date_time: DateTime.new(2017, 2, 23, 21), author_id: rupert.id,
+  location: "WeWork 300 Park
+  300 Park Ave
+  New York, NY 10022",
+  description: "Each class is a full body cardio kickboxing workout that will have
+  you jabbing, crossing, and round-house kicking your way through 55 minutes of
+  nonstop action!",
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/sportsandfitness_1.png'))
+e41 = Event.create(title: "New Year's Resolution Art Run + Bootcamp",
+  start_date_time: DateTime.new(2017, 2, 25, 17),
+  end_date_time: DateTime.new(2017, 2, 25, 21), author_id: henry.id,
+  location: "ConBody Bootcamp Studio
+  294 Broome Street
+  Level C
+  New York, NY 10002",
+  description: "Join Runstreet and ConBody for a kick ass start to the New Year
+  - with a Resolution 5K Art Run + ConBody prison-style bootcamp. Kick off the
+  New Year with a fun, healthy and inspiring workout that will get you sweating
+  and smiling!",
+  price: "30",
+  image: File.open('app/assets/images/event_seed_images/sportsandfitness_2.png'))
+e42 = Event.create(title: "ENCHANTED - The New Year's Eve Affair",
+  start_date_time: DateTime.new(2016, 12, 31, 18),
+  end_date_time: DateTime.new(2017, 1, 1, 4), author_id: bob.id,
+  location: "Bleachers Sports Bar and Grill
+  240 Flatbush Avenue
+  Brooklyn, NY 11217",
+  description: "Grand Royal Productions l Savvy Simms Presents to you a
+  New Year's Eve event like no other....
+  E N C H A N T E D",
+  price: "50",
+  image: File.open('app/assets/images/event_seed_images/holiday_2.png'))
+e43 = Event.create(title: "Step Into Your Greatness 2017",
+  start_date_time: DateTime.new(2017, 2, 28, 18),
+  end_date_time: DateTime.new(2017, 2, 28, 22), author_id: ingrid.id,
+  location: "Align Wellness Studio
+  10 East Willow Street
+  Millburn, NJ 07041",
+  description: "Step Into Your Greatness 2017 is a half day retreat with likeminded
+  sisters who want to start the new year with purpose, clarity and a fresh
+  commitment to our Selves.",
+  price: "95",
+  image: File.open('app/assets/images/event_seed_images/spirituality_1.png'))
+e44 = Event.create(title: "Unstoppable Glory",
+  start_date_time: DateTime.new(2017, 3, 1, 18),
+  end_date_time: DateTime.new(2017, 3, 1, 22), author_id: henry.id,
+  location: "43 Washington Ave
+  43 Washington Avenue
+  Irvington, NJ 07111",
+  description: "Champions Royal Assembly USA presents a 3-day power filled
+  conference titled Unstoppable Glory.",
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/spirituality_2.png'))
 
 Ticket.destroy_all
 t1 = Ticket.create(event_id: e10.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
@@ -305,10 +559,8 @@ spirits = Category.create(name: "Spirits", parent_category_id: foodanddrink.id)
 beer = Category.create(name: "Beer", parent_category_id: foodanddrink.id)
 
 arts = Category.create(name: "Arts")
-familyandeducation = Category.create(name: "Family & Education")
 filmandmedia = Category.create(name: "Film & Media")
 sportsandfitness = Category.create(name: "Sports & Fitness")
-other = Category.create(name: "Other")
 holiday = Category.create(name: "Holiday")
 community = Category.create(name: "Community")
 spirituality = Category.create(name: "Spirituality")
@@ -337,17 +589,44 @@ ec21 = EventCategory.create(event_id: e21.id, category_id: finance.id)
 ec22 = EventCategory.create(event_id: e22.id, category_id: design.id)
 ec23 = EventCategory.create(event_id: e23.id, category_id: design.id)
 
+ec24 = EventCategory.create(event_id: e24.id, category_id: personalhealth.id)
+ec25 = EventCategory.create(event_id: e25.id, category_id: personalhealth.id)
+ec26 = EventCategory.create(event_id: e26.id, category_id: mentalhealth.id)
+ec27 = EventCategory.create(event_id: e27.id, category_id: mentalhealth.id)
+ec28 = EventCategory.create(event_id: e28.id, category_id: yoga.id)
+ec29 = EventCategory.create(event_id: e29.id, category_id: yoga.id)
+
+ec30 = EventCategory.create(event_id: e30.id, category_id: food.id)
+ec31 = EventCategory.create(event_id: e31.id, category_id: food.id)
+ec32 = EventCategory.create(event_id: e32.id, category_id: spirits.id)
+ec33 = EventCategory.create(event_id: e33.id, category_id: spirits.id)
+ec34 = EventCategory.create(event_id: e34.id, category_id: beer.id)
+ec35 = EventCategory.create(event_id: e35.id, category_id: beer.id)
+
+ec36 = EventCategory.create(event_id: e36.id, category_id: arts.id)
+ec37 = EventCategory.create(event_id: e37.id, category_id: arts.id)
+
+ec38 = EventCategory.create(event_id: e38.id, category_id: filmandmedia.id)
+ec39 = EventCategory.create(event_id: e39.id, category_id: filmandmedia.id)
+
+ec40 = EventCategory.create(event_id: e40.id, category_id: sportsandfitness.id)
+ec41 = EventCategory.create(event_id: e41.id, category_id: sportsandfitness.id)
+
+ec42 = EventCategory.create(event_id: e42.id, category_id: holiday.id)
 ec7 = EventCategory.create(event_id: e6.id, category_id: holiday.id)
 
 ec5 = EventCategory.create(event_id: e4.id, category_id: community.id)
 ec9 = EventCategory.create(event_id: e8.id, category_id: community.id)
 
+ec43 = EventCategory.create(event_id: e43.id, category_id: spirituality.id)
+ec44 = EventCategory.create(event_id: e44.id, category_id: spirituality.id)
+
 SavedEvent.destroy_all
 
-s1 = SavedEvent.create(event_id: e4.id, user_id: bob.id)
+s1 = SavedEvent.create(event_id: e15.id, user_id: bob.id)
 s2 = SavedEvent.create(event_id: e5.id, user_id: bob.id)
-s3 = SavedEvent.create(event_id: e8.id, user_id: bob.id)
+s3 = SavedEvent.create(event_id: e19.id, user_id: bob.id)
 s4 = SavedEvent.create(event_id: e9.id, user_id: bob.id)
-s5 = SavedEvent.create(event_id: e3.id, user_id: bob.id)
+s5 = SavedEvent.create(event_id: e26.id, user_id: bob.id)
 s6 = SavedEvent.create(event_id: e1.id, user_id: bob.id)
-s7 = SavedEvent.create(event_id: e7.id, user_id: bob.id)
+s7 = SavedEvent.create(event_id: e29.id, user_id: bob.id)
