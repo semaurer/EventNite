@@ -163,7 +163,7 @@ class EventCreateForm extends React.Component {
               <img className={ previewToggle }
                 src={ this.state.imageUrl }/>
               <div className={ imageElsToggle }>
-                <li className="image-thumb">O</li>
+                <li className="image-thumb"></li>
                 <li className="image-header">ADD EVENT IMAGE</li>
                 <li className="image-text">Choose a compelling image that brings your event to life.</li>
               </div>
