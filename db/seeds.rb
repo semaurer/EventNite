@@ -151,6 +151,113 @@ e13 = Event.create(title: "Arthur Sadowsky and The Trouvadours",
   composing, and arranging.",
   price: "free",
   image: File.open('app/assets/images/event_seed_images/troubadorsblues.png'))
+e14 = Event.create(title: "7 Things Top Networkers Do That Wins Them Endless Business",
+  start_date_time: DateTime.new(2017, 1, 5, 16),
+  end_date_time: DateTime.new(2017, 1, 5, 18), author_id: ace.id,
+  location: "Online Webinar",
+  description: "I'm going to reveal the 7 Things Top Networkers Do To
+  Build Huge Communities and Win Tons of Business.",
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/seven_ways.png'))
+e15 = Event.create(title: "Jeffersonian Dinner: 2017 Goals For You & Your Business",
+  start_date_time: DateTime.new(2017, 1, 8, 16),
+  end_date_time: DateTime.new(2017, 1, 8, 18), author_id: ace.id,
+  location: "Brooklyn FoodWorks
+  630 Flushing Avenue
+  #200
+  Brooklyn, NY 11206",
+  description: "Are you interested in talking with others about specific goals
+  for the year ahead? Enjoy meeting new people, but are less excited about
+  small talk? You will be in good company as setting the right goals and
+  holding yourself accountable to acheiving them is something many of us have
+  in common yet is not often discussed openly, especially around a table filled
+  with entrepreneurs who could all learn from one another.",
+  price: "35",
+  image: File.open('app/assets/images/event_seed_images/jeffersonian.png'))
+e16 = Event.create(title: "Maximizing Mental Agility: Secrets of Success & Motivation",
+  start_date_time: DateTime.new(2017, 1, 10, 16),
+  end_date_time: DateTime.new(2017, 1, 10, 18), author_id: ace.id,
+  location: "RITS CARLTON
+  Two West Street
+  New York, New York 10004",
+  description: "Maximizing Mental Agility: Secrets of Success & Motivation
+  This seminar focuses on the six areas of thinking that provide proven strategies
+  rooted in Cognitive Science that will help you to be more productive, efficient.
+  creative. motivated and feel satisfied in your work, life and beyond",
+  price: "40",
+  image: File.open('app/assets/images/event_seed_images/careers_1.png'))
+e17 = Event.create(title: "Contract Basics for Artists",
+  start_date_time: DateTime.new(2017, 1, 11, 17),
+  end_date_time: DateTime.new(2017, 1, 11, 19), author_id: ace.id,
+  location: "VLA Auditorium
+  1 East 53rd Street
+  New York, NY 10022",
+  description: "This class will provide an overview of contract law including
+  essential aspects of contract formation, enforceability, and standard provisions
+  for artists such as creative control, compensation, and credit.",
+  price: "50",
+  image: File.open('app/assets/images/event_seed_images/artists_career.png'))
+e18 = Event.create(title: "INVEST IN REAL ESTATE FOR 2017",
+  start_date_time: DateTime.new(2017, 1, 11, 17),
+  end_date_time: DateTime.new(2017, 1, 11, 19), author_id: ace.id,
+  location: "310 5th Ave
+  310 5th Avenue
+  New York, NY 10001",
+  description: "Discover the best way to accelerate your success in 2017 as a
+  Real Estate Investor and Business Owner.",
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/real_estate_1.png'))
+e19 = Event.create(title: "FREE Real Estate Investors Training. Webinar",
+  start_date_time: DateTime.new(2017, 1, 12, 18),
+  end_date_time: DateTime.new(2017, 1, 12, 21), author_id: jane.id,
+  location: "online webinar",
+  description: "Learn how to make your money or energy work for you!",
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/real_estate_2.png'))
+e20 = Event.create(title: "Revenue Recognition Roundtable Lunch",
+  start_date_time: DateTime.new(2017, 1, 12, 18),
+  end_date_time: DateTime.new(2017, 1, 12, 21), author_id: jane.id,
+  location: "The Capital Grille
+  155 E 42nd St
+  New York, NY 10017",
+  description: "Join us to learn how others are addressing the adoption of the
+  new revenue recognition standard and where your company is in comparison to
+  your peers.",
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/finance_1.png'))
+e21 = Event.create(title: "Run a Financially Fit Small Business",
+  start_date_time: DateTime.new(2017, 1, 13, 18),
+  end_date_time: DateTime.new(2017, 1, 13, 21), author_id: jane.id,
+  location: "Online webinar",
+  description: "Successfully managing the finances of a small business is
+  challenging. Learn tips and practices that you can use to help you run a small
+  business that is financially fit.",
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/finance_2.png'))
+e22 = Event.create(title: "Art & Design Certificates Info Session with Parsons",
+  start_date_time: DateTime.new(2017, 1, 14, 18),
+  end_date_time: DateTime.new(2017, 1, 14, 21), author_id: jane.id,
+  location: "Anna-Maria and Stephen Kellen Auditorium
+  Sheila C. Johnson Design Center
+  66 Fifth Avenue
+  New York, NY 10003",
+  description: "Want to learn more about how you can jump start the career of
+  your dreams with a certificate in art and design from Parsons? Join us for
+  an information session given by our program director, Melinda Wax. Faculty
+  will be on hand to discuss the latest courses and noncredit certificate options
+  in all areas of study, including digital design, fashion business, fashion
+  design, interior and architectural design, and more!",
+  price: "free",
+  image: File.open('app/assets/images/event_seed_images/design_1.png'))
+e23 = Event.create(title: "Cooper: Leading Creative Ideation NYC",
+  start_date_time: DateTime.new(2017, 1, 15, 18),
+  end_date_time: DateTime.new(2017, 1, 15, 21), author_id: jane.id,
+  location: "TBA
+  New York, NY 10038",
+  description: "Facilitate breakthrough ideas and solutions, and spark creative
+  momentum.",
+  price: "550",
+  image: File.open('app/assets/images/event_seed_images/design_2.png'))
 
 Ticket.destroy_all
 t1 = Ticket.create(event_id: e10.id, buyer_id: bob.id, purchase_date: Time.now.to_date)
@@ -217,7 +324,18 @@ ec11 = EventCategory.create(event_id: e11.id, category_id: reggae.id)
 ec2 = EventCategory.create(event_id: e1.id, category_id: latin.id)
 ec12 = EventCategory.create(event_id: e12.id, category_id: latin.id)
 ec6 = EventCategory.create(event_id: e5.id, category_id: bluesandjazz.id)
-e13 = EventCategory.create(event_id: e13.id, category_id: bluesandjazz.id)
+ec13 = EventCategory.create(event_id: e13.id, category_id: bluesandjazz.id)
+
+ec14 = EventCategory.create(event_id: e14.id, category_id: startups.id)
+ec15 = EventCategory.create(event_id: e15.id, category_id: startups.id)
+ec16 = EventCategory.create(event_id: e16.id, category_id: career.id)
+ec17 = EventCategory.create(event_id: e17.id, category_id: career.id)
+ec18 = EventCategory.create(event_id: e18.id, category_id: realestate.id)
+ec19 = EventCategory.create(event_id: e19.id, category_id: realestate.id)
+ec20 = EventCategory.create(event_id: e20.id, category_id: finance.id)
+ec21 = EventCategory.create(event_id: e21.id, category_id: finance.id)
+ec22 = EventCategory.create(event_id: e22.id, category_id: design.id)
+ec23 = EventCategory.create(event_id: e23.id, category_id: design.id)
 
 ec7 = EventCategory.create(event_id: e6.id, category_id: holiday.id)
 
