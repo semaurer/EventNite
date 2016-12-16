@@ -11,7 +11,7 @@ const ticketsReducer = (state = defaultState, action) => {
   switch(action.type) {
     case RECEIVE_TICKETS:
       const tickets = action.tickets;
-      const oldState = merge({}, state, { tickets });
+      const oldState = Object.assign({}, state, { tickets });
       return oldState;
 
     default:
