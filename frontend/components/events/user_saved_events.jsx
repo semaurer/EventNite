@@ -70,10 +70,10 @@ class UserSavedEvents extends React.Component {
     } else {
       return (
         <div>
-          <li className="u-e-tab">
+          <li onClick={ this.redirect } className="u-e-tab">
             <ul>
               <li onClick={ this.redirect }>Your Events</li>
-              <li></li>
+
             </ul>
           </li>
           <li className="u-e-tab-active">
