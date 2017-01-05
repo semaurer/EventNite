@@ -16,13 +16,15 @@ class HomePageSearch extends React.Component {
 
   render() {
     return (
-      <span className="home-search">
-        <h2>Find your next experience</h2>
-        <input type="text" value={ this.state.searchEntry }
-          onChange={ this.updateSearchState("searchEntry") }
-          placeholder="Search events"></input>
-        <button>SEARCH</button>
-      </span>
+      <div className="home-search-container">
+        <span className="home-search">
+          <h2>Find your next experience</h2>
+          <input type="text" value={ this.state.searchEntry }
+            onChange={ this.updateSearchState("searchEntry") }
+            placeholder="Search events"></input>
+          <button>SEARCH</button>
+        </span>
+      </div>
     );
   }
 }

@@ -1,3 +1,8 @@
+.home-page-pic {
+  position: relative;
+  display: block;
+}
+
 .home-image {
   height: 420px;
 }
