@@ -7,10 +7,12 @@ class homePage extends React.Component {
   }
 
   render() {
+
     return (
       <span className="home-page-pic">
         <img className="home-image" src={ window.home_page_pic }/>
-        <HomePageSearch router={ this.props.router }></HomePageSearch>
+        <HomePageSearch router={ this.props.router }
+          receiveSearch={ this.props.receiveSearch }></HomePageSearch>
       </span>
     );
   }

@@ -5,6 +5,7 @@ import EventsReducer from './events_reducer';
 import TicketReducer from './ticket_reducer';
 import TicketsReducer from './tickets_reducer';
 import CategoriesReducer from './categories_reducer';
+import SearchReducer from './search_reducer';
 
 const rootReducer = combineReducers({
   session: SessionReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   ticket: TicketReducer,
   tickets: TicketsReducer,
   categories: CategoriesReducer,
+  search: SearchReducer,
 });
 
 export default rootReducer;

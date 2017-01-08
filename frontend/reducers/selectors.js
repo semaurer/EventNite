@@ -80,3 +80,7 @@ export const removeSavedEvent = (state, targetId) => {
   const newCurrentUser = Object.assign({}, state.currentUser, { saved_events: newSavedEvents });
   return Object.assign({}, state, { currentUser: newCurrentUser });
 };
+
+export const searchEvents = (state, search) => {
+  
+};

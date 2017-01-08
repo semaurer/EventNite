@@ -16,7 +16,8 @@ class HomePageSearch extends React.Component {
   }
 
   search(e) {
-    debugger
+    this.props.receiveSearch(this.state.searchEntry);
+    // this.props.router.push()
   }
 
   render() {
