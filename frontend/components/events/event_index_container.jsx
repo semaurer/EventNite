@@ -6,7 +6,6 @@ import { fetchEvents, saveEvent, unsaveEvent,
   categoryFilterFetchEvents, removeEvents } from '../../actions/event_actions';
 import { fetchCategories } from '../../actions/category_actions';
 import { selectCategories } from '../../reducers/selectors';
-import { selectSearchedEvents } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
 
@@ -16,7 +15,6 @@ const mapStateToProps = (state) => {
   }
 
   return {
-    searchEvents: selectSearchedEvents(state),
     events: selectEvents(state),
     categories: selectCategories(state),
     savedEvents: userSavedEvents,

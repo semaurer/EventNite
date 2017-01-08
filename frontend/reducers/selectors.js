@@ -6,7 +6,9 @@ export const selectEvents = (state) => {
   if (state.events.events === undefined) return events;
   if (state.events.events !== null) {
     Object.keys(state.events.events).forEach(eventId => {
-      events.push(state.events.events[eventId]);
+      if (state.events.events[eventId].title.includes(state.search)) {
+        events.push(state.events.events[eventId]);
+      }
     });
   }
   return events;
@@ -79,8 +81,4 @@ export const removeSavedEvent = (state, targetId) => {
   });
   const newCurrentUser = Object.assign({}, state.currentUser, { saved_events: newSavedEvents });
   return Object.assign({}, state, { currentUser: newCurrentUser });
-};
-
-export const selectSearchedEvents = (state, search) => {
-
 };
