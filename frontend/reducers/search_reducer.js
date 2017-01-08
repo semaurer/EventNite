@@ -1,4 +1,5 @@
 import React from 'react';
+import { merge, assign } from 'lodash';
 import { RECEIVE_SEARCH } from '../actions/search_actions';
 
 const defaultState = Object.freeze({
@@ -9,7 +10,7 @@ const searchReducer = (state = defaultState, action) => {
 
   switch(action.type) {
     case RECEIVE_SEARCH:
-      return merge({}, state, { search });
+      return merge({}, state, action.search);
     default:
       return state;
   }

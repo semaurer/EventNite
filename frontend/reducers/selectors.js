@@ -81,6 +81,6 @@ export const removeSavedEvent = (state, targetId) => {
   return Object.assign({}, state, { currentUser: newCurrentUser });
 };
 
-export const searchEvents = (state, search) => {
-  
+export const selectSearchedEvents = (state, search) => {
+
 };

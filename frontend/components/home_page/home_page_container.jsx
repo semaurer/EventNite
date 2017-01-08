@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import HomePage from './home_page';
-import receiveSearch from '../../actions/search_actions';
+import { receiveSearch } from '../../actions/search_actions';
 
 const mapStateToProps = (state) => {
   return {
