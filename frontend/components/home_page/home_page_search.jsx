@@ -6,12 +6,17 @@ class HomePageSearch extends React.Component {
     this.state = {
       searchEntry: ""
     };
+    this.search = this.search.bind(this);
   }
 
   updateSearchState(prop) {
     return e => this.setState({
       [prop]: e.currentTarget.value
     });
+  }
+
+  search(e) {
+    debugger
   }
 
   render() {
@@ -23,7 +28,7 @@ class HomePageSearch extends React.Component {
             <input type="text" value={ this.state.searchEntry }
               onChange={ this.updateSearchState("searchEntry") }
               placeholder="Search events"></input>
-            <button>SEARCH</button>
+            <button onClick={ this.search }>SEARCH</button>
         </nav>
         </span>
       </div>
