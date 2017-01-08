@@ -81,6 +81,9 @@ class App extends React.Component {
 
   search(e) {
     if (e.keyCode === 13) {
+      if (this.props.location.pathname !== "/events") {
+        this.props.router.push("events");
+      }
       this.props.receiveSearch(this.state.searchEntry);
     }
   }
