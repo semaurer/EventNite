@@ -10,6 +10,47 @@
   display: block;
   width: 80%;
   height: 100%;
-  background-color: red;
-  opacity: 0.9
+  background-color: #fff;
+  opacity: 0.;
+  text-align: center;
+  border-radius: 5px;
+  border-bottom: 2px solid #ccc;
+}
+
+.home-search h2 {
+  padding-top: 40px;
+  font-size: 40px;
+  color: #8B008B;
+}
+
+.home-search nav {
+  padding-top: 30px;
+  width: 600px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+.home-search input {
+  border: 1px solid #ccc;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  padding: 10px 20px;
+  width: 270px;
+}
+
+.home-search button {
+  background-color: #8B008B;
+  transition: background-color 0.5s;
+  color: #fff;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding: 10px 40px;
+  letter-spacing: 0.2px;
+}
+
+.home-search button:hover {
+  cursor: pointer;
+  background-color: #8A2BE2;
+  transition: background-color 0.5s;
 }
