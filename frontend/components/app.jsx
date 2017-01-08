@@ -14,6 +14,7 @@ class App extends React.Component {
     this.loggedOutEls = this.loggedOutEls.bind(this);
     this.createSearchEls = this.createSearchEls.bind(this);
     this.updateSearchState = this.updateSearchState.bind(this);
+    this.search = this.search.bind(this);
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -49,6 +50,7 @@ class App extends React.Component {
   redirect(e) {
     this.props.clearErrors();
     this.props.resetSearch();
+    this.state.searchEntry = "";
     if (e.currentTarget.className === "header-nav-item-logo") {
       if (this.props.location.pathname !== "/") this.props.router.push("/");
     } else if (e.currentTarget.className === "header-nav-item brow") {
@@ -77,6 +79,12 @@ class App extends React.Component {
     });
   }
 
+  search(e) {
+    if (e.keyCode === 13) {
+      this.props.receiveSearch(this.state.searchEntry);
+    }
+  }
+
   createSearchEls() {
     let searchEls;
     if (this.props.location.pathname !== "/") searchEls =
@@ -84,7 +92,8 @@ class App extends React.Component {
         <img src={ window.magnifying_glass }></img>
         <input type="text" placeholder="Search for events"
           value={ this.state.searchEntry }
-          onChange={ this.updateSearchState("searchEntry")}></input>
+          onChange={ this.updateSearchState("searchEntry") }
+          onKeyUp={ this.search }></input>
       </div>;
       return searchEls;
     }
