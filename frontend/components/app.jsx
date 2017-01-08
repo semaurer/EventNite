@@ -8,11 +8,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { modalOpen: false,
-      signIn: false };
+      signIn: false, searchEntry: "" };
 
     this.loggedInEls = this.loggedInEls.bind(this);
     this.loggedOutEls = this.loggedOutEls.bind(this);
     this.createSearchEls = this.createSearchEls.bind(this);
+    this.updateSearchState = this.updateSearchState.bind(this);
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -55,11 +56,11 @@ class App extends React.Component {
         this.props.router.push("events");
       }
     } else if (e.currentTarget.className === "prof-dropdown-b m") {
-      this.props.router.push("/users/manage-events")
+      this.props.router.push("/users/manage-events");
     } else if (e.currentTarget.className === "prof-dropdown-b t") {
-      this.props.router.push("users/tickets")
+      this.props.router.push("users/tickets");
     } else if (e.currentTarget.className === "prof-dropdown-b s") {
-      this.props.router.push("users/saved-events")
+      this.props.router.push("users/saved-events");
     } else {
       this.props.router.push("events/new-event");
     }
@@ -67,7 +68,13 @@ class App extends React.Component {
 
   logOutRedirect () {
     this.props.logOut();
-    if (this.props.location.pathname !== "/") this.props.router.push("/")
+    if (this.props.location.pathname !== "/") this.props.router.push("/");
+  }
+
+  updateSearchState(prop) {
+    return e => this.setState({
+      [prop]: e.currentTarget.value
+    });
   }
 
   createSearchEls() {
@@ -75,8 +82,10 @@ class App extends React.Component {
     if (this.props.location.pathname !== "/") searchEls =
       <div>
         <img src={ window.magnifying_glass }></img>
-        <input type="text" placeholder="Search for events"></input>
-      </div>
+        <input type="text" placeholder="Search for events"
+          value={ this.state.searchEntry }
+          onChange={ this.updateSearchState("searchEntry")}></input>
+      </div>;
       return searchEls;
     }
 

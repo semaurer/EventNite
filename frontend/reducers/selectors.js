@@ -7,7 +7,7 @@ export const selectEvents = (state) => {
   if (state.events.events !== null) {
     Object.keys(state.events.events).forEach(eventId => {
       let currentTitle = state.events.events[eventId].title.toLowerCase();
-      let searchEntry = state.search.toLowerCase();
+      let searchEntry = state.search.search.toLowerCase();
       if (currentTitle.includes(searchEntry)) {
         events.push(state.events.events[eventId]);
       }

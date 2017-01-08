@@ -10,9 +10,11 @@ const searchReducer = (state = defaultState, action) => {
 
   switch(action.type) {
     case RECEIVE_SEARCH:
-      return action.search;
+      let search = action.search;
+      return Object.assign({}, state, { search: search });
     case RESET_SEARCH:
-      return defaultState.search;
+      search = "";
+      return Object.assign({}, state, { search: search  });
     default:
       return state;
   }
