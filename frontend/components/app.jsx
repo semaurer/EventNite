@@ -12,6 +12,7 @@ class App extends React.Component {
 
     this.loggedInEls = this.loggedInEls.bind(this);
     this.loggedOutEls = this.loggedOutEls.bind(this);
+    this.createSearchEls = this.createSearchEls.bind(this);
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -46,10 +47,10 @@ class App extends React.Component {
 
   redirect(e) {
     this.props.clearErrors();
+    this.props.resetSearch();
     if (e.currentTarget.className === "header-nav-item-logo") {
       if (this.props.location.pathname !== "/") this.props.router.push("/");
     } else if (e.currentTarget.className === "header-nav-item brow") {
-      this.props.resetSearch();
       if (this.props.location.pathname !== "/events") {
         this.props.router.push("events");
       }
@@ -64,18 +65,28 @@ class App extends React.Component {
     }
   }
 
-
   logOutRedirect () {
     this.props.logOut();
     if (this.props.location.pathname !== "/") this.props.router.push("/")
   }
 
+  createSearchEls() {
+    let searchEls;
+    if (this.props.location.pathname !== "/") searchEls =
+      <div>
+        <img src={ window.magnifying_glass }></img>
+        <input type="text" placeholder="Search for events"></input>
+      </div>
+      return searchEls;
+    }
 
   loggedInEls () {
+    const searchEls = this.createSearchEls();
     return (
       <nav className='header-nav'>
         <h2 onClick={ this.redirect }
           className='header-nav-item-logo'>EventNite</h2>
+        { searchEls }
         <ul className='header-items'>
           <li onClick={ this.redirect }
             className='header-nav-item brow'>Browse Events</li>
@@ -97,10 +108,12 @@ class App extends React.Component {
   }
 
   loggedOutEls () {
+    const searchEls = this.createSearchEls();
     return (
       <nav className='header-nav'>
         <h2 onClick={ this.redirect }
           className='header-nav-item-logo'>EventNite</h2>
+        { searchEls }
         <ul className='header-items'>
           <li onClick={ this.redirect }
             className='header-nav-item brow'>Browse Events</li>
@@ -133,9 +146,6 @@ class App extends React.Component {
         { sessionItems }
         <Modal onAfterOpen={ this.onModalOpen } style={ ModalStyle } contentLabel="" isOpen={ this.state.modalOpen }
             onRequestClose={ this.closeModal }>
-          <button className="auth-modal-b" onClick={ this.closeModal }>X
-            <badge className="exit-button-circle"></badge>
-          </button>
           <SessionModalForm errors={ this.props.errors }
             logIn={ this.props.logIn } signUp={ this.props.signUp }
             formType={ this.state.signIn } router={ this.props.router }
