@@ -6,6 +6,7 @@ import { fetchEvents, saveEvent, unsaveEvent,
   categoryFilterFetchEvents, removeEvents } from '../../actions/event_actions';
 import { fetchCategories } from '../../actions/category_actions';
 import { selectCategories } from '../../reducers/selectors';
+import { resetSearch } from '../../actions/search_actions';
 
 const mapStateToProps = (state) => {
 
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch) => {
     removeEvents: () => dispatch(removeEvents()),
     saveEvent: (eventId) => dispatch(saveEvent(eventId)),
     unsaveEvent: (eventId) => dispatch(unsaveEvent(eventId)),
+    resetSearch: () => dispatch(resetSearch()),
   };
 };
 

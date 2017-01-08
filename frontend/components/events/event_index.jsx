@@ -117,6 +117,7 @@ class EventIndex extends React.Component {
 
   changeMenuState(e) {
     if (this.state.categoryOpen === "closed") {
+      this.props.resetSearch();
       this.setState({ categoryOpen: "full" });
       this.props.router.push("events/categories");
     } else {

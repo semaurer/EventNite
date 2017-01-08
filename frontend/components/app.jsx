@@ -49,7 +49,10 @@ class App extends React.Component {
     if (e.currentTarget.className === "header-nav-item-logo") {
       if (this.props.location.pathname !== "/") this.props.router.push("/");
     } else if (e.currentTarget.className === "header-nav-item brow") {
-      this.props.router.push("events");
+      this.props.resetSearch();
+      if (this.props.location.pathname !== "/events") {
+        this.props.router.push("events");
+      }
     } else if (e.currentTarget.className === "prof-dropdown-b m") {
       this.props.router.push("/users/manage-events")
     } else if (e.currentTarget.className === "prof-dropdown-b t") {
@@ -60,6 +63,7 @@ class App extends React.Component {
       this.props.router.push("events/new-event");
     }
   }
+
 
   logOutRedirect () {
     this.props.logOut();

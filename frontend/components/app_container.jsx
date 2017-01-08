@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import App from './app';
 import { signUp, logIn,
   logOut, clearErrors } from '../actions/session_actions';
+import { resetSearch } from '../actions/search_actions';
 
 const mapStateToProps = ({ session }) => {
 
@@ -19,6 +20,7 @@ const mapDispatchToProps = (dispatch) => {
       signUp: (user) => dispatch(signUp(user)),
       logIn: (user) => dispatch(logIn(user)),
       logOut: () => dispatch(logOut()),
+      resetSearch: () => dispatch(resetSearch()),
       clearErrors: () => dispatch(clearErrors()),
     };
 };
