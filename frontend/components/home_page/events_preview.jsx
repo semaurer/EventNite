@@ -6,6 +6,7 @@ class EventsPreview extends React.Component {
     super(props);
 
     this.eventPreviewEls = this.eventPreviewEls.bind(this);
+    this.unsaveEvent = this.unsaveEvent.bind(this);
   }
 
   componentDidMount() {
@@ -41,11 +42,11 @@ class EventsPreview extends React.Component {
 
   render() {
     let eventsPreview = "";
-    if (this.props.events.length > 0) eventsPreview = this.eventPreviewEls();
+    // if (this.props.events.length > 0) eventsPreview = this.eventPreviewEls();
 
     return(
       <div>
-        { eventsPreview }
+
       </div>
     );
   }
