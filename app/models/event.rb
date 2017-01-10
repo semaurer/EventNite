@@ -49,7 +49,8 @@ class Event < ActiveRecord::Base
   validates :author, :title, :start_date_time, :end_date_time, :price, presence: true
   validates_inclusion_of :private, in: [true, false]
 
-  has_attached_file :image, default_url: "missing.jpg", s3_protocol: :https
+  has_attached_file :image, default_url: "missing.jpg", s3_protocol: :https,
+    processors: [:compression]
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :author,

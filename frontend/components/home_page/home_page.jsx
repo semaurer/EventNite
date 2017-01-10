@@ -16,7 +16,11 @@ class homePage extends React.Component {
         <HomePageSearch router={ this.props.router }
           receiveSearch={ this.props.receiveSearch }></HomePageSearch>
         <EventsPreview events={ this.props.events }
-          fetchEvents={ this.props.fetchEvents }></EventsPreview>
+          fetchEvents={ this.props.fetchEvents }
+          currentUser={ this.props.currentUser }
+          savedEvents={ this.props.savedEvents }
+          saveEvent={ this.props.saveEvent }
+          unsaveEvent={ this.props.unsaveEvent}></EventsPreview>
       </span>
     );
   }

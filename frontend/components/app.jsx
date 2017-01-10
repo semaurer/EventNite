@@ -52,7 +52,9 @@ class App extends React.Component {
     this.props.resetSearch();
     this.state.searchEntry = "";
     if (e.currentTarget.className === "header-nav-item-logo") {
-      if (this.props.location.pathname !== "/") this.props.router.push("/");
+      if (this.props.location.pathname !== "/") {
+        this.props.router.push("/");
+      }
     } else if (e.currentTarget.className === "header-nav-item brow") {
       if (this.props.location.pathname !== "/events") {
         this.props.router.push("events");

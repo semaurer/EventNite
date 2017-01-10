@@ -13,6 +13,7 @@ module EventNite
     # -- all .rb files in that directory are automatically loaded.
     config.paperclip_defaults = {
       :storage => :s3,
+      :compression => { :png => '-optimize', :jpeg => '-optimize' },
       :s3_credentials => {
         :bucket => ENV["s3_bucket"],
         :access_key_id => ENV["s3_access_key_id"],
