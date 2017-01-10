@@ -31,11 +31,11 @@ class EventsPreview extends React.Component {
 
   eventPreviewEls() {
     let previews = [];
+    if (this.props.events.length < 9) return;
     for (let i = 0; i < 9; i++) {
       let event = this.props.events[i];
       let startDateTime = event.formatted_start_date_time
         .slice(0, event.formatted_start_date_time.length - 6);
-
       let bookmarkBool = false;
       this.props.savedEvents.forEach(savedEventId => {
         if (event.id === savedEventId) {
