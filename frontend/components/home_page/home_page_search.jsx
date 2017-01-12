@@ -7,12 +7,19 @@ class HomePageSearch extends React.Component {
       searchEntry: ""
     };
     this.search = this.search.bind(this);
+    this.callSearch = this.callSearch.bind(this);
   }
 
   updateSearchState(prop) {
     return e => this.setState({
       [prop]: e.currentTarget.value
     });
+  }
+
+  callSearch(e) {
+    if (e.keyCode === 13) {
+      this.search(e);
+    }
   }
 
   search(e) {
@@ -28,6 +35,7 @@ class HomePageSearch extends React.Component {
           <nav>
             <input type="text" value={ this.state.searchEntry }
               onChange={ this.updateSearchState("searchEntry") }
+              onKeyUp={ this.callSearch }
               placeholder="Search events"></input>
             <button onClick={ this.search }>SEARCH</button>
         </nav>
