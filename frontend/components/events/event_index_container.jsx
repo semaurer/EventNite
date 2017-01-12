@@ -20,6 +20,7 @@ const mapStateToProps = (state) => {
     categories: selectCategories(state),
     savedEvents: userSavedEvents,
     currentUser: state.session.currentUser,
+    search: state.search.search,
   };
 };
 

@@ -211,6 +211,14 @@ class EventIndex extends React.Component {
     if (this.state.categoryOpen === "full") fullMenu = this.fullMenuEls();
     if (this.state.categoryOpen === "parentSelected") fullMenu = this.parentCatMenu();
     if (this.state.categoryOpen === "subSelected") fullMenu = this.subCatMenu();
+    let searchResponse = "Events For You";
+    if (this.props.search !== "") {
+      if (this.props.events.length === 0) {
+        searchResponse = `Sorry, we couldn't find any ${this.props.search} events`;
+      } else {
+        searchResponse = `${this.props.search} events`;
+      }
+    }
 
     return (
       <div className="browse-page group">
@@ -222,7 +230,7 @@ class EventIndex extends React.Component {
             </div>
           </aside>
           <div className="events">
-            <h2>Events For You</h2>
+            <h2>{ searchResponse }</h2>
             <ul>
               { events }
             </ul>
