@@ -49,6 +49,8 @@ class App extends React.Component {
 
   redirect(e) {
     this.props.clearErrors();
+    this.props.clearEvent();
+    this.props.clearEvents();
     this.props.resetSearch();
     this.state.searchEntry = "";
     if (e.currentTarget.className === "header-nav-item-logo") {

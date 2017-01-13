@@ -4,6 +4,7 @@ import App from './app';
 import { signUp, logIn,
   logOut, clearErrors } from '../actions/session_actions';
 import { receiveSearch, resetSearch } from '../actions/search_actions';
+import { clearEvent, clearEvents } from '../actions/event_actions';
 
 const mapStateToProps = ({ session }) => {
 
@@ -20,6 +21,8 @@ const mapDispatchToProps = (dispatch) => {
       signUp: (user) => dispatch(signUp(user)),
       logIn: (user) => dispatch(logIn(user)),
       logOut: () => dispatch(logOut()),
+      clearEvent: () => dispatch(clearEvent()),
+      clearEvents: () => dispatch(clearEvents()),
       receiveSearch: (search) => dispatch(receiveSearch(search)),
       resetSearch: () => dispatch(resetSearch()),
       clearErrors: () => dispatch(clearErrors()),

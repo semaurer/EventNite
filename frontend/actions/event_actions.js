@@ -9,6 +9,9 @@ export const REMOVE_EVENTS = "REMOVE_EVENTS";
 export const RECEIVE_SAVED_EVENT = "RECEIVE_SAVED_EVENT";
 export const REMOVE_SAVED_EVENT = "REMOVE_SAVED_EVENT";
 
+export const CLEAR_EVENT = "CLEAR_EVENT";
+export const CLEAR_EVENTS = "CLEAR_EVENTS";
+
 export const receiveEvent = (event) => {
   return {
     type: RECEIVE_EVENT,
@@ -33,6 +36,18 @@ export const removeEvent = (eventId) => {
 export const removeEvents = () => {
   return {
     type: REMOVE_EVENTS,
+  };
+};
+
+export const clearEvent = () => {
+  return {
+    type: CLEAR_EVENT,
+  };
+};
+
+export const clearEvents = () => {
+  return {
+    type: CLEAR_EVENTS,
   };
 };
 
