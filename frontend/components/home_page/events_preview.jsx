@@ -15,6 +15,7 @@ class EventsPreview extends React.Component {
   }
 
   updateBookmark(e) {
+    if (this.props.currentUser === null) return;
     let updateBool = false;
     const currentEventId = parseInt(e.currentTarget.id);
 

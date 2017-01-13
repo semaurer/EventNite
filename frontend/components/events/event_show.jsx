@@ -15,6 +15,7 @@ class EventShow extends React.Component {
   }
 
   updateBookmark () {
+    if (this.props.currentUser === null) return;
     if (this.state.bookmarked === false) {
       this.setState({ bookmarked: true });
       this.props.saveEvent(this.props.event.id);
