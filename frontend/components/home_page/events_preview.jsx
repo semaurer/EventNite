@@ -74,13 +74,16 @@ class EventsPreview extends React.Component {
     if (this.props.currentUser !== null) header = <h3>Events For You</h3>;
     let eventsPreview = "";
     if (this.props.events.length > 0) eventsPreview = this.eventPreviewEls();
-
+    let loader;
+    if (this.props.events === null) {
+      loader = <div className="loader"></div>;
+    }
 
     return(
       <div className="previews-alignment group">
         <div className="previews-container">
-          { loader }
           { header }
+          { loader }
           { eventsPreview }
         </div>
       </div>
