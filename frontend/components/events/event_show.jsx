@@ -101,12 +101,18 @@ class EventShow extends React.Component {
       if (price === "free") ticketText = "Register"
     }
 
+    let loader;
+    if (this.props.event === null) {
+      loader = <div className="loader"></div>;
+    }
+
     return (
       <div className="show-page group">
         <div className="show-page-bg">
           <div className="show-template">
             <span className="image-and-info">
               { event_image }
+              { loader }
               <div className="title-date-host-price-container">
                 <ul className="t-d-h-p-container-list">
                   <li className="t-d-h-p-month">{ startMonth }</li>
