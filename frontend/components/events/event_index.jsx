@@ -220,6 +220,10 @@ class EventIndex extends React.Component {
         searchResponse = `${this.props.search} events`;
       }
     }
+    let loader;
+    if (this.props.events.length === 0 && this.props.search === "") {
+      loader = <div className="loader"></div>;
+    }
 
     return (
       <div className="browse-page group">
@@ -233,6 +237,7 @@ class EventIndex extends React.Component {
           <div className="events">
             <h2>{ searchResponse }</h2>
             <ul>
+              { loader }
               { events }
             </ul>
           </div>

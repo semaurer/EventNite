@@ -75,7 +75,7 @@ class EventsPreview extends React.Component {
     let eventsPreview = "";
     if (this.props.events.length > 0) eventsPreview = this.eventPreviewEls();
     let loader;
-    if (this.props.events === null) {
+    if (this.props.events.length === 0) {
       loader = <div className="loader"></div>;
     }
 
