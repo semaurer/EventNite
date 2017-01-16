@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { Loader } from 'react-loaders';
 
 class EventsPreview extends React.Component {
   constructor(props) {
@@ -74,11 +75,16 @@ class EventsPreview extends React.Component {
     if (this.props.currentUser !== null) header = <h3>Events For You</h3>;
     let eventsPreview = "";
     if (this.props.events.length > 0) eventsPreview = this.eventPreviewEls();
+    let loader = "";
+    if (this.props.events) {
+      loader = <Loader type="pacman" />;
+    }
 
     return(
       <div className="previews-alignment group">
         <div className="previews-container">
-          {header}
+          { loader }
+          { header }
           { eventsPreview }
         </div>
       </div>
