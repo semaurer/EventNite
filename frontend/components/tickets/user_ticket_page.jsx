@@ -4,13 +4,15 @@ import { Link } from 'react-router';
 class UserTicketPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { loading: true };
     this.TicketsPerEventEls = this.TicketsPerEventEls.bind(this);
     this.tabEls = this.tabEls.bind(this);
     this.redirect = this.redirect.bind(this);
   }
 
   componentDidMount () {
-    this.props.fetchTickets();
+    this.props.fetchTickets()
+      .then(() => this.setState({ loading: false }));
   }
 
   redirect () {
@@ -91,6 +93,8 @@ class UserTicketPage extends React.Component {
     if (this.props.tickets) TicketsPerEventEls = this.TicketsPerEventEls();
     if (this.props.currentUser) userName =
       `${this.props.currentUser.fname} ${this.props.currentUser.lname}`;
+    let loader;
+    if (this.state.loading === true) loader = <div className="loader"></div>;
     return (
       <div className="users-events group">
         <header>
@@ -102,6 +106,7 @@ class UserTicketPage extends React.Component {
         <span className="user-events-bottom group">
           <main>
             <ul className="each-ticket">
+              { loader }
               { TicketsPerEventEls }
             </ul>
           </main>
