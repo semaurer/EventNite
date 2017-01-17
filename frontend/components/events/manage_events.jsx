@@ -7,7 +7,7 @@ import ModalStyle from '../../../app/assets/stylesheets/manage_modal_style';
 class ManageEvents extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalOpen: false, currentEventId: null };
+    this.state = { modalOpen: false, currentEventId: null, loading: true };
     this.eventEls = this.eventEls.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -29,7 +29,8 @@ class ManageEvents extends React.Component {
   }
 
   componentDidMount () {
-    this.props.fetchEvents();
+    this.props.fetchEvents()
+      .then(() => this.setState({ loading: false }));
   }
 
   sendEventId(e) {
@@ -64,13 +65,16 @@ class ManageEvents extends React.Component {
 
   render () {
     const events = this.eventEls();
+    let loader;
+    if (this.state.loading === true) loader = <div className="loader"></div>;
 
     return (
       <div className="manage-events-page group">
         <main className="manage-main">
-          <div>
+          <div className="manage-events-div">
             <h2>Manage Events</h2>
             <ul className="manage-events-container">
+              { loader }
               { events }
             </ul>
           </div>

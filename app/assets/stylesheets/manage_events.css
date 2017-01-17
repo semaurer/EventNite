@@ -11,11 +11,15 @@
   width: 1062px;
 }
 
-.manage-main div {
+.manage-events-div {
   width: 79%;
   display: block;
   float: left;
   height: auto;
+  margin-top: 35px;
+  margin-bottom: 60px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .manage-events-page aside {
@@ -24,7 +28,7 @@
   float: left;
 }
 
-.manage-main div h2 {
+.manage-main h2 {
   margin-top: 35px;
   margin-bottom: 60px;
   font-size: 35px;
