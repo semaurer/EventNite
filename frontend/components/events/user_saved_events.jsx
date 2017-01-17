@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 class UserSavedEvents extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { loading: true };
     this.tabEls = this.tabEls.bind(this);
     this.savedEventEls = this.savedEventEls.bind(this);
     this.redirect = this.redirect.bind(this);
@@ -11,7 +12,8 @@ class UserSavedEvents extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSavedEvents();
+    this.props.fetchSavedEvents()
+      .then(() => this.setState({ loading: false }));
   }
 
   unsaveEvent(e) {
@@ -93,6 +95,8 @@ class UserSavedEvents extends React.Component {
     if (this.props.events) savedEventEls = this.savedEventEls();
     if (this.props.currentUser) userName =
       `${this.props.currentUser.fname} ${this.props.currentUser.lname}`;
+    let loader;
+    if (this.state.loading === true) loader = <div className="loader"></div>;
 
     return (
       <div className="users-events group">
@@ -104,6 +108,7 @@ class UserSavedEvents extends React.Component {
         </header>
         <span className="user-saved-events group">
           <main>
+            { loader }
             { savedEventEls }
           </main>
         </span>
