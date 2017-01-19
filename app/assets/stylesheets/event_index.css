@@ -1,6 +1,6 @@
 .browse-page {
   background-color:	#f8f8fa;
-  height: auto;
+  height: 100%;
   display: block;
   width: 100%;
 }
@@ -8,7 +8,7 @@
 .browse-content {
   display: block;
   width: 1050px;
-  height :auto;
+  height: auto;
   margin: 0 auto;
 }
 
