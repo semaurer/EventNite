@@ -45,7 +45,6 @@ class Api::EventsController < ApplicationController
   end
 
   def category_filter
-
     categories = Category.where("id = ? OR parent_category_id = ?", params[:id], params[:id])
     @events = []
     categories.each do |category|
@@ -64,7 +63,7 @@ class Api::EventsController < ApplicationController
   def mark_unsaved
     @event = Event.find(params[:id])
     @saved_event = SavedEvent.where("user_id = ? AND event_id = ?", current_user.id, @event.id)
-    SavedEvent.destroy(@saved_event) unless @saved_event.nil?
+    SavedEvent.destroy(@saved_event) if @saved_event
     render json: @event
   end
 
