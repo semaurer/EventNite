@@ -78,7 +78,6 @@ class EventCreateForm extends React.Component {
   }
 
   redirect(event) {
-    debugger
     this.props.clearErrors();
     this.props.router.push(`/events/${event.id}`)
   }
