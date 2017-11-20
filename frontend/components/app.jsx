@@ -7,28 +7,19 @@ import SessionModalForm from './session/session_modal_form';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { modalOpen: false,
-      signIn: false, searchEntry: "" };
 
-    this.loggedInEls = this.loggedInEls.bind(this);
-    this.loggedOutEls = this.loggedOutEls.bind(this);
-    this.createSearchEls = this.createSearchEls.bind(this);
-    this.updateSearchState = this.updateSearchState.bind(this);
-    this.search = this.search.bind(this);
-
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.swapSignInState = this.swapSignInState.bind(this);
-    this.redirect = this.redirect.bind(this);
-    this.logOutRedirect = this.logOutRedirect.bind(this);
+    this.state = {
+      modalOpen: false,
+      signIn: false,
+      searchEntry: ""
+    };
   }
 
-  openModal(bool) {
-    this.setState({ modalOpen: true,
-      signIn: bool });
+  openModal = (bool) => {
+    this.setState({ modalOpen: true, signIn: bool });
   }
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ modalOpen: false });
     ModalStyle.content.top = "-300px";
     this.props.clearErrors();
@@ -38,16 +29,12 @@ class App extends React.Component {
     ModalStyle.content.top = "95px";
   }
 
-  swapSignInState () {
-    if (this.state.signIn === false) {
-      this.setState({ signIn: true });
-    } else {
-      this.setState({ signIn: false });
-    }
+  swapSignInState = () => {
+    this.state.signIn === false ? this.setState({ signIn: true }) : this.setState({ signIn: false });
     this.props.clearErrors();
   }
 
-  redirect(e) {
+  redirect = (e) => {
     this.props.clearErrors();
     this.props.clearEvent();
     this.props.clearEvents();
@@ -72,18 +59,18 @@ class App extends React.Component {
     }
   }
 
-  logOutRedirect () {
+  logOutRedirect = () => {
     this.props.logOut();
     if (this.props.location.pathname !== "/") this.props.router.push("/");
   }
 
-  updateSearchState(prop) {
+  updateSearchState = (prop) => {
     return e => this.setState({
       [prop]: e.currentTarget.value
     });
   }
 
-  search(e) {
+  search = (e) => {
     if (e.keyCode === 13) {
       if (this.props.location.pathname !== "/events") {
         this.props.router.push("events");
@@ -92,7 +79,7 @@ class App extends React.Component {
     }
   }
 
-  createSearchEls() {
+  renderSearchEls = () => {
     let searchEls;
     if (this.props.location.pathname !== "/") searchEls =
       <div>
@@ -105,24 +92,22 @@ class App extends React.Component {
       return searchEls;
     }
 
-  loggedInEls () {
-    const searchEls = this.createSearchEls();
+  renderLoggedInEls = () => {
     return (
       <nav className='header-nav'>
         <h2 onClick={ this.redirect }
           className='header-nav-item-logo'>EventNite</h2>
-        { searchEls }
+        { this.renderSearchEls() }
         <ul className='header-items'>
           <li onClick={ this.redirect }
             className='header-nav-item brow'>Browse Events</li>
           <li className='header-nav-item user-name'>
             { this.props.currentUser.fname }
             <ul className="profile-dropdown">
-              <li onClick={ this.redirect }className="prof-dropdown-b t">Tickets</li>
+              <li onClick={ this.redirect } className="prof-dropdown-b t">Tickets</li>
               <li onClick={ this.redirect } className="prof-dropdown-b s">Saved</li>
               <li onClick={ this.redirect } className="prof-dropdown-b m">Manage Events</li>
-              <li className='prof-dropdown-b'
-              onClick={ this.logOutRedirect }>Log Out</li>
+              <li className='prof-dropdown-b' onClick={ this.logOutRedirect }>Log Out</li>
             </ul>
           </li>
           <li onClick={ this.redirect }
@@ -132,13 +117,12 @@ class App extends React.Component {
     );
   }
 
-  loggedOutEls () {
-    const searchEls = this.createSearchEls();
+  renderLoggedOutEls = () => {
     return (
       <nav className='header-nav'>
         <h2 onClick={ this.redirect }
           className='header-nav-item-logo'>EventNite</h2>
-        { searchEls }
+        { this.renderSearchEls() }
         <ul className='header-items'>
           <li onClick={ this.redirect }
             className='header-nav-item brow'>Browse Events</li>
@@ -158,25 +142,37 @@ class App extends React.Component {
   }
 
   render () {
-    let sessionItems;
-
-    if (this.props.loggedIn) {
-      sessionItems = this.loggedInEls();
-    } else {
-      sessionItems = this.loggedOutEls();
-    }
+    const {
+      children,
+      errors,
+      logIn,
+      loggedIn,
+      router,
+      signIn,
+      signUp
+    } = this.props;
 
     return (
       <header className='header-main group'>
-        { sessionItems }
-        <Modal onAfterOpen={ this.onModalOpen } style={ ModalStyle } contentLabel="" isOpen={ this.state.modalOpen }
-            onRequestClose={ this.closeModal }>
-          <SessionModalForm errors={ this.props.errors }
-            logIn={ this.props.logIn } signUp={ this.props.signUp }
-            formType={ this.state.signIn } router={ this.props.router }
-            closeModal={ this.closeModal } swapSignInState={ this.swapSignInState }/>
+        { loggedIn ? this.renderLoggedInEls() : this.renderLoggedOutEls() }
+        <Modal
+          contentLabel=""
+          isOpen={ this.state.modalOpen }
+          onAfterOpen={ this.onModalOpen }
+          onRequestClose={ this.closeModal }
+          style={ ModalStyle }
+        >
+          <SessionModalForm
+            closeModal={ this.closeModal }
+            errors={ errors }
+            formType={ this.state.signIn }
+            logIn={ logIn }
+            router={ router }
+            signUp={ signUp }
+            swapSignInState={ this.swapSignInState }
+          />
         </Modal>
-        {this.props.children}
+        {children}
       </header>
     );
   }
