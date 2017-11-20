@@ -63,8 +63,19 @@
   cursor: pointer;
 }
 
-.profile-dropdown {
+.nav-dropdown {
   display: none;
+}
+
+.nav-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-dropdown-item {
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  padding: 1.5rem 0;
 }
 
 .header-nav-item.user-name {
@@ -84,11 +95,4 @@
   z-index: 1;
 }
 
-.prof-dropdown-b {
-  padding: 20px 10px;
-  border-bottom: 1px solid #eee;
-}
 
-.prof-dropdown-b:hover {
-  background-color: #ccc;
-}
