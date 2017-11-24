@@ -72,7 +72,6 @@ class App extends React.Component {
         <div>
           <img src={ window.magnifying_glass } />
           <input
-            type="text"
             placeholder="Search for events"
             value={ this.state.searchEntry }
             onChange={ this.updateSearchState("searchEntry") }
@@ -93,7 +92,7 @@ class App extends React.Component {
             <li className='prof-dropdown-b' onClick={ this.logOutRedirect }>Log Out</li>
           </ul>
         </li>
-        <li onClick={ this.redirect } className='header-nav-item-c'>Create Event</li>
+        <li onClick={ this.redirect } className='header-nav-item create'>Create Event</li>
       </ul>
     );
   }
@@ -103,7 +102,7 @@ class App extends React.Component {
       <ul>
         <li onClick={ this.openModal.bind(this, false) } className='header-nav-item'>Sign Up</li>
         <li onClick={ this.openModal.bind(this, true) } className='header-nav-item'>Log In</li>
-        <li onClick={ this.openModal.bind(this, true) } className='header-nav-item-c'>Create Event</li>
+        <li onClick={ this.openModal.bind(this, true) } className='header-nav-item create'>Create Event</li>
       </ul>
     );
   }
@@ -120,12 +119,12 @@ class App extends React.Component {
     } = this.props;
 
     return (
-      <header className='header-main group'>
+      <header>
         <nav className="header-nav">
-          <Link to="/" className='header-nav-item-logo'>EventNite</Link>
+          <Link to="/" className='header-nav-item logo'>EventNite</Link>
           { this.renderSearchEls() }
           <ul className='header-items'>
-            <Link to="/events" className="header-nav-item brow">Browse Events</Link>
+            <Link to="/events" className="header-nav-item">Browse Events</Link>
             { loggedIn ? this.renderLoggedInEls() : this.renderLoggedOutEls() }
           </ul>
         </nav>
