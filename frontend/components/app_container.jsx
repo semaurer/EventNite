@@ -7,22 +7,23 @@ import { clearEvent, clearEvents } from '../actions/event_actions';
 
 const mapStateToProps = ({ session }) => {
   return {
-    loggedIn: Boolean(session.currentUser),
-    errors: session.errors,
     currentUser: session.currentUser,
+    errors: session.errors,
+    curPath: window.location.hash,
+    loggedIn: Boolean(session.currentUser),
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signUp: (user) => dispatch(signUp(user)),
-    logIn: (user) => dispatch(logIn(user)),
-    logOut: () => dispatch(logOut()),
+    clearErrors: () => dispatch(clearErrors()),
     clearEvent: () => dispatch(clearEvent()),
     clearEvents: () => dispatch(clearEvents()),
+    logIn: (user) => dispatch(logIn(user)),
+    logOut: () => dispatch(logOut()),
     receiveSearch: (search) => dispatch(receiveSearch(search)),
     resetSearch: () => dispatch(resetSearch()),
-    clearErrors: () => dispatch(clearErrors()),
+    signUp: (user) => dispatch(signUp(user)),
   };
 };
 
