@@ -34,23 +34,17 @@ class App extends React.Component {
     this.props.clearErrors();
   }
 
-  redirect = (e) => {
+  resetAppState = () => {
     this.props.clearErrors();
     this.props.clearEvent();
     this.props.clearEvents();
     this.props.resetSearch();
-    this.state.searchEntry = "";
-    if (e.currentTarget.className === "header-nav-item-logo") {
-      if (this.props.location.pathname !== "/") {
-        this.props.router.push("/");
-      }
-    } else if (e.currentTarget.className === "header-nav-item brow") {
-      if (this.props.location.pathname !== "/events") {
-        this.props.router.push("events");
-      }
-    } else {
-      this.props.router.push("events/new-event");
-    }
+    this.setState({ searchEntry: '' })
+  }
+
+  redirect = (e) => {
+    this.resetAppState();
+    this.props.router.push("events/new-event");
   }
 
   logOutRedirect = () => {
@@ -74,64 +68,43 @@ class App extends React.Component {
   }
 
   renderSearchEls = () => {
-    let searchEls;
-    if (this.props.location.pathname !== "/") searchEls =
-      <div>
-        <img src={ window.magnifying_glass }></img>
-        <input type="text" placeholder="Search for events"
-          value={ this.state.searchEntry }
-          onChange={ this.updateSearchState("searchEntry") }
-          onKeyUp={ this.search }></input>
-      </div>;
-      return searchEls;
+    return this.props.location.pathname == "/" ? null : (
+        <div>
+          <img src={ window.magnifying_glass } />
+          <input
+            type="text"
+            placeholder="Search for events"
+            value={ this.state.searchEntry }
+            onChange={ this.updateSearchState("searchEntry") }
+            onKeyUp={ this.search } />
+        </div>
+      );
     }
 
   renderLoggedInEls = () => {
     return (
-      <nav className='header-nav'>
-        <h2 onClick={ this.redirect }
-          className='header-nav-item-logo'>EventNite</h2>
-        { this.renderSearchEls() }
-        <ul className='header-items'>
-          <li onClick={ this.redirect }
-            className='header-nav-item brow'>Browse Events</li>
-          <li className='header-nav-item user-name'>
-            { this.props.currentUser.fname }
-            <ul className="nav-dropdown">
-              <Link to={`/users/tickets`} className="nav-dropdown-item">Tickets</Link>
-              <Link to={`/users/saved-events`} className="nav-dropdown-item">Saved</Link>
-              <Link to={`/users/manage-events`} className="nav-dropdown-item">Manage Events</Link>
-              <li className='prof-dropdown-b' onClick={ this.logOutRedirect }>Log Out</li>
-            </ul>
-          </li>
-          <li onClick={ this.redirect }
-            className='header-nav-item-c'>Create Event</li>
-        </ul>
-      </nav>
+      <ul>
+        <li className='header-nav-item user-name'>
+          { this.props.currentUser.fname }
+          <ul className="nav-dropdown">
+            <Link to={`/users/tickets`} className="nav-dropdown-item">Tickets</Link>
+            <Link to={`/users/saved-events`} className="nav-dropdown-item">Saved</Link>
+            <Link to={`/users/manage-events`} className="nav-dropdown-item">Manage Events</Link>
+            <li className='prof-dropdown-b' onClick={ this.logOutRedirect }>Log Out</li>
+          </ul>
+        </li>
+        <li onClick={ this.redirect } className='header-nav-item-c'>Create Event</li>
+      </ul>
     );
   }
 
   renderLoggedOutEls = () => {
     return (
-      <nav className='header-nav'>
-        <h2 onClick={ this.redirect }
-          className='header-nav-item-logo'>EventNite</h2>
-        { this.renderSearchEls() }
-        <ul className='header-items'>
-          <li onClick={ this.redirect }
-            className='header-nav-item brow'>Browse Events</li>
-          <li onClick={ this.openModal.bind(this, false) }
-            className='header-nav-item'>
-            <div>Sign Up</div>
-          </li>,
-          <li onClick={ this.openModal.bind(this, true) }
-            className='header-nav-item'>
-            <div>Log In</div>
-          </li>
-          <li onClick={ this.openModal.bind(this, true) }
-            className='header-nav-item-c'>Create Event</li>
-        </ul>
-      </nav>
+      <ul>
+        <li onClick={ this.openModal.bind(this, false) } className='header-nav-item'>Sign Up</li>
+        <li onClick={ this.openModal.bind(this, true) } className='header-nav-item'>Log In</li>
+        <li onClick={ this.openModal.bind(this, true) } className='header-nav-item-c'>Create Event</li>
+      </ul>
     );
   }
 
@@ -148,7 +121,14 @@ class App extends React.Component {
 
     return (
       <header className='header-main group'>
-        { loggedIn ? this.renderLoggedInEls() : this.renderLoggedOutEls() }
+        <nav className="header-nav">
+          <Link to="/" className='header-nav-item-logo'>EventNite</Link>
+          { this.renderSearchEls() }
+          <ul className='header-items'>
+            <Link to="/events" className="header-nav-item brow">Browse Events</Link>
+            { loggedIn ? this.renderLoggedInEls() : this.renderLoggedOutEls() }
+          </ul>
+        </nav>
         <Modal
           contentLabel=""
           isOpen={ this.state.modalOpen }
