@@ -15,6 +15,13 @@ class App extends React.Component {
     };
   }
 
+  componentWillReceiveProps (nextProps) {
+    const nextPath = nextProps.curPath;
+    const { curPath } = this.props;
+
+    if (curPath !== nextPath) this.resetAppState();
+  }
+
   openModal = (bool) => {
     this.setState({ modalOpen: true, signIn: bool });
   }
@@ -40,11 +47,6 @@ class App extends React.Component {
     this.props.clearEvents();
     this.props.resetSearch();
     this.setState({ searchEntry: '' })
-  }
-
-  redirect = (e) => {
-    this.resetAppState();
-    this.props.router.push("events/new-event");
   }
 
   logOutRedirect = () => {
@@ -89,10 +91,10 @@ class App extends React.Component {
             <Link to={`/users/tickets`} className="nav-dropdown-item">Tickets</Link>
             <Link to={`/users/saved-events`} className="nav-dropdown-item">Saved</Link>
             <Link to={`/users/manage-events`} className="nav-dropdown-item">Manage Events</Link>
-            <li className='prof-dropdown-b' onClick={ this.logOutRedirect }>Log Out</li>
+            <li className="nav-dropdown-item" onClick={ this.logOutRedirect }>Log Out</li>
           </ul>
         </li>
-        <li onClick={ this.redirect } className='header-nav-item create'>Create Event</li>
+        <Link to="/events/new-event" className='header-nav-item create'>Create Event</Link>
       </ul>
     );
   }
