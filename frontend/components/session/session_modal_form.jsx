@@ -5,31 +5,25 @@ class SessionModalForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-          email: "",
-          password: "",
-          fname: "",
-          lname: ""
-      };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateUserState = this.updateUserState.bind(this);
-    this.signUpFormEls = this.signUpFormEls.bind(this);
-    this.logInFormEls = this.logInFormEls.bind(this);
-    this.guestDemoEntry = this.guestDemoEntry.bind(this);
+      email: "",
+      password: "",
+      fname: "",
+      lname: ""
+    };
   }
 
-  updateUserState(prop) {
+  updateUserState = (prop) => {
     return e => this.setState({
       [prop]: e.currentTarget.value
     });
   }
 
-  guestDemoEntry () {
+  guestDemoEntry = () => {
     this.props.logIn( { email: "bob@gmail.com", password: "apples" } );
     this.props.closeModal();
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     let processForm = this.props.signUp;
     if (this.props.formType === true) processForm = this.props.logIn;
     e.preventDefault();
@@ -37,7 +31,17 @@ class SessionModalForm extends React.Component {
     processForm(user).then(() => this.props.closeModal());
   }
 
-  signUpFormEls () {
+  swapToLogIn = () => {
+    this.props.swapModalDisplay(false);
+    this.props.clearErrors();
+  }
+
+  swapToSignUp = () => {
+    this.props.swapModalDisplay(true);
+    this.props.clearErrors();
+  }
+
+  signUpFormEls = () => {
     const formHeader = "Sign Up";
 
     return (
@@ -45,7 +49,7 @@ class SessionModalForm extends React.Component {
         <h2 className="modal-header">{ formHeader }</h2>
         <div className='link-container'>
           Already signed up? <Link className="swap-form-link"
-          onClick={ this.props.swapSignInState }>
+          onClick={ this.swapToLogIn }>
             Log In</Link>
         </div>
         <form onSubmit={this.handleSubmit} className="auth-modal-form">
@@ -78,7 +82,7 @@ class SessionModalForm extends React.Component {
     );
   }
 
-  logInFormEls () {
+  logInFormEls = () => {
     const formHeader = "Log In";
 
     return (
@@ -86,7 +90,7 @@ class SessionModalForm extends React.Component {
         <h2 className="modal-header">{ formHeader }</h2>
         <div className="link-container">
           Don't have an account? <Link className="swap-form-link"
-          onClick={ this.props.swapSignInState }>
+          onClick={ this.swapToSignUp }>
           Sign Up</Link>
         </div>
         <form onSubmit={this.handleSubmit} className="auth-modal-form">
@@ -111,9 +115,8 @@ class SessionModalForm extends React.Component {
   }
 
   render () {
-    const formType = this.props.formType;
-    let renderedForm = this.signUpFormEls();
-    if (formType === true) renderedForm = this.logInFormEls();
+    const { displayingSignUpForm } = this.props;
+
     let errors = [];
     if (this.props.errors) {
       this.props.errors.forEach((error, _idx) => {
@@ -123,7 +126,7 @@ class SessionModalForm extends React.Component {
 
     return (
       <div className="login-signup">
-        { renderedForm }
+        { displayingSignUpForm ? this.signUpFormEls() : this.logInFormEls() }
         <ul onClick={this.props.closeModal} className="errors">{errors}</ul>
       </div>
     );
