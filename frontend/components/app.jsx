@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
 import ModalStyle from '../../app/assets/stylesheets/modal_style';
-import SessionModalForm from './session/session_modal_form';
+import SessionModalContainer from './session/sessionModalContainer';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +10,6 @@ class App extends React.Component {
 
     this.state = {
       modalOpen: false,
-      signIn: false,
       searchEntry: ""
     };
   }
@@ -34,11 +33,6 @@ class App extends React.Component {
 
   onModalOpen () {
     ModalStyle.content.top = "95px";
-  }
-
-  swapSignInState = () => {
-    this.state.signIn === false ? this.setState({ signIn: true }) : this.setState({ signIn: false });
-    this.props.clearErrors();
   }
 
   resetAppState = () => {
@@ -102,23 +96,15 @@ class App extends React.Component {
   renderLoggedOutEls = () => {
     return (
       <ul>
-        <li onClick={ this.openModal.bind(this, false) } className='header-nav-item'>Sign Up</li>
-        <li onClick={ this.openModal.bind(this, true) } className='header-nav-item'>Log In</li>
-        <li onClick={ this.openModal.bind(this, true) } className='header-nav-item create'>Create Event</li>
+        <li onClick={ this.openModal.bind(false) } className='header-nav-item'>Sign Up</li>
+        <li onClick={ this.openModal.bind(true) } className='header-nav-item'>Log In</li>
+        <li onClick={ this.openModal.bind(true) } className='header-nav-item create'>Create Event</li>
       </ul>
     );
   }
 
   render () {
-    const {
-      children,
-      errors,
-      logIn,
-      loggedIn,
-      router,
-      signIn,
-      signUp
-    } = this.props;
+    const { children, loggedIn, signIn } = this.props;
 
     return (
       <header>
@@ -137,15 +123,7 @@ class App extends React.Component {
           onRequestClose={ this.closeModal }
           style={ ModalStyle }
         >
-          <SessionModalForm
-            closeModal={ this.closeModal }
-            errors={ errors }
-            formType={ this.state.signIn }
-            logIn={ logIn }
-            router={ router }
-            signUp={ signUp }
-            swapSignInState={ this.swapSignInState }
-          />
+          <SessionModalContainer closeModal={ this.closeModal } />
         </Modal>
         {children}
       </header>
