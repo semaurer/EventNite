@@ -1,31 +1,31 @@
 .header-nav {
   border-bottom: 1px solid #ccc;
-  height: 3.8rem;
   font-size: 0.8rem;
+  height: 3.8rem;
 }
 
 .header-nav img {
-  height: 20px;
-  width: 20px;
   float: left;
-  margin-top: 22px;
-  margin-left: 20px;
+  height: 1.2rem;
+  margin-left: 1.4rem;
+  margin-top: 1.4rem;
+  width: 1.2rem;
 }
 
 .header-nav input {
-  margin-top: 13px;
-  margin-left: 18px;
-  height: 40px;
-  width: 300px;
-  font-size: 16px;
   float: left;
+  font-size: 1rem;
+  height: 2.5rem;
+  margin-left: 1.1rem;
+  margin-top: 0.8rem;
+  width: 35%;
 }
 
 .header-nav-item {
   border-left: 1px solid #eee;
   cursor: pointer;
   float: left;
-  padding: 23px 22px;
+  padding: 1.4rem;
   position: relative;
 }
 
@@ -37,7 +37,7 @@
   border-right: 1px solid #eee;
   color: #8B008B;
   font-size: 1.5rem;
-  padding: 16px 22px;
+  padding: 1rem 1.4rem;
 }
 
 .header-nav-item.create {
