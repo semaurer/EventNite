@@ -21,8 +21,28 @@ class App extends React.Component {
     if (curPath !== nextPath) this.resetAppState();
   }
 
-  openModal = (bool) => {
-    this.setState({ modalOpen: true, signIn: bool });
+  resetAppState = () => {
+    const { clearErrors, clearEvent, clearEvents, resetSearch } = this.props;
+
+    clearErrors();
+    clearEvent();
+    clearEvents();
+    resetSearch();
+    this.setState({ searchEntry: '' })
+  }
+
+  openSignUp = () => {
+    this.props.swapModalDisplay(true);
+    this.openModal();
+  }
+
+  openLogIn = () => {
+    this.props.swapModalDisplay(false);
+    this.openModal();
+  }
+
+  openModal = () => {
+    this.setState({ modalOpen: true });
   }
 
   closeModal = () => {
@@ -35,43 +55,45 @@ class App extends React.Component {
     ModalStyle.content.top = "95px";
   }
 
-  resetAppState = () => {
-    this.props.clearErrors();
-    this.props.clearEvent();
-    this.props.clearEvents();
-    this.props.resetSearch();
-    this.setState({ searchEntry: '' })
-  }
-
   logOutRedirect = () => {
-    this.props.logOut();
-    if (this.props.location.pathname !== "/") this.props.router.push("/");
+    const { curPath, logOut, router } = this.props;
+
+    logOut();
+    if (curPath !== "/") router.push("/");
   }
 
-  updateSearchState = (prop) => {
-    return e => this.setState({
-      [prop]: e.currentTarget.value
-    });
+  updateSearchState = () => {
+    this.setState({ searchEntry: this.searchInput.value })
   }
 
   search = (e) => {
+    const { curPath, receiveSearch, router } = this.props;
+
     if (e.keyCode === 13) {
-      if (this.props.location.pathname !== "/events") {
-        this.props.router.push("events");
+      if (curPath !== "/events") {
+        router.push("events");
       }
-      this.props.receiveSearch(this.state.searchEntry);
+      receiveSearch(this.state.searchEntry);
     }
   }
 
+  setSearchRef = (ref) => {
+    this.searchInput = ref;
+  }
+
   renderSearchEls = () => {
-    return this.props.location.pathname == "/" ? null : (
+    const { curPath } = this.props;
+
+    return curPath === "/" ? null : (
         <div>
           <img src={ window.magnifying_glass } />
           <input
             placeholder="Search for events"
             value={ this.state.searchEntry }
-            onChange={ this.updateSearchState("searchEntry") }
-            onKeyUp={ this.search } />
+            onChange={ this.updateSearchState }
+            onKeyUp={ this.search }
+            ref={ this.setSearchRef }
+          />
         </div>
       );
     }
@@ -79,7 +101,7 @@ class App extends React.Component {
   renderLoggedInEls = () => {
     return (
       <ul>
-        <li className='header-nav-item user-name'>
+        <li className='header-nav-item'>
           { this.props.currentUser.fname }
           <ul className="nav-dropdown">
             <Link to={`/users/tickets`} className="nav-dropdown-item">Tickets</Link>
@@ -96,15 +118,15 @@ class App extends React.Component {
   renderLoggedOutEls = () => {
     return (
       <ul>
-        <li onClick={ this.openModal.bind(false) } className='header-nav-item'>Sign Up</li>
-        <li onClick={ this.openModal.bind(true) } className='header-nav-item'>Log In</li>
-        <li onClick={ this.openModal.bind(true) } className='header-nav-item create'>Create Event</li>
+        <li onClick={ this.openSignUp } className='header-nav-item'>Sign Up</li>
+        <li onClick={ this.openLogIn } className='header-nav-item'>Log In</li>
+        <li onClick={ this.openModal } className='header-nav-item create'>Create Event</li>
       </ul>
     );
   }
 
   render () {
-    const { children, loggedIn, signIn } = this.props;
+    const { children, currentUser } = this.props;
 
     return (
       <header>
@@ -113,7 +135,7 @@ class App extends React.Component {
           { this.renderSearchEls() }
           <ul className='header-items'>
             <Link to="/events" className="header-nav-item">Browse Events</Link>
-            { loggedIn ? this.renderLoggedInEls() : this.renderLoggedOutEls() }
+            { currentUser ? this.renderLoggedInEls() : this.renderLoggedOutEls() }
           </ul>
         </nav>
         <Modal
