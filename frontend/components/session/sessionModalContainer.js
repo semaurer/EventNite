@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SessionModalForm from './session_modal_form';
+import SessionModalForm from './sessionModal';
 import { clearErrors, logIn, signUp, swapModalDisplay } from '../../actions/session_actions';
 
 const mapStateToProps = ({ session }) => {
