@@ -3,6 +3,7 @@ import * as APIUtil from '../util/session_api_util';
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const SWAP_MODAL_DISPLAY = "SWAP_MODAL_DISPLAY";
 
 export const receiveCurrentUser = (currentUser) => {
   return {
@@ -52,4 +53,11 @@ export function signUp(user) {
         (errors) => dispatch(receiveErrors(errors.responseJSON))
       );
   };
+}
+
+export function swapModalDisplay (displayingSignUpForm) {
+  return {
+    type: SWAP_MODAL_DISPLAY,
+    displayingSignUpForm
+  }
 }
