@@ -1,21 +1,27 @@
 import React from 'react';
 import { merge, assign } from 'lodash';
-import { RECEIVE_CURRENT_USER,
-  RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
+import {
+  CLEAR_ERRORS,
+  RECEIVE_CURRENT_USER,
+  RECEIVE_ERRORS,
+  SWAP_MODAL_DISPLAY
+} from '../actions/session_actions';
 import { REMOVE_SAVED_EVENT, RECEIVE_SAVED_EVENT } from '../actions/event_actions';
 import { removeSavedEvent } from './selectors';
 
 const defaultState = Object.freeze({
   currentUser: null,
   errors: [],
+  displayingSignUpForm: true
 });
 
 const sessionReducer = (state = defaultState, action) => {
-
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-     const currentUser = action.currentUser;
-     return merge({}, state, { currentUser });
+      return {
+        ...state,
+        currentUser: action.currentUser
+      };
 
     case RECEIVE_ERRORS:
       let errors = action.errors;
@@ -36,6 +42,12 @@ const sessionReducer = (state = defaultState, action) => {
       newState = Object.assign({}, state);
       const mergedState = removeSavedEvent(newState, eventId);
       return mergedState;
+
+    case SWAP_MODAL_DISPLAY:
+      return {
+        ...state,
+        displayingSignUpForm: action.displayingSignUpForm
+      };
 
     default:
      return state;
