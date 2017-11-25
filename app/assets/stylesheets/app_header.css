@@ -26,6 +26,7 @@
   cursor: pointer;
   float: left;
   padding: 23px 22px;
+  position: relative;
 }
 
 .header-nav-item:hover {
@@ -35,22 +36,12 @@
 .header-nav-item.logo {
   border-right: 1px solid #eee;
   color: #8B008B;
-  cursor: pointer;
-  float: left;
   font-size: 1.5rem;
   padding: 16px 22px;
 }
 
 .header-nav-item.create {
-  float: left;
-  padding: 23px 22px;
   color: #23b0fd;
-  border-left: 1px solid #eee;
-  cursor: pointer;
-}
-
-.header-nav-item.user-name {
-  position: relative;
 }
 
 .header-items {
@@ -70,11 +61,11 @@
   background: #eee;
 }
 
-.header-nav-item.user-name .nav-dropdown {
+.header-nav-item .nav-dropdown {
   display: none;
 }
 
-.header-nav-item.user-name:hover .nav-dropdown {
+.header-nav-item:hover .nav-dropdown {
   background: white;
   border: 1px solid #eee;
   display: flex;
