@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import classNames from 'classnames'
 
 class SessionModalForm extends React.Component {
   constructor(props) {
@@ -73,8 +74,6 @@ class SessionModalForm extends React.Component {
           onChange={this.updateUserState("password")}
           placeholder="Password"
         />
-        <button className="auth-form-button" onClick={ this.handleSubmit }>Submit</button>
-        <button className="auth-form-button" onClick={ this.guestDemoEntry }>Guest Demo</button>
       </div>
     );
   }
@@ -97,9 +96,7 @@ class SessionModalForm extends React.Component {
           onChange={this.updateUserState("password")}
           placeholder="Password"
         />
-        <button className="auth-form-button spacing" onClick={ this.handleSubmit }>Submit</button>
-        <button className="auth-form-button" onClick={ this.guestDemoEntry }>Guest Demo</button>
-        <span className="log-in-fill">Welcome Back!</span>
+        <span className="welcome-message">Welcome Back!</span>
       </div>
     );
   }
@@ -117,6 +114,8 @@ class SessionModalForm extends React.Component {
     return (
       <div className="login-signup">
         { displayingSignUpForm ? this.signUpFormEls() : this.logInFormEls() }
+        <button className={classNames('modal-button', {'spacing': !displayingSignUpForm})} onClick={ this.handleSubmit }>Submit</button>
+        <button className="modal-button" onClick={ this.guestDemoEntry }>Guest Demo</button>
         <ul onClick={closeModal} className="errors">{errorsWrapper}</ul>
       </div>
     );
