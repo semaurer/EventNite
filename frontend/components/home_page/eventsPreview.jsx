@@ -24,7 +24,7 @@ class EventsPreview extends Component {
     const { events, savedEvents } = this.props;
     if (events.length < 9) return <div>Sorry No Events Found</div>;
 
-    return events.map((event, idx) => {
+    return events.slice(0, 9).map((event, idx) => {
       const startDate = event.formatted_start_date_time
       const startDateTime = startDate.slice(0, startDate.length - 6);
 
@@ -44,7 +44,11 @@ class EventsPreview extends Component {
             </span>
           </Link>
           <span className="bookmark-bar">
-            <button id={ event.id } onClick={ this.updateBookmark } className="bookmark-saved" />
+            <button
+              className="bookmark-saved"
+              id={ event.id }
+              onClick={ this.updateBookmark }
+            />
             <button
               className={classNames({'bookmark-prev-cover': !eventSaved })}
               id={event.id}
@@ -60,11 +64,9 @@ class EventsPreview extends Component {
     const { currentUser, events } = this.props;
 
     return(
-      <div className="previews-alignment">
-        <div className="previews-container">
-          <h3>{ currentUser ? 'Events For You' : 'Popular Events' }</h3>
-          { events.length ? this.renderEventsPreview() : <div className="loader" />}
-        </div>
+      <div className="previews-container">
+        <h3>{ currentUser ? 'Events For You' : 'Popular Events' }</h3>
+        { events.length ? this.renderEventsPreview() : <div className="loader" />}
       </div>
     );
   }
