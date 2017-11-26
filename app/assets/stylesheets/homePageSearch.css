@@ -1,15 +1,10 @@
-.home-search-container {
-  height: 200px;
-  width: 100%;
+.homepage-search {
   position: absolute;
   bottom: -95px;
-}
-
-.home-search {
-  margin: 0 auto;
+  left: 10%;
   display: block;
   width: 80%;
-  height: 100%;
+  height: 200px;
   background-color: #fff;
   opacity: 0.9;
   text-align: center;
@@ -19,30 +14,23 @@
   border-right: 1px solid #ccc;
 }
 
-.home-search h2 {
+.homepage-search h2 {
   padding-top: 40px;
   font-size: 40px;
   color: #8B008B;
 }
 
-.home-search nav {
-  padding-top: 30px;
-  width: 600px;
-  height: 100px;
-  margin: 0 auto;
-  display: block;
-}
-
-.home-search input {
+.homepage-search input {
   border: 1px solid #ccc;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
+  margin-top: 2rem;
   padding: 9px 20px;
   width: 270px;
   opacity: 1;
 }
 
-.home-search button {
+.homepage-search button {
   background-color: #8B008B;
   transition: background-color 0.5s;
   color: #fff;
@@ -52,7 +40,7 @@
   letter-spacing: 0.2px;
 }
 
-.home-search button:hover {
+.homepage-search button:hover {
   cursor: pointer;
   background-color: #8A2BE2;
   transition: background-color 0.5s;
