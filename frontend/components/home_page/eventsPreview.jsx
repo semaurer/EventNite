@@ -14,23 +14,20 @@ class EventsPreview extends React.Component {
     this.props.fetchEvents();
   }
 
-  updateBookmark = (e) => {
-    if (this.props.currentUser === null) return;
-    let updateBool = false;
-    const currentEventId = parseInt(e.currentTarget.id);
+  updateBookmark = ({ currentTarget }) => {
+    const { currentUser, saveEvent, savedEvents, unsaveEvent } = this.props;
+    if (currentUser) {
+      let shouldUnsave = false;
 
-    this.props.savedEvents.forEach(savedEventId => {
-      if (savedEventId === currentEventId) updateBool = true;
-    });
-
-    if (updateBool === true) {
-      this.props.unsaveEvent(e.currentTarget.id);
-    } else {
-      this.props.saveEvent(e.currentTarget.id);
+      savedEvents.forEach(savedEventId => {
+        if (savedEventId === parseInt(currentTarget.id)) shouldUnsave = true;
+      });
+  
+      shouldUnsave === true ? unsaveEvent(currentTarget.id) : saveEvent(currentTarget.id);
     }
   }
 
-  eventPreviewEls = () => {
+  renderEventsPreview = () => {
     let previews = [];
     if (this.props.events.length < 9) return;
     for (let i = 0; i < 9; i++) {
@@ -70,21 +67,13 @@ class EventsPreview extends React.Component {
   }
 
   render() {
-    let header = <h3>Popular Events</h3>;
-    if (this.props.currentUser !== null) header = <h3>Events For You</h3>;
-    let eventsPreview = "";
-    if (this.props.events.length > 0) eventsPreview = this.eventPreviewEls();
-    let loader;
-    if (this.props.events.length === 0) {
-      loader = <div className="loader"></div>;
-    }
+    const { currentUser, events } = this.props;
 
     return(
-      <div className="previews-alignment group">
+      <div className="previews-alignment">
         <div className="previews-container">
-          { header }
-          { loader }
-          { eventsPreview }
+          <h3>{ currentUser ? 'Events For You' : 'Popular Events' }</h3>
+          { events.length ? this.renderEventsPreview() : <div className="loader" />}
         </div>
       </div>
     );
