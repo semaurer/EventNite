@@ -4,17 +4,17 @@ import { Link } from 'react-router';
 class EventsPreview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { bookmarked: false };
 
-    this.eventPreviewEls = this.eventPreviewEls.bind(this);
-    this.updateBookmark = this.updateBookmark.bind(this);
+    this.state = {
+      bookmarked: false
+    };
   }
 
   componentDidMount() {
     this.props.fetchEvents();
   }
 
-  updateBookmark(e) {
+  updateBookmark = (e) => {
     if (this.props.currentUser === null) return;
     let updateBool = false;
     const currentEventId = parseInt(e.currentTarget.id);
@@ -30,7 +30,7 @@ class EventsPreview extends React.Component {
     }
   }
 
-  eventPreviewEls() {
+  eventPreviewEls = () => {
     let previews = [];
     if (this.props.events.length < 9) return;
     for (let i = 0; i < 9; i++) {
