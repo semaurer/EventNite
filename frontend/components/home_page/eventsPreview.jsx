@@ -1,15 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
+import classNames from 'classnames'
 
-class EventsPreview extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      bookmarked: false
-    };
-  }
-
+class EventsPreview extends Component {
   componentDidMount() {
     this.props.fetchEvents();
   }
@@ -28,28 +21,22 @@ class EventsPreview extends React.Component {
   }
 
   renderEventsPreview = () => {
-    let previews = [];
-    if (this.props.events.length < 9) return;
-    for (let i = 0; i < 9; i++) {
-      let event = this.props.events[i];
-      let startDateTime = event.formatted_start_date_time
-        .slice(0, event.formatted_start_date_time.length - 6);
-      let bookmarkBool = false;
-      this.props.savedEvents.forEach(savedEventId => {
-        if (event.id === savedEventId) {
-          bookmarkBool = true;
-        }
+    const { events, savedEvents } = this.props;
+    if (events.length < 9) return <div>Sorry No Events Found</div>;
+
+    return events.map((event, idx) => {
+      const startDate = event.formatted_start_date_time
+      const startDateTime = startDate.slice(0, startDate.length - 6);
+
+      let eventSaved = false;
+      savedEvents.forEach(savedEventId => {
+        if (event.id === savedEventId) eventSaved = true;
       });
 
-      let bookmarkCover = <button id={ event.id }
-        onClick={ this.updateBookmark }
-        className="bookmark-ind-cover-false"></button>;
-      if (bookmarkBool === false) bookmarkCover = <button id={ event.id }
-        onClick={ this.updateBookmark } className="bookmark-prev-cover"></button>;
-      previews.push(
+      return (
         <div key={ event.id } className="each-saved-event">
           <Link to={ `events/${event.id}` }>
-            <img src={ event.image_url }></img>
+            <img src={ event.image_url } />
             <span className="saved-main-info">
               <article className="saved-time">{ startDateTime } { event.start_time }</article>
               <article className="saved-title">{ event.title }</article>
@@ -57,13 +44,16 @@ class EventsPreview extends React.Component {
             </span>
           </Link>
           <span className="bookmark-bar">
-            <button id={ event.id } onClick={ this.updateBookmark }
-              className="bookmark-saved"></button>
-            { bookmarkCover }
+            <button id={ event.id } onClick={ this.updateBookmark } className="bookmark-saved" />
+            <button
+              className={classNames({'bookmark-prev-cover': !eventSaved })}
+              id={event.id}
+              onClick={this.updateBookmark}
+            />
           </span>
-        </div>);
-    }
-    return previews;
+        </div>
+      );
+    });
   }
 
   render() {
@@ -79,6 +69,5 @@ class EventsPreview extends React.Component {
     );
   }
 }
-
 
 export default EventsPreview;
