@@ -10,7 +10,7 @@ const style = {
   },
   content : {
     position        : 'fixed',
-    height          : '360px',
+    height          : '340px',
     width           : '280px',
     margin          : '0 auto',
     top             : '-300px',

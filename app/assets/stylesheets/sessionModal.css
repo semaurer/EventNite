@@ -32,7 +32,7 @@
   width: 95%;
 }
 
-.auth-form-button {
+.modal-button {
   background-color: #228B22;
   border-radius: 0.3rem;
   color: #fff;
@@ -44,15 +44,15 @@
   width: 97%;
 }
 
-.auth-form-button:hover {
+.modal-button:hover {
   background-color: #008000;
 }
 
 .spacing {
-  margin-top: 2.5rem;
+  margin-top: 2.1rem;
 }
 
-.log-in-fill {
+.welcome-message {
   display: block;
   font-size: 1.2rem;
   margin-top: 2rem;
