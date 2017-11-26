@@ -22,13 +22,10 @@ class App extends Component {
   }
 
   resetAppState = () => {
-    const { clearErrors, clearEvent, clearEvents, resetSearch } = this.props;
-
+    const { clearErrors, clearEvent, clearEvents } = this.props;
     clearErrors();
     clearEvent();
     clearEvents();
-    resetSearch();
-    this.setState({ searchEntry: '' })
   }
 
   openSignUp = () => {
