@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 class SessionModalForm extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       email: "",
       password: "",
@@ -19,115 +20,104 @@ class SessionModalForm extends React.Component {
   }
 
   guestDemoEntry = () => {
-    this.props.logIn( { email: "bob@gmail.com", password: "apples" } );
-    this.props.closeModal();
+    const { closeModal, logIn } = this.props;
+    logIn({ email: "bob@gmail.com", password: "apples" });
+    closeModal();
   }
 
   handleSubmit = (e) => {
-    let processForm = this.props.signUp;
-    if (this.props.formType === true) processForm = this.props.logIn;
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    processForm(user).then(() => this.props.closeModal());
+    const { closeModal, displayingSignUpForm, logIn, signUp } = this.props;
+
+    const processFormSubmittal = displayingSignUpForm ? signUp : logIn
+    processFormSubmittal(this.state).then(() => closeModal());
   }
 
   swapToLogIn = () => {
-    this.props.swapModalDisplay(false);
-    this.props.clearErrors();
+    const { clearErrors, swapModalDisplay } = this.props;
+    swapModalDisplay(false);
+    clearErrors();
   }
 
   swapToSignUp = () => {
-    this.props.swapModalDisplay(true);
-    this.props.clearErrors();
+    const { clearErrors, swapModalDisplay } = this.props;
+    swapModalDisplay(true);
+    clearErrors();
   }
 
   signUpFormEls = () => {
-    const formHeader = "Sign Up";
-
     return (
-      <div className="sign-up-form group">
-        <h2 className="modal-header">{ formHeader }</h2>
+      <div className="modal-form">
+        <h2 className="modal-header">Sign Up</h2>
         <div className='link-container'>
-          Already signed up? <Link className="swap-form-link"
-          onClick={ this.swapToLogIn }>
-            Log In</Link>
+          Already signed up?<a onClick={ this.swapToLogIn }>Log In</a>
         </div>
-        <form onSubmit={this.handleSubmit} className="auth-modal-form">
-          <input className="auth-form-item" type="text"
-              value={this.state.email}
-              onChange={this.updateUserState("email")}
-              placeholder="Email">
-              </input>
-            <input className="auth-form-item" type="text"
-              value={this.state.fname}
-              onChange={this.updateUserState("fname")}
-              placeholder="First Name">
-              </input>
-            <input className="auth-form-item" type="text"
-              value={this.state.lname}
-              onChange={this.updateUserState("lname")}
-              placeholder="Last Name">
-              </input>
-           <input className="auth-form-item" type="password"
-              value={this.state.password}
-              onChange={this.updateUserState("password")}
-              placeholder="Password">
-              </input>
-          <input className="auth-form-button" type="submit" value="Submit"></input>
-        </form>
-        <button className="auth-form-button" onClick={ this.guestDemoEntry }
-          >Guest Demo</button>
+        <input
+          value={this.state.email}
+          onChange={this.updateUserState("email")}
+          placeholder="Email"
+        />
+        <input
+          value={this.state.fname}
+          onChange={this.updateUserState("fname")}
+          placeholder="First Name"
+        />
+        <input
+          value={this.state.lname}
+          onChange={this.updateUserState("lname")}
+          placeholder="Last Name"
+        />
+        <input
+          type="password"
+          value={this.state.password}
+          onChange={this.updateUserState("password")}
+          placeholder="Password"
+        />
+        <button className="auth-form-button" onClick={ this.handleSubmit }>Submit</button>
+        <button className="auth-form-button" onClick={ this.guestDemoEntry }>Guest Demo</button>
       </div>
-
     );
   }
 
   logInFormEls = () => {
-    const formHeader = "Log In";
-
     return (
-      <div className="log-in-form group">
-        <h2 className="modal-header">{ formHeader }</h2>
+      <div className="modal-form">
+        <h2 className="modal-header">Log In</h2>
         <div className="link-container">
-          Don't have an account? <Link className="swap-form-link"
-          onClick={ this.swapToSignUp }>
-          Sign Up</Link>
+          Don't have an account?<a onClick={ this.swapToSignUp }>Sign Up</a>
         </div>
-        <form onSubmit={this.handleSubmit} className="auth-modal-form">
-          <input className="auth-form-item" type="text"
-            value={this.state.email}
-            onChange={this.updateUserState("email")}
-            placeholder="Email">
-          </input>
-          <input className="auth-form-item" type="password"
-            value={this.state.password}
-            onChange={this.updateUserState("password")}
-            placeholder="Password">
-            </input>
-          <input className="auth-form-button l" type="submit" value="Submit"></input>
-        </form>
-        <button className="auth-form-button" onClick={ this.guestDemoEntry }
-          >Guest Demo</button>
+        <input
+          value={this.state.email}
+          onChange={this.updateUserState("email")}
+          placeholder="Email"
+        />
+        <input
+          type="password"
+          value={this.state.password}
+          onChange={this.updateUserState("password")}
+          placeholder="Password"
+        />
+        <button className="auth-form-button spacing" onClick={ this.handleSubmit }>Submit</button>
+        <button className="auth-form-button" onClick={ this.guestDemoEntry }>Guest Demo</button>
         <span className="log-in-fill">Welcome Back!</span>
       </div>
-
     );
   }
 
   render () {
-    const { displayingSignUpForm } = this.props;
+    const { closeModal, displayingSignUpForm, errors } = this.props;
 
-    let errors = [];
-    if (this.props.errors) {
-      this.props.errors.forEach((error, _idx) => {
-        errors.push(<li key={ _idx }>{ error }</li>);
+    let errorsWrapper = [];
+    if (errors) {
+      errors.forEach((error, idx) => {
+        errorsWrapper.push(<li key={idx}>{error}</li>);
       });
     }
 
     return (
       <div className="login-signup">
         { displayingSignUpForm ? this.signUpFormEls() : this.logInFormEls() }
-        <ul onClick={this.props.closeModal} className="errors">{errors}</ul>
+        <ul onClick={closeModal} className="errors">{errorsWrapper}</ul>
       </div>
     );
   }
