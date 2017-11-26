@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames'
 
-class SessionModalForm extends React.Component {
+class SessionModalForm extends Component {
   constructor(props) {
     super(props);
 

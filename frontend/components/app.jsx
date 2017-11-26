@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
 import ModalStyle from '../../app/assets/stylesheets/sessionModalStyling';
 import SessionModalContainer from './session/sessionModalContainer';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import HomePage from './home_page';
+import HomePage from './homePage';
 import { receiveSearch } from '../../actions/search_actions';
 import { fetchEvents, saveEvent, unsaveEvent } from '../../actions/event_actions';
 import { selectEvents } from '../../reducers/selectors';

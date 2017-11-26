@@ -1,14 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import HomePageSearch from './home_page_search';
 import EventsPreview from './events_preview';
 
-class homePage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class homePage extends Component {
   render() {
-
     return (
       <span className="home-page-pic">
         <img className="home-image" src={ window.home_page_pic }/>
@@ -24,7 +19,6 @@ class homePage extends React.Component {
       </span>
     );
   }
-
 }
 
 export default homePage;
