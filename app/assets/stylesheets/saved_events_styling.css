@@ -67,17 +67,17 @@
 }
 
 .bookmark-saved {
-  position: absolute;
-  top: 26px;
-  right: 15px;
-  z-index: 1;
   color: #eee;
-  font-size: 2em;
   cursor: pointer;
-  width: 1.5em;
+  font-size: 2em;
   line-height: 0.5em;
-  -webkit-transition: line-height 0.5s;
+  position: absolute;
+  right: 15px;
+  top: 26px;
   transition: line-height 0.5s;
+  -webkit-transition: line-height 0.5s;
+  width: 1.5em;
+  z-index: 1;
 }
 
 .bookmark-saved:after {
