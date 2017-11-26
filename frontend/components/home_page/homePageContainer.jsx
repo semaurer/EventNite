@@ -19,15 +19,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-      receiveSearch: (search) => dispatch(receiveSearch(search)),
-      fetchEvents: () => dispatch(fetchEvents()),
-      saveEvent: (eventId) => dispatch(saveEvent(eventId)),
-      unsaveEvent: (eventId) => dispatch(unsaveEvent(eventId)),
-    };
+  return {
+    receiveSearch: (search) => dispatch(receiveSearch(search)),
+    fetchEvents: () => dispatch(fetchEvents()),
+    saveEvent: (eventId) => dispatch(saveEvent(eventId)),
+    unsaveEvent: (eventId) => dispatch(unsaveEvent(eventId)),
+  };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
