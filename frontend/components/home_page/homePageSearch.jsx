@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 
 class HomePageSearch extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      searchEntry: ""
-    };
+  state = {
+    searchEntry: ""
   }
 
   updateSearchState = () => {
