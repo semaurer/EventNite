@@ -2,21 +2,9 @@ import React from 'react';
 import { Link } from 'react-router';
 
 class EventIndex extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { categoryOpen: "closed" };
-    this.eventEls = this.eventEls.bind(this);
-    this.changeMenuState = this.changeMenuState.bind(this);
-    this.configureMenuForCats = this.configureMenuForCats.bind(this);
-    this.configureMenuForSubCat = this.configureMenuForSubCat.bind(this);
-    this.returnToFull = this.returnToFull.bind(this);
-    this.fullMenuEls = this.fullMenuEls.bind(this);
-    this.parentCatMenu = this.parentCatMenu.bind(this);
-    this.subCatMenu = this.subCatMenu.bind(this);
-    this.updateSavedStatus = this.updateSavedStatus.bind(this);
-  }
+  state = { categoryOpen: "closed" };
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.props.location.pathname.includes("categories")) {
       if (nextProps.location.pathname === "events") {
         this.props.fetchEvents();
@@ -30,13 +18,13 @@ class EventIndex extends React.Component {
     this.props.fetchCategories();
   }
 
-  returnToFull() {
+  returnToFull = () => {
     this.setState({ categoryOpen: "full" });
     this.props.router.push("/events/categories");
     this.props.fetchEvents();
   }
 
-  parentCatMenu() {
+  parentCatMenu = () => {
     const fullMenuEls = [<div onClick={ this.returnToFull }
       className="non-active"
       key="cat-index"><h4>All Categories</h4></div>];
@@ -61,7 +49,7 @@ class EventIndex extends React.Component {
     return fullMenuEls;
   }
 
-  subCatMenu () {
+  subCatMenu = () => {
     const fullMenuEls = [<div onClick={ this.returnToFull }
       className="non-active"
       key="cat-index"><h4>All Categories</h4></div>];
@@ -87,7 +75,7 @@ class EventIndex extends React.Component {
     return fullMenuEls;
   }
 
-  configureMenuForSubCat(e) {
+  configureMenuForSubCat = (e) => {
     let parentCat = "";
     let childCat = "";
 
@@ -108,14 +96,14 @@ class EventIndex extends React.Component {
     this.props.categoryFilterFetchEvents(e.currentTarget.id);
   }
 
-  configureMenuForCats(e) {
+  configureMenuForCats = (e) => {
     this.setState({ categoryOpen: "parentSelected" });
     this.props.router.push(`events/categories/${e.currentTarget.innerText}`);
     this.props.removeEvents();
     this.props.categoryFilterFetchEvents(e.currentTarget.id);
   }
 
-  changeMenuState(e) {
+  changeMenuState = (e) => {
     if (this.state.categoryOpen === "closed") {
       this.props.resetSearch();
       this.setState({ categoryOpen: "full" });
@@ -128,7 +116,7 @@ class EventIndex extends React.Component {
     }
   }
 
-  fullMenuEls() {
+  fullMenuEls = () => {
     const fullMenuEls = [<div className="all-c"
       key="cat-index"><h4>All Categories</h4></div>];
     this.props.categories.forEach(category => {
@@ -142,7 +130,7 @@ class EventIndex extends React.Component {
     return fullMenuEls;
   }
 
-  updateSavedStatus(e) {
+  updateSavedStatus = (e) => {
     if (this.props.currentUser === null) return;
     let updateBool = false;
     const currentEventId = parseInt(e.currentTarget.id);
@@ -158,7 +146,7 @@ class EventIndex extends React.Component {
     }
   }
 
-  eventEls (savedEvents) {
+  eventEls = (savedEvents) => {
     return this.props.events.map((event) => {
       let bookmarkBool = false;
       savedEvents.forEach(savedEventId => {
