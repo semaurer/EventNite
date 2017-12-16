@@ -24,32 +24,23 @@ class EventIndex extends React.Component {
     this.props.fetchEvents();
   }
 
-  configureMenuForSubCat = (e) => {
-    let parentCat = "";
-    let childCat = "";
+  updateToSubCategory = (e) => {
+    const { categories, categoryFilterFetchEvents, removeEvents, router } = this.props;
+    let subCategory;
+    let parentCategory;
 
-    this.props.categories.forEach(category => {
-      if (parseInt(e.currentTarget.id) === category.id) {
-        childCat = category;
-      }
+    categories.forEach(category => {
+      if (parseInt(e.currentTarget.id) === category.id) subCategory = category;
     });
 
-    this.props.categories.forEach(category => {
-      if (category.id === childCat.parent_category_id) {
-        parentCat = category;
-      }
+    categories.forEach(category => {
+      if (category.id === subCategory.parent_category_id) parentCategory = category;
     });
+
     this.setState({ categoryMenu: "subSelected" });
-    this.props.router.push(`events/categories/${parentCat.name}/${childCat.name}`);
-    this.props.removeEvents();
-    this.props.categoryFilterFetchEvents(e.currentTarget.id);
-  }
-
-  configureMenuForCats = (e) => {
-    this.setState({ categoryMenu: "parentSelected" });
-    this.props.router.push(`events/categories/${e.currentTarget.innerText}`);
-    this.props.removeEvents();
-    this.props.categoryFilterFetchEvents(e.currentTarget.id);
+    router.push(`events/categories/${parentCategory.name}/${subCategory.name}`);
+    removeEvents();
+    categoryFilterFetchEvents(e.currentTarget.id);
   }
 
   changeMenuState = (e) => {
@@ -158,7 +149,7 @@ class EventIndex extends React.Component {
       if (!category.parent_category_id) {
         return (
           <div key={ category.id } className="non-active">
-            <h4 onClick={ this.configureMenuForCats } id={ category.id }>{ category.name }</h4>
+            <h4 onClick={ this.filterSelectedCategory } id={ category.id }>{ category.name }</h4>
           </div>
         );
       }
@@ -170,6 +161,15 @@ class EventIndex extends React.Component {
         { allCategories }
       </div>
     );
+  }
+
+  filterSelectedCategory = (e) => {
+    const { categoryFilterFetchEvents, removeEvents, router } = this.props;
+
+    this.setState({ categoryMenu: "parentSelected" });
+    router.push(`events/categories/${e.currentTarget.innerText}`);
+    removeEvents();
+    categoryFilterFetchEvents(e.currentTarget.id);
   }
 
   renderParentCategoryMenu = () => {
@@ -191,7 +191,7 @@ class EventIndex extends React.Component {
       if (currentParentId === category.parent_category_id) {
         return (
           <div className="non-active" key={ category.id }>
-            <h4 onClick={ this.configureMenuForSubCat } id={ category.id }>{ category.name }</h4>
+            <h4 onClick={ this.updateToSubCategory } id={ category.id }>{ category.name }</h4>
           </div>
         );
       }
@@ -214,7 +214,7 @@ class EventIndex extends React.Component {
       if (params.categoryName === category.name) {
         return (
           <div className="all-c" key={ category.id }>
-            <h4 onClick={ this.configureMenuForSubCat } id={ category.id }>{ category.name }</h4>
+            <h4 onClick={ this.updateToSubCategory } id={ category.id }>{ category.name }</h4>
           </div>
         );
       } else if (params.subCategoryName === category.name) {
