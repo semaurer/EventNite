@@ -3,15 +3,11 @@ import { Link } from 'react-router';
 import classNames from 'classnames'
 
 class SessionModalForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: "",
-      password: "",
-      fname: "",
-      lname: ""
-    };
+  state = {
+    email: "",
+    password: "",
+    fname: "",
+    lname: ""
   }
 
   updateUserState = (prop) => {

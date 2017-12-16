@@ -5,13 +5,9 @@ import ModalStyle from '../../app/assets/stylesheets/sessionModalStyling';
 import SessionModalContainer from './session/sessionModalContainer';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      modalOpen: false,
-      searchEntry: ""
-    };
+  state = {
+    modalOpen: false,
+    searchEntry: ""
   }
 
   componentWillReceiveProps (nextProps) {
@@ -24,8 +20,8 @@ class App extends Component {
   resetAppState = () => {
     const { clearErrors, clearEvent, clearEvents } = this.props;
     clearErrors();
-    clearEvent();
-    clearEvents();
+    // clearEvent();
+    // clearEvents();
   }
 
   openSignUp = () => {
