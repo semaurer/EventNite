@@ -146,7 +146,7 @@ class EventIndex extends React.Component {
     }
   }
 
-  eventEls = (savedEvents) => {
+  renderEvents = (savedEvents) => {
     return this.props.events.map((event) => {
       let bookmarkBool = false;
       savedEvents.forEach(savedEventId => {
@@ -194,23 +194,18 @@ class EventIndex extends React.Component {
   }
 
   render () {
-    let events = "";
+    const { events, savedEvents, search } = this.props;
+
     let fullMenu = "";
-    if (this.props.events) events = this.eventEls(this.props.savedEvents);
     if (this.state.categoryOpen === "full") fullMenu = this.fullMenuEls();
     if (this.state.categoryOpen === "parentSelected") fullMenu = this.parentCatMenu();
     if (this.state.categoryOpen === "subSelected") fullMenu = this.subCatMenu();
     let searchResponse = "Events For You";
-    if (this.props.search !== "") {
-      if (this.props.events.length === 0) {
-        searchResponse = `Sorry, we couldn't find any ${this.props.search} events`;
-      } else {
-        searchResponse = `${this.props.search} events`;
-      }
-    }
-    let loader;
-    if (this.props.events.length === 0 && this.props.search === "") {
-      loader = <div className="loader"></div>;
+
+    if (events.length && search) {
+      searchResponse = `${this.props.search} events`;
+    } else if (!events.length && search) {
+      searchResponse = `Sorry, we couldn't find any ${this.props.search} events`;
     }
 
     return (
@@ -225,8 +220,8 @@ class EventIndex extends React.Component {
           <div className="events">
             <h2>{ searchResponse }</h2>
             <ul>
-              { loader }
-              { events }
+              { !events.length && !search ? <div className="loader" /> : null }
+              { this.renderEvents(savedEvents) }
             </ul>
           </div>
         </main>
