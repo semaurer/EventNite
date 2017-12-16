@@ -37,13 +37,13 @@ class EventsPreview extends Component {
         <div key={ event.id } className="each-saved-event">
           <Link to={ `events/${event.id}` }>
             <img src={ event.image_url } />
-            <span className="saved-main-info">
+            <div className="saved-main-info">
               <article className="saved-time">{ startDateTime } { event.start_time }</article>
               <article className="saved-title">{ event.title }</article>
               <article className="preview-location">{ event.location }</article>
-            </span>
+            </div>
           </Link>
-          <span className="bookmark-bar">
+          <div className="bookmark-bar">
             <button
               className="bookmark-saved"
               id={ event.id }
@@ -54,7 +54,7 @@ class EventsPreview extends Component {
               id={event.id}
               onClick={this.updateBookmark}
             />
-          </span>
+          </div>
         </div>
       );
     });

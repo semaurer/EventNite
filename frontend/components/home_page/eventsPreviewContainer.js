@@ -3,12 +3,10 @@ import EventsPreview from './eventsPreview';
 import { fetchEvents, saveEvent, unsaveEvent } from '../../actions/event_actions';
 import { selectEvents } from '../../reducers/selectors';
 
-const mapStateToProps = (state) => {
-  const { session } = state;
-
+const mapStateToProps = ({ events, search, session }) => {
   return {
     currentUser: session.currentUser,
-    events: selectEvents(state),
+    events: events.events ? selectEvents(events, search) : [],
     savedEvents: session.currentUser ? session.currentUser.saved_events : []
   }
 }
