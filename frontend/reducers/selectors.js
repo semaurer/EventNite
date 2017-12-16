@@ -1,17 +1,11 @@
 import { merge } from 'lodash';
 
 export const selectEvents = ({ events }, { search }) => {
-  const selectedEvents = [];
-
-  Object.keys(events).forEach(eventId => {
+  return Object.keys(events).map(eventId => {
     const currentTitle = events[eventId].title.toLowerCase();
     const searchEntry = search.toLowerCase();
-    if (currentTitle.includes(searchEntry)) {
-      selectedEvents.push(events[eventId]);
-    }
+    if (currentTitle.includes(searchEntry)) return events[eventId];
   });
-
-  return selectedEvents;
 };
 
 export const selectCurrentUserEvents = (state) => {
@@ -62,14 +56,10 @@ function condenseTickets(tickets) {
   return condensedTickets;
 }
 
-export const selectCategories = (state) => {
-  const categories = [];
-  if (state.categories.categories !== null) {
-    Object.keys(state.categories.categories).forEach(categoryId => {
-      categories.push(state.categories.categories[categoryId]);
-    });
-  }
-  return categories;
+export const selectCategories = ({ categories }) => {
+  return Object.keys(categories).map(categoryId => {
+    return categories[categoryId];
+  });
 };
 
 export const removeSavedEvent = (state, targetId) => {

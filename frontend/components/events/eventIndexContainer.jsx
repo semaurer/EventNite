@@ -1,26 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EventIndex from './eventIndex';
-import { selectEvents } from '../../reducers/selectors';
-import { fetchEvents, saveEvent, unsaveEvent,
-  categoryFilterFetchEvents, removeEvents } from '../../actions/event_actions';
+import { selectCategories, selectEvents } from '../../reducers/selectors';
+import {
+  categoryFilterFetchEvents,
+  fetchEvents,
+  removeEvents,
+  saveEvent,
+  unsaveEvent,
+} from '../../actions/event_actions';
 import { fetchCategories } from '../../actions/category_actions';
-import { selectCategories } from '../../reducers/selectors';
 import { resetSearch } from '../../actions/search_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ categories, events, search, session}) => {
 
   let userSavedEvents = [];
-  if (state.session.currentUser) {
-    userSavedEvents = state.session.currentUser.saved_events;
+  if (session.currentUser) {
+    userSavedEvents = session.currentUser.saved_events;
   }
 
   return {
-    events: state.events.events ? selectEvents(state.events, state.search) : [],
-    categories: selectCategories(state),
+    events: events.events ? selectEvents(events, search) : [],
+    categories: categories.categories ? selectCategories(categories) : [],
     savedEvents: userSavedEvents,
-    currentUser: state.session.currentUser,
-    search: state.search.search,
+    currentUser: session.currentUser,
+    search: search.search,
   };
 };
 
@@ -36,7 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EventIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(EventIndex);
