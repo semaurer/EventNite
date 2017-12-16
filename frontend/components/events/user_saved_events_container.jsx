@@ -5,11 +5,10 @@ import { saveEvent, unsaveEvent,
   fetchSavedEvents, removeEvent } from '../../actions/event_actions';
 import { selectEvents } from '../../reducers/selectors';
 
-const mapStateToProps = (state) => {
-
+const mapStateToProps = ({ events, search, session }) => {
   return {
-    events: selectEvents(state),
-    currentUser: state.session.currentUser,
+    events: selectEvents(events, search),
+    currentUser: session.currentUser,
   };
 };
 
