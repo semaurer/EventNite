@@ -18,113 +18,20 @@ class EventIndex extends React.Component {
     this.props.fetchCategories();
   }
 
-  returnToFull = () => {
-    this.setState({ categoryMenu: "full" });
-    this.props.router.push("/events/categories");
-    this.props.fetchEvents();
-  }
-
-  updateToSubCategory = (e) => {
-    const { categories, categoryFilterFetchEvents, removeEvents, router } = this.props;
-    let subCategory;
-    let parentCategory;
-
-    categories.forEach(category => {
-      if (parseInt(e.currentTarget.id) === category.id) subCategory = category;
-    });
-
-    categories.forEach(category => {
-      if (category.id === subCategory.parent_category_id) parentCategory = category;
-    });
-
-    this.setState({ categoryMenu: "subSelected" });
-    router.push(`events/categories/${parentCategory.name}/${subCategory.name}`);
-    removeEvents();
-    categoryFilterFetchEvents(e.currentTarget.id);
-  }
-
   changeMenuState = (e) => {
-    if (this.state.categoryMenu === "closed") {
-      this.props.resetSearch();
+    const { fetchEvents, removeEvents, resetSearch, router } = this.props;
+    const { categoryMenu } = this.state;
+
+    if (categoryMenu === "closed") {
+      resetSearch();
       this.setState({ categoryMenu: "full" });
-      this.props.router.push("events/categories");
+      router.push("events/categories");
     } else {
       this.setState({ categoryMenu: "closed" });
-      this.props.router.push("/events");
-      this.props.removeEvents();
-      this.props.fetchEvents();
+      router.push("/events");
+      removeEvents();
+      fetchEvents();
     }
-  }
-
-  updateSavedStatus = (e) => {
-    if (this.props.currentUser === null) return;
-    let updateBool = false;
-    const currentEventId = parseInt(e.currentTarget.id);
-
-    this.props.savedEvents.forEach(savedEventId => {
-      if (savedEventId === currentEventId) updateBool = true;
-    });
-
-    if (updateBool === true) {
-      this.props.unsaveEvent(e.currentTarget.id);
-    } else {
-      this.props.saveEvent(e.currentTarget.id);
-    }
-  }
-
-  determineHeader = () => {
-    const { events, search } = this.props;
-    if (search) {
-      return events.length ? `${search} events` : `Sorry, we couldn't find any ${search} events`
-    }
-    return "Events for you"
-  }
-
-  renderEvents = (savedEvents) => {
-    return this.props.events.map((event) => {
-      let bookmarkBool = false;
-      savedEvents.forEach(savedEventId => {
-        if (event.id === savedEventId) {
-          bookmarkBool = true;
-        }
-      });
-
-      let bookmark = <button id={ event.id }
-        onClick={ this.updateSavedStatus }
-        className="bookmark-ind"></button>;
-
-      let bookmarkCover = <button id={ event.id }
-        onClick={ this.updateSavedStatus }
-        className="bookmark-ind-cover-false"></button>;
-        if (bookmarkBool === false) bookmarkCover = <button id={ event.id }
-          onClick={ this.updateSavedStatus } className="bookmark-ind-cover"></button>;
-
-      const startDate = new Date(event.start_date_time).toDateString();
-      let price = "FREE";
-      if (event.price !== "free") price = "$" + event.price;
-
-      return (
-        <li key={ event.id } className="each-event group">
-          <Link to={ `events/${event.id}`}>
-            <span className="event-top-bar">
-              <img src={ event.image_url }></img>
-              <ul>
-                <li className="top-li">{ startDate }</li>
-                <li className="e-i-title"> { event.title }</li>
-                <li className="e-i-location">{ event.location }</li>
-              </ul>
-            </span>
-          </Link>
-          <span className="event-bot-bar">
-            <div className="e-b-pricing">{ price }</div>
-            <div>
-              { bookmark }
-              { bookmarkCover }
-            </div>
-          </span>
-        </li>
-      );
-    });
   }
 
   renderCategories = () => {
@@ -199,12 +106,37 @@ class EventIndex extends React.Component {
 
     return (
       <div>
-        <div onClick={ this.returnToFull } className="non-active" key="cat-index" />
+        <div onClick={ this.resetCategoriesMenu } className="non-active" key="cat-index" />
         <h4>All Categories</h4>
         { parentCategory }
         { childCategories }
       </div>
     );
+  }
+
+  updateToSubCategory = (e) => {
+    const { categories, categoryFilterFetchEvents, removeEvents, router } = this.props;
+    let subCategory;
+    let parentCategory;
+
+    categories.forEach(category => {
+      if (parseInt(e.currentTarget.id) === category.id) subCategory = category;
+    });
+
+    categories.forEach(category => {
+      if (category.id === subCategory.parent_category_id) parentCategory = category;
+    });
+
+    this.setState({ categoryMenu: "subSelected" });
+    router.push(`events/categories/${parentCategory.name}/${subCategory.name}`);
+    removeEvents();
+    categoryFilterFetchEvents(e.currentTarget.id);
+  }
+
+  resetCategoriesMenu = () => {
+    this.setState({ categoryMenu: "full" });
+    this.props.router.push("/events/categories");
+    this.props.fetchEvents();
   }
 
   renderSubCategories = () => {
@@ -228,12 +160,85 @@ class EventIndex extends React.Component {
 
     return (
       <div>
-        <div onClick={ this.returnToFull } className="non-active" key="cat-index">
+        <div onClick={ this.resetCategoriesMenu } className="non-active" key="cat-index">
           <h4>All Categories</h4>
         </div>
         { subCategorySelection }
       </div>
     );
+  }
+
+  renderHeader = () => {
+    const { events, search } = this.props;
+    if (search) {
+      return events.length ? `${search} events` : `Sorry, we couldn't find any ${search} events`
+    }
+    return "Events for you"
+  }
+
+  renderEvents = () => {
+    const { events, savedEvents } = this.props;
+
+    return events.map((event) => {
+      let bookmarkBool = false;
+      savedEvents.forEach(savedEventId => {
+        if (event.id === savedEventId) {
+          bookmarkBool = true;
+        }
+      });
+
+      let bookmark = <button id={ event.id }
+        onClick={ this.updateSavedStatus }
+        className="bookmark-ind"></button>;
+
+      let bookmarkCover = <button id={ event.id }
+        onClick={ this.updateSavedStatus }
+        className="bookmark-ind-cover-false"></button>;
+        if (bookmarkBool === false) bookmarkCover = <button id={ event.id }
+          onClick={ this.updateSavedStatus } className="bookmark-ind-cover"></button>;
+
+      const startDate = new Date(event.start_date_time).toDateString();
+      let price = "FREE";
+      if (event.price !== "free") price = "$" + event.price;
+
+      return (
+        <li key={ event.id } className="each-event group">
+          <Link to={ `events/${event.id}`}>
+            <span className="event-top-bar">
+              <img src={ event.image_url }></img>
+              <ul>
+                <li className="top-li">{ startDate }</li>
+                <li className="e-i-title"> { event.title }</li>
+                <li className="e-i-location">{ event.location }</li>
+              </ul>
+            </span>
+          </Link>
+          <span className="event-bot-bar">
+            <div className="e-b-pricing">{ price }</div>
+            <div>
+              { bookmark }
+              { bookmarkCover }
+            </div>
+          </span>
+        </li>
+      );
+    });
+  }
+
+  updateSavedStatus = (e) => {
+    if (this.props.currentUser === null) return;
+    let updateBool = false;
+    const currentEventId = parseInt(e.currentTarget.id);
+
+    this.props.savedEvents.forEach(savedEventId => {
+      if (savedEventId === currentEventId) updateBool = true;
+    });
+
+    if (updateBool === true) {
+      this.props.unsaveEvent(e.currentTarget.id);
+    } else {
+      this.props.saveEvent(e.currentTarget.id);
+    }
   }
 
   render () {
@@ -249,10 +254,10 @@ class EventIndex extends React.Component {
             </div>
           </aside>
           <div className="events">
-            <h2>{ this.determineHeader() }</h2>
+            <h2>{ this.renderHeader() }</h2>
             <ul>
               { !events.length && !search ? <div className="loader" /> : null }
-              { this.renderEvents(savedEvents) }
+              { this.renderEvents() }
             </ul>
           </div>
         </main>
