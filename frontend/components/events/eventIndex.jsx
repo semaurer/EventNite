@@ -24,55 +24,69 @@ class EventIndex extends React.Component {
     this.props.fetchEvents();
   }
 
-  parentCatMenu = () => {
-    const fullMenuEls = [<div onClick={ this.returnToFull }
-      className="non-active"
-      key="cat-index"><h4>All Categories</h4></div>];
-    let currentParentId = null;
-    this.props.categories.forEach(category => {
-      if (this.props.params.categoryName === category.name) {
-        fullMenuEls.push(<div className="all-c"
-          key={ category.id }><h4
-          id={ category.id }>{ category.name }</h4></div>);
+  renderParentCategoryMenu = () => {
+    const { categories, params } = this.props;
+
+    let currentParentId = -1;
+    const parentCategory = categories.map(category => {
+      if (params.categoryName === category.name) {
         currentParentId = category.id;
+        return (
+          <div className="all-c" key={ category.id }>
+            <h4 id={ category.id }>{ category.name }</h4>
+          </div>
+        );
       }
     });
 
-    this.props.categories.forEach(category => {
+    const childCategories = categories.map((category) => {
       if (currentParentId === category.parent_category_id) {
-        fullMenuEls.push(<div className="non-active"
-          key={ category.id }><h4 onClick={ this.configureMenuForSubCat }
-          id={ category.id }>{ category.name }</h4></div>);
+        return (
+          <div className="non-active" key={ category.id }>
+            <h4 onClick={ this.configureMenuForSubCat } id={ category.id }>{ category.name }</h4>
+          </div>
+        );
       }
     });
 
-    return fullMenuEls;
+    return (
+      <div>
+        <div onClick={ this.returnToFull } className="non-active" key="cat-index" />
+        <h4>All Categories</h4>
+        { parentCategory }
+        { childCategories }
+      </div>
+    );
   }
 
-  subCatMenu = () => {
-    const fullMenuEls = [<div onClick={ this.returnToFull }
-      className="non-active"
-      key="cat-index"><h4>All Categories</h4></div>];
-    let parentCatEl = "";
-    let subCatEl = "";
+  renderSubCategories = () => {
+    const { categories, params } = this.props;
+      let parentCatEl = "";
+      let subCatEl = "";
 
-    this.props.categories.forEach(category => {
-      if (this.props.params.categoryName === category.name) {
-        parentCatEl =
-        <div className="all-c"
+      categories.forEach(category => {
+        if (params.categoryName === category.name) {
+          parentCatEl =
+          <div className="all-c"
           key={ category.id }><h4 onClick={ this.configureMenuForSubCat }
           id={ category.id }>{ category.name }</h4></div>;
-      }
-      if (this.props.params.subCategoryName === category.name) {
-        subCatEl =
-        <div className="all-c" key={ category.id }><h4
+        }
+        if (params.subCategoryName === category.name) {
+          subCatEl =
+          <div className="all-c" key={ category.id }><h4
           id={ category.id }>{ category.name }</h4></div>;
-      }
-    });
-    fullMenuEls.push(parentCatEl);
-    fullMenuEls.push(subCatEl);
+        }
+      });
+      fullMenuEls.push(parentCatEl);
+      fullMenuEls.push(subCatEl);
 
-    return fullMenuEls;
+    return (
+      <div>
+        <div onClick={ this.returnToFull } className="non-active" key="cat-index">
+          <h4>All Categories</h4>
+        </div>
+      </div>
+    );
   }
 
   configureMenuForSubCat = (e) => {
@@ -215,9 +229,9 @@ class EventIndex extends React.Component {
       case 'full':
         return this.renderFullCategoryMenu();
       case 'parentSelected':
-        return this.parentCatMenu();
+        return this.renderParentCategoryMenu();
       case 'subSelected':
-        return this.subCatMenu();
+        return this.renderSubCategories();
       default:
         return null;
     }
