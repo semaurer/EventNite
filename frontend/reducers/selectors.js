@@ -1,19 +1,17 @@
 import { merge } from 'lodash';
 
-export const selectEvents = (state) => {
-  const events = [];
+export const selectEvents = ({ events }, { search }) => {
+  const selectedEvents = [];
 
-  if (state.events.events === undefined) return events;
-  if (state.events.events !== null) {
-    Object.keys(state.events.events).forEach(eventId => {
-      let currentTitle = state.events.events[eventId].title.toLowerCase();
-      let searchEntry = state.search.search.toLowerCase();
-      if (currentTitle.includes(searchEntry)) {
-        events.push(state.events.events[eventId]);
-      }
-    });
-  }
-  return events;
+  Object.keys(events).forEach(eventId => {
+    const currentTitle = events[eventId].title.toLowerCase();
+    const searchEntry = search.toLowerCase();
+    if (currentTitle.includes(searchEntry)) {
+      selectedEvents.push(events[eventId]);
+    }
+  });
+
+  return selectedEvents;
 };
 
 export const selectCurrentUserEvents = (state) => {
