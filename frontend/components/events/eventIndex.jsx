@@ -24,71 +24,6 @@ class EventIndex extends React.Component {
     this.props.fetchEvents();
   }
 
-  renderParentCategoryMenu = () => {
-    const { categories, params } = this.props;
-
-    let currentParentId = -1;
-    const parentCategory = categories.map(category => {
-      if (params.categoryName === category.name) {
-        currentParentId = category.id;
-        return (
-          <div className="all-c" key={ category.id }>
-            <h4 id={ category.id }>{ category.name }</h4>
-          </div>
-        );
-      }
-    });
-
-    const childCategories = categories.map((category) => {
-      if (currentParentId === category.parent_category_id) {
-        return (
-          <div className="non-active" key={ category.id }>
-            <h4 onClick={ this.configureMenuForSubCat } id={ category.id }>{ category.name }</h4>
-          </div>
-        );
-      }
-    });
-
-    return (
-      <div>
-        <div onClick={ this.returnToFull } className="non-active" key="cat-index" />
-        <h4>All Categories</h4>
-        { parentCategory }
-        { childCategories }
-      </div>
-    );
-  }
-
-  renderSubCategories = () => {
-    const { categories, params } = this.props;
-      let parentCatEl = "";
-      let subCatEl = "";
-
-      categories.forEach(category => {
-        if (params.categoryName === category.name) {
-          parentCatEl =
-          <div className="all-c"
-          key={ category.id }><h4 onClick={ this.configureMenuForSubCat }
-          id={ category.id }>{ category.name }</h4></div>;
-        }
-        if (params.subCategoryName === category.name) {
-          subCatEl =
-          <div className="all-c" key={ category.id }><h4
-          id={ category.id }>{ category.name }</h4></div>;
-        }
-      });
-      fullMenuEls.push(parentCatEl);
-      fullMenuEls.push(subCatEl);
-
-    return (
-      <div>
-        <div onClick={ this.returnToFull } className="non-active" key="cat-index">
-          <h4>All Categories</h4>
-        </div>
-      </div>
-    );
-  }
-
   configureMenuForSubCat = (e) => {
     let parentCat = "";
     let childCat = "";
@@ -128,27 +63,6 @@ class EventIndex extends React.Component {
       this.props.removeEvents();
       this.props.fetchEvents();
     }
-  }
-
-  renderFullCategoryMenu = () => {
-    const { categories } = this.props;
-
-    const allCategories = categories.map((category) => {
-      if (!category.parent_category_id) {
-        return (
-          <div key={ category.id } className="non-active">
-            <h4 onClick={ this.configureMenuForCats } id={ category.id }>{ category.name }</h4>
-          </div>
-        );
-      }
-    });
-
-    return (
-      <div className="all-c" key="cat-index">
-        <h4>All Categories</h4>
-        { allCategories }
-      </div>
-    );
   }
 
   updateSavedStatus = (e) => {
@@ -235,6 +149,91 @@ class EventIndex extends React.Component {
       default:
         return null;
     }
+  }
+
+  renderFullCategoryMenu = () => {
+    const { categories } = this.props;
+
+    const allCategories = categories.map((category) => {
+      if (!category.parent_category_id) {
+        return (
+          <div key={ category.id } className="non-active">
+            <h4 onClick={ this.configureMenuForCats } id={ category.id }>{ category.name }</h4>
+          </div>
+        );
+      }
+    });
+
+    return (
+      <div className="all-c" key="cat-index">
+        <h4>All Categories</h4>
+        { allCategories }
+      </div>
+    );
+  }
+
+  renderParentCategoryMenu = () => {
+    const { categories, params } = this.props;
+
+    let currentParentId = -1;
+    const parentCategory = categories.map(category => {
+      if (params.categoryName === category.name) {
+        currentParentId = category.id;
+        return (
+          <div className="all-c" key={ category.id }>
+            <h4 id={ category.id }>{ category.name }</h4>
+          </div>
+        );
+      }
+    });
+
+    const childCategories = categories.map((category) => {
+      if (currentParentId === category.parent_category_id) {
+        return (
+          <div className="non-active" key={ category.id }>
+            <h4 onClick={ this.configureMenuForSubCat } id={ category.id }>{ category.name }</h4>
+          </div>
+        );
+      }
+    });
+
+    return (
+      <div>
+        <div onClick={ this.returnToFull } className="non-active" key="cat-index" />
+        <h4>All Categories</h4>
+        { parentCategory }
+        { childCategories }
+      </div>
+    );
+  }
+
+  renderSubCategories = () => {
+    const { categories, params } = this.props;
+
+    const subCategorySelection = categories.map(category => {
+      if (params.categoryName === category.name) {
+        return (
+          <div className="all-c" key={ category.id }>
+            <h4 onClick={ this.configureMenuForSubCat } id={ category.id }>{ category.name }</h4>
+          </div>
+        );
+      } else if (params.subCategoryName === category.name) {
+        return (
+          <div className="all-c" key={ category.id }>
+            <h4 id={ category.id }>{ category.name }</h4>
+          </div>
+        );
+      }
+    });
+
+    return (
+      <div>
+        <div onClick={ this.returnToFull } className="non-active" key="cat-index">
+          <h4>All Categories</h4>
+        </div>
+        { subCategorySelection }
+      </div>
+    );
   }
 
   render () {
