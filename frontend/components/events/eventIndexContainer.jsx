@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import EventIndex from './event_index';
+import EventIndex from './eventIndex';
 import { selectEvents } from '../../reducers/selectors';
 import { fetchEvents, saveEvent, unsaveEvent,
   categoryFilterFetchEvents, removeEvents } from '../../actions/event_actions';
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
   }
 
   return {
-    events: selectEvents(state.events, state.search),
+    events: state.events.events ? selectEvents(state.events, state.search) : [],
     categories: selectCategories(state),
     savedEvents: userSavedEvents,
     currentUser: state.session.currentUser,
