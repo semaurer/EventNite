@@ -13,16 +13,10 @@ import { fetchCategories } from '../../actions/category_actions';
 import { resetSearch } from '../../actions/search_actions';
 
 const mapStateToProps = ({ categories, events, search, session}) => {
-
-  let userSavedEvents = [];
-  if (session.currentUser) {
-    userSavedEvents = session.currentUser.saved_events;
-  }
-
   return {
     events: events.events ? selectEvents(events, search) : [],
     categories: categories.categories ? selectCategories(categories) : [],
-    savedEvents: userSavedEvents,
+    savedEvents: session.currentUser ? session.currentUser.saved_events : [],
     currentUser: session.currentUser,
     search: search.search,
   };
