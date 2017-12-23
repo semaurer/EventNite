@@ -1,21 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EventIndex from './eventIndex';
-import { selectCategories, selectEvents } from '../../reducers/selectors';
-import {
-  categoryFilterFetchEvents,
-  fetchEvents,
-  removeEvents,
-  saveEvent,
-  unsaveEvent,
-} from '../../actions/event_actions';
-import { fetchCategories } from '../../actions/category_actions';
-import { resetSearch } from '../../actions/search_actions';
+import { selectEvents } from '../../reducers/selectors';
+import { fetchEvents, saveEvent, unsaveEvent } from '../../actions/event_actions';
 
 const mapStateToProps = ({ categories, events, search, session}) => {
   return {
     events: events.events ? selectEvents(events, search) : [],
-    categories: categories.categories ? selectCategories(categories) : [],
     savedEvents: session.currentUser ? session.currentUser.saved_events : [],
     currentUser: session.currentUser,
     search: search.search,
@@ -25,12 +16,8 @@ const mapStateToProps = ({ categories, events, search, session}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchEvents: () => dispatch(fetchEvents()),
-    fetchCategories: () => dispatch(fetchCategories()),
-    categoryFilterFetchEvents: (catId) => dispatch(categoryFilterFetchEvents(catId)),
-    removeEvents: () => dispatch(removeEvents()),
     saveEvent: (eventId) => dispatch(saveEvent(eventId)),
     unsaveEvent: (eventId) => dispatch(unsaveEvent(eventId)),
-    resetSearch: () => dispatch(resetSearch()),
   };
 };
 
