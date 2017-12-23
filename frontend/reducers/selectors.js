@@ -1,11 +1,12 @@
 import { merge } from 'lodash';
 
 export const selectEvents = ({ events }, { search }) => {
-  return Object.keys(events).map(eventId => {
+  const selectedEvents = Object.keys(events).map(eventId => {
     const currentTitle = events[eventId].title.toLowerCase();
     const searchEntry = search.toLowerCase();
     if (currentTitle.includes(searchEntry)) return events[eventId];
   });
+  return selectedEvents.filter((event) => event);
 };
 
 export const selectCurrentUserEvents = (state) => {
