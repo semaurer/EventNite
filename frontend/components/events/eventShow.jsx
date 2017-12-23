@@ -8,35 +8,39 @@ class EventShow extends React.Component {
   state = { modalOpen: false, bookmarked: false }
 
   updateBookmark = () => {
-    if (this.props.currentUser === null) return;
-    if (this.state.bookmarked === false) {
-      this.setState({ bookmarked: true });
-      this.props.saveEvent(this.props.event.id);
-    } else {
-      this.setState({ bookmarked: false });
-      this.props.unsaveEvent(this.props.event.id);
+    const { currentUser, event, saveEvent, unsaveEvent } = this.props;
+
+    if (currentUser) {
+      if (this.state.bookmarked) {
+        this.setState({ bookmarked: false });
+        unsaveEvent(event.id);
+      } else {
+        this.setState({ bookmarked: true });
+        saveEvent(event.id);
+      }
     }
   }
 
   checkBookmark = () => {
-    this.props.savedEvents.forEach(eventId => {
-      if (eventId === this.props.event.id) {
-        this.setState({ bookmarked: true })
-      }
+    const { event, savedEvents } = this.props;
+
+    savedEvents.forEach(eventId => {
+      if (eventId === event.id) this.setState({ bookmarked: true });
     })
   }
 
   componentDidMount() {
-    this.props.fetchEvent(this.props.params.eventId)
+    const { fetchEvent, params } = this.props;
+
+    fetchEvent(params.eventId)
       .then(() => {
         this.checkBookmark();
-      })
+      });
   }
 
-  openModal = (bool) => {
-    if (this.props.currentUser === null) {
-      this.props.router.push("/")
-    }
+  openModal = () => {
+    const { currentUser, router } = this.props;
+    if (!currentUser) router.push("/");
     this.setState({ modalOpen: true });
   }
 
@@ -50,6 +54,8 @@ class EventShow extends React.Component {
   }
 
   render () {
+    const { event } = this.props;
+
     let bookmark = <button
       onClick={ this.updateBookmark }
       className="bookmark"></button>;
@@ -77,26 +83,21 @@ class EventShow extends React.Component {
     let ticketText = "Tickets"
     let endDateTicket = "";
 
-    if (this.props.event) {
-      startMonth = this.props.event.start_month;
-      startTime = this.props.event.start_time;
-      endTime = this.props.event.end_time;
-      startDay = this.props.event.start_day;
-      title = this.props.event.title;
-      description = this.props.event.description;
-      startDate = this.props.event.formatted_start_date_time
-      endDate = this.props.event.formatted_end_date_time
-      location = this.props.event.location;
-      price = this.props.event.price;
-      endDateTicket = this.props.event.end_date_ticket;
-      if (this.props.event.price !== "free") price = "$" + this.props.event.price;
-      if (this.props.event.author) firstName = this.props.event.author.first_name;
+    if (event) {
+      startMonth = event.start_month;
+      startTime = event.start_time;
+      endTime = event.end_time;
+      startDay = event.start_day;
+      title = event.title;
+      description = event.description;
+      startDate = event.formatted_start_date_time
+      endDate = event.formatted_end_date_time
+      location = event.location;
+      price = event.price;
+      endDateTicket = event.end_date_ticket;
+      if (event.price !== "free") price = "$" + event.price;
+      if (event.author) firstName = event.author.first_name;
       if (price === "free") ticketText = "Register"
-    }
-
-    let loader;
-    if (this.props.event === null) {
-      loader = <div className="loader"></div>;
     }
 
     return (
@@ -105,7 +106,7 @@ class EventShow extends React.Component {
           <div className="show-template">
             <span className="image-and-info">
               { event_image }
-              { loader }
+              { !event ? <div className="loader" /> : null }
               <div className="title-date-host-price-container">
                 <ul className="t-d-h-p-container-list">
                   <li className="t-d-h-p-month">{ startMonth }</li>
@@ -145,15 +146,18 @@ class EventShow extends React.Component {
             </span>
           </div>
         </div>
-
-        <Modal onAfterOpen={ this.onModalOpen } style={ ModalStyle }
+        <Modal
+          onAfterOpen={ this.onModalOpen }
+          style={ ModalStyle }
           contentLabel="" isOpen={ this.state.modalOpen }
-          onRequestClose={ this.closeModal }>
-
-          <TicketModal router={ this.props.router} createTicket={ this.props.createTicket }
+          onRequestClose={ this.closeModal }
+        >
+          <TicketModal
+            router={ this.props.router}
+            createTicket={ this.props.createTicket }
             ticketText={ ticketText } price={ price }
-            endDate={ endDateTicket } eventId={ this.props.params.eventId } />
-
+            endDate={ endDateTicket } eventId={ this.props.params.eventId }
+          />
         </Modal>
       </div>
     );
