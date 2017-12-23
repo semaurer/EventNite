@@ -4,17 +4,11 @@ import EventShow from './eventShow';
 import { fetchEvent, saveEvent, unsaveEvent } from '../../actions/event_actions';
 import { createTicket } from '../../actions/ticket_actions';
 
-
-const mapStateToProps = (state) => {
-  let userSavedEvents = [];
-  if (state.session.currentUser) {
-    userSavedEvents = state.session.currentUser.saved_events;
-  }
-
+const mapStateToProps = ({ event, session }) => {
   return {
-    event: state.event.event,
-    currentUser: state.session.currentUser,
-    savedEvents: userSavedEvents,
+    event: event.event,
+    currentUser: session.currentUser,
+    savedEvents: session.currentUser ? session.currentUser.saved_events : [],
   };
 };
 
@@ -27,7 +21,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EventShow);
+export default connect(mapStateToProps, mapDispatchToProps)(EventShow);
