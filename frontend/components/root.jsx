@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import AppContainer from './appContainer';
 import HomePageContainer from './home_page/homePageContainer';
 import EventCreateContainer from './events/event_create_container';
-import EventShowContainer from './events/event_show_container';
+import EventShowContainer from './events/eventShowContainer';
 import EventIndexContainer from './events/eventIndexContainer';
 import EventUpdateContainer from './events/event_update_container';
 import ManageEventsContainer from './events/manage_events_container';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import EventShow from './event_show';
+import EventShow from './eventShow';
 import { fetchEvent, saveEvent, unsaveEvent } from '../../actions/event_actions';
 import { createTicket } from '../../actions/ticket_actions';
 
