@@ -5,16 +5,9 @@ import ModalStyle from '../../../app/assets/stylesheets/ticket_modal_style';
 import TicketModal from '../tickets/ticket_modal';
 
 class EventShow extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { modalOpen: false, bookmarked: false }
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.updateBookmark = this.updateBookmark.bind(this);
-    this.checkBookmark = this.checkBookmark.bind(this);
-  }
+  state = { modalOpen: false, bookmarked: false }
 
-  updateBookmark () {
+  updateBookmark = () => {
     if (this.props.currentUser === null) return;
     if (this.state.bookmarked === false) {
       this.setState({ bookmarked: true });
@@ -25,7 +18,7 @@ class EventShow extends React.Component {
     }
   }
 
-  checkBookmark() {
+  checkBookmark = () => {
     this.props.savedEvents.forEach(eventId => {
       if (eventId === this.props.event.id) {
         this.setState({ bookmarked: true })
@@ -40,14 +33,14 @@ class EventShow extends React.Component {
       })
   }
 
-  openModal(bool) {
+  openModal = (bool) => {
     if (this.props.currentUser === null) {
       this.props.router.push("/")
     }
     this.setState({ modalOpen: true });
   }
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ modalOpen: false });
     ModalStyle.content.top = "-300px";
   }
