@@ -1,18 +1,17 @@
 .category-selector {
   width: 80%;
-  height: 50px;
+  height: 3.12rem;
   display: block;
-  margin: 142px auto 0 auto;
+  margin: 8.89rem auto 0 auto;
   background-color: #fff;
   border-bottom: 1px solid #eee;
   text-align: center;
 }
 
-
 .category-selector h3 {
-  padding: 15px 0;
+  padding: 1rem 0;
   color: #1E90FF;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .category-selector h3:hover {
@@ -21,12 +20,12 @@
 }
 
 .all-categories {
-  margin: 10px 0;
+  margin: 0.6rem 0;
 }
 
 .all-categories h4 {
   background-color: #fff;
-  padding: 5px 0;
+  padding: 0.4rem 0;
 }
 
 .non-active {
@@ -35,7 +34,7 @@
 }
 
 .non-active h4 {
-  padding: 5px 0;
+  padding: 0.4rem 0;
 }
 
 .non-active:hover {
