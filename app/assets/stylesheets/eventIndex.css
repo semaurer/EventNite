@@ -40,11 +40,11 @@
   color: #00CED1;
 }
 
-.all-c {
+.all-categories {
   margin: 10px 0;
 }
 
-.all-c h4 {
+.all-categories h4 {
   background-color: #fff;
   padding: 5px 0;
 }
@@ -114,16 +114,16 @@
   text-transform: uppercase;
 }
 
-.e-i-title {
+.events-index-title {
   font-weight: bold;
 }
 
-.e-i-location {
+.events-index-location {
   font-size: 13px;
   color: #aaa;
 }
 
-.event-bot-bar {
+.event-bottom-bar {
   background-color: #fff;
   width: 100%;
   height: 35px;
@@ -132,7 +132,7 @@
   position: relative;
 }
 
-.e-b-pricing {
+.index-pricing {
   float: left;
   width: 190px;
   padding: 10px 0 9px 10px;
@@ -140,7 +140,7 @@
   background-color: #eee;
 }
 
-.bookmark-ind {
+.index-bookmark {
   position: absolute;
   top: 21px;
   right: 20px;
@@ -154,7 +154,7 @@
   transition: line-height 0.5s;
 }
 
-.bookmark-ind:after {
+.index-bookmark:after {
   content: "";
   font-size: 0.5em;
   position: absolute;
@@ -169,7 +169,7 @@
   transition: height 0.5s;
 }
 
-.bookmark-ind-cover {
+.index-bookmark-cover {
   position: absolute;
   top: 23px;
   right: 22px;
@@ -183,7 +183,7 @@
   transition: line-height 0.5s;
 }
 
-.bookmark-ind-cover:after {
+.index-bookmark-cover:after {
   content: "";
   font-size: 0.5em;
   position: absolute;
@@ -196,4 +196,8 @@
   right: 0;
   -webkit-transition: height 0.5s;
   transition: height 0.5s;
+}
+
+.index-bookmark-cover-false {
+  display: none;
 }

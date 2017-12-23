@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import classNames from 'classnames';
 
 class EventIndex extends React.Component {
   state = { categoryMenu: "closed" };
@@ -63,7 +64,7 @@ class EventIndex extends React.Component {
     });
 
     return (
-      <div className="all-c" key="cat-index">
+      <div className="all-categories">
         <h4>All Categories</h4>
         { allCategories }
       </div>
@@ -87,7 +88,7 @@ class EventIndex extends React.Component {
       if (params.categoryName === category.name) {
         currentParentId = category.id;
         return (
-          <div className="all-c" key={ category.id }>
+          <div className="all-categories" key={ category.id }>
             <h4 id={ category.id }>{ category.name }</h4>
           </div>
         );
@@ -106,7 +107,7 @@ class EventIndex extends React.Component {
 
     return (
       <div>
-        <div onClick={ this.resetCategoriesMenu } className="non-active" key="cat-index" />
+        <div onClick={ this.resetCategoriesMenu } className="non-active" />
         <h4>All Categories</h4>
         { parentCategory }
         { childCategories }
@@ -145,13 +146,13 @@ class EventIndex extends React.Component {
     const subCategorySelection = categories.map(category => {
       if (params.categoryName === category.name) {
         return (
-          <div className="all-c" key={ category.id }>
+          <div className="all-categories" key={ category.id }>
             <h4 onClick={ this.updateToSubCategory } id={ category.id }>{ category.name }</h4>
           </div>
         );
       } else if (params.subCategoryName === category.name) {
         return (
-          <div className="all-c" key={ category.id }>
+          <div className="all-categories" key={ category.id }>
             <h4 id={ category.id }>{ category.name }</h4>
           </div>
         );
@@ -160,7 +161,7 @@ class EventIndex extends React.Component {
 
     return (
       <div>
-        <div onClick={ this.resetCategoriesMenu } className="non-active" key="cat-index">
+        <div onClick={ this.resetCategoriesMenu } className="non-active">
           <h4>All Categories</h4>
         </div>
         { subCategorySelection }
@@ -180,44 +181,35 @@ class EventIndex extends React.Component {
     const { events, savedEvents } = this.props;
 
     return events.map((event) => {
-      let bookmarkBool = false;
+      let isSaved = false;
       savedEvents.forEach(savedEventId => {
-        if (event.id === savedEventId) {
-          bookmarkBool = true;
-        }
+        if (event.id === savedEventId) isSaved = true;
       });
 
-      let bookmark = <button id={ event.id }
-        onClick={ this.updateSavedStatus }
-        className="bookmark-ind"></button>;
-
-      let bookmarkCover = <button id={ event.id }
-        onClick={ this.updateSavedStatus }
-        className="bookmark-ind-cover-false"></button>;
-        if (bookmarkBool === false) bookmarkCover = <button id={ event.id }
-          onClick={ this.updateSavedStatus } className="bookmark-ind-cover"></button>;
-
       const startDate = new Date(event.start_date_time).toDateString();
-      let price = "FREE";
-      if (event.price !== "free") price = "$" + event.price;
+      const price = event.price !== "free" ? "$" + event.price : "FREE";
 
       return (
         <li key={ event.id } className="each-event group">
           <Link to={ `events/${event.id}`}>
             <span className="event-top-bar">
-              <img src={ event.image_url }></img>
+              <img src={ event.image_url } />
               <ul>
                 <li className="top-li">{ startDate }</li>
-                <li className="e-i-title"> { event.title }</li>
-                <li className="e-i-location">{ event.location }</li>
+                <li className="events-index-title"> { event.title }</li>
+                <li className="events-index-location">{ event.location }</li>
               </ul>
             </span>
           </Link>
-          <span className="event-bot-bar">
-            <div className="e-b-pricing">{ price }</div>
+          <span className="event-bottom-bar">
+            <div className="index-pricing">{ price }</div>
             <div>
-              { bookmark }
-              { bookmarkCover }
+              <button id={ event.id } onClick={ this.updateSavedStatus } className="index-bookmark" />
+              <button
+                className={classNames('index-bookmark-cover', {"index-bookmark-cover-false": isSaved})}
+                id={ event.id }
+                onClick={ this.updateSavedStatus }
+              />
             </div>
           </span>
         </li>
@@ -226,18 +218,16 @@ class EventIndex extends React.Component {
   }
 
   updateSavedStatus = (e) => {
-    if (this.props.currentUser === null) return;
-    let updateBool = false;
-    const currentEventId = parseInt(e.currentTarget.id);
+    const { currentUser, saveEvent, savedEvents, unsaveEvent } = this.props;
+    if (currentUser) {
+      let isSaved = false;
+      const currentEventId = parseInt(e.currentTarget.id);
 
-    this.props.savedEvents.forEach(savedEventId => {
-      if (savedEventId === currentEventId) updateBool = true;
-    });
+      savedEvents.forEach(savedEventId => {
+        if (savedEventId === currentEventId) isSaved = true;
+      });
 
-    if (updateBool === true) {
-      this.props.unsaveEvent(e.currentTarget.id);
-    } else {
-      this.props.saveEvent(e.currentTarget.id);
+      isSaved ? unsaveEvent(e.currentTarget.id) : saveEvent(e.currentTarget.id);
     }
   }
 
