@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
+import CategoriesIndexContainer from '../categories/categoriesIndexContainer';
 
 class EventIndex extends React.Component {
   state = { categoryMenu: "closed" };
