@@ -54,90 +54,56 @@ class EventShow extends React.Component {
   }
 
   render () {
-    const { event } = this.props;
-
-    let bookmark = <button
-      onClick={ this.updateBookmark }
-      className="bookmark"></button>;
+    const { createTicket, event, params, router } = this.props;
 
     let bookmarkCover = <button className="bookmark-cover-false"></button>;
     if (this.state.bookmarked === false) bookmarkCover = <button
       onClick={ this.updateBookmark } className="bookmark-cover"></button>;
-
-    let event_image = <img className="event-img"></img>;
-    if (this.props.event) event_image = <img
-      src={ this.props.event.image_url }
-      className="event-img"></img>;
-
-    let price = "";
-    let startMonth = "";
-    let startTime = "";
-    let endTime = "";
-    let startDay = "";
-    let title = "";
-    let firstName = "";
-    let description = "";
-    let startDate = "";
-    let endDate = "";
-    let location = "";
-    let ticketText = "Tickets"
-    let endDateTicket = "";
-
-    if (event) {
-      startMonth = event.start_month;
-      startTime = event.start_time;
-      endTime = event.end_time;
-      startDay = event.start_day;
-      title = event.title;
-      description = event.description;
-      startDate = event.formatted_start_date_time
-      endDate = event.formatted_end_date_time
-      location = event.location;
-      price = event.price;
-      endDateTicket = event.end_date_ticket;
-      if (event.price !== "free") price = "$" + event.price;
-      if (event.author) firstName = event.author.first_name;
-      if (price === "free") ticketText = "Register"
-    }
 
     return (
       <div className="show-page group">
         <div className="show-page-bg">
           <div className="show-template">
             <span className="image-and-info">
-              { event_image }
+              <img src={ event.image_url } className="event-img" />
               { !event ? <div className="loader" /> : null }
               <div className="title-date-host-price-container">
                 <ul className="t-d-h-p-container-list">
-                  <li className="t-d-h-p-month">{ startMonth }</li>
-                  <li className="t-d-h-p-day">{ startDay }</li>
-                  <li className="t-d-h-p-title">{ title }</li>
-                  <li className="t-d-h-p-author">by { firstName }</li>
-                  <li className="pricing">{ price }</li>
+                  <li className="t-d-h-p-month">{ event.start_month }</li>
+                  <li className="t-d-h-p-day">{ event.start_day }</li>
+                  <li className="t-d-h-p-title">{ event.title }</li>
+                  <li className="t-d-h-p-author">
+                    by { event.author ? event.author.first_name : 'bob' }
+                  </li>
+                  <li className="pricing">
+                    { event.price === 'free' ? 'free' : "$" + event.price}
+                  </li>
                 </ul>
               </div>
             </span>
             <span className="bookmark-register">
-              { bookmark }
+              <button onClick={ this.updateBookmark } className="bookmark" />
               { bookmarkCover }
-              <button onClick={ this.openModal } className="ticket-submit">{ ticketText }</button>
+              <button onClick={ this.openModal } className="ticket-submit">
+                { event.price === 'free' ? "Register" : "Tickets" }
+              </button>
             </span>
             <span className="description-date-loc">
               <div className="info-left">
                 <ul className="description-info-list">
                   <h3 className="info-section-header">Description</h3>
-                  <li className="d-i-description">{ description }</li>
+                  <li className="d-i-description">{ event.description }</li>
                 </ul>
               </div>
               <div className="info-right">
                 <section>
                   <h3>Date and Time</h3>
-                  <info>{ startDate } { startTime } -</info>
-                  <info>{ endDate } { endTime }</info>
+                  <info>{ event.formatted_start_date_time } { event.start_time } -</info>
+                  <info>{ event.formatted_end_date_time } { event.end_time }</info>
                 </section>
                 <section>
                   <h3>Location</h3>
-                  <info>{ location }</info>
+                  <info>{ event.location }</info>
                 </section>
                 <section>
                   <h3></h3>
@@ -153,10 +119,12 @@ class EventShow extends React.Component {
           onRequestClose={ this.closeModal }
         >
           <TicketModal
-            router={ this.props.router}
-            createTicket={ this.props.createTicket }
-            ticketText={ ticketText } price={ price }
-            endDate={ endDateTicket } eventId={ this.props.params.eventId }
+            router={ router}
+            createTicket={ createTicket }
+            ticketText={ event.price === 'free' ? "Register" : "Tickets" }
+            price={ event.price === 'free' ? 'free' : "$" + event.price }
+            endDate={ event.end_date_ticket }
+            eventId={ params.eventId }
           />
         </Modal>
       </div>

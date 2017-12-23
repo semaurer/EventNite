@@ -6,7 +6,7 @@ import { createTicket } from '../../actions/ticket_actions';
 
 const mapStateToProps = ({ event, session }) => {
   return {
-    event: event.event,
+    event: event.event ? event.event : {},
     currentUser: session.currentUser,
     savedEvents: session.currentUser ? session.currentUser.saved_events : [],
   };
