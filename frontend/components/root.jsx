@@ -9,7 +9,7 @@ import EventIndexContainer from './events/eventIndexContainer';
 import EventUpdateContainer from './events/event_update_container';
 import ManageEventsContainer from './events/manage_events_container';
 import UserTicketContainer from './tickets/user_ticket_container';
-import UserSavedEventsContainer from './events/user_saved_events_container';
+import UserSavedEventsContainer from './events/userSavedEventsContainer';
 
 
 const Root = ({ store }) => {

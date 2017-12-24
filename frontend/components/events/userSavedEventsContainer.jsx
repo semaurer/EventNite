@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UserSavedEvents from './user_saved_events';
-import { saveEvent, unsaveEvent,
-  fetchSavedEvents, removeEvent } from '../../actions/event_actions';
+import UserSavedEvents from './userSavedEvents';
+import { saveEvent, unsaveEvent, fetchSavedEvents, removeEvent } from '../../actions/event_actions';
 import { selectEvents } from '../../reducers/selectors';
 
 const mapStateToProps = ({ events, search, session }) => {
