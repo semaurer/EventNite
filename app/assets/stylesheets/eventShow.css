@@ -110,6 +110,10 @@
   transition: height 0.5s;
 }
 
+.bookmark-cover-false {
+  display: none;
+}
+
 .ticket-submit {
   float: right;
   margin-top: 8px;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import classNames from 'classnames';
 import Modal from 'react-modal';
 import ModalStyle from '../../../app/assets/stylesheets/ticket_modal_style';
 import TicketModal from '../tickets/ticket_modal';
@@ -56,10 +57,6 @@ class EventShow extends React.Component {
   render () {
     const { createTicket, event, params, router } = this.props;
 
-    let bookmarkCover = <button className="bookmark-cover-false"></button>;
-    if (this.state.bookmarked === false) bookmarkCover = <button
-      onClick={ this.updateBookmark } className="bookmark-cover"></button>;
-
     return (
       <div className="show-page group">
         <div className="show-page-bg">
@@ -83,7 +80,10 @@ class EventShow extends React.Component {
             </span>
             <span className="bookmark-register">
               <button onClick={ this.updateBookmark } className="bookmark" />
-              { bookmarkCover }
+              <button
+                className={classNames({'bookmark-cover-false': this.state.bookmarked}, "bookmark-cover")}
+                onClick={ this.updateBookmark }
+              />
               <button onClick={ this.openModal } className="ticket-submit">
                 { event.price === 'free' ? "Register" : "Tickets" }
               </button>
