@@ -2,34 +2,24 @@ import React from 'react';
 import { Link } from 'react-router';
 
 class UserSavedEvents extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-    this.tabEls = this.tabEls.bind(this);
-    this.savedEventEls = this.savedEventEls.bind(this);
-    this.redirect = this.redirect.bind(this);
-    this.unsaveEvent = this.unsaveEvent.bind(this);
-  }
+  state = { loading: true }
 
   componentDidMount() {
     this.props.fetchSavedEvents()
       .then(() => this.setState({ loading: false }));
   }
 
-  unsaveEvent(e) {
+  unsaveEvent = (e) => {
     this.props.unsaveEvent(e.currentTarget.id);
     this.props.removeEvent(e.currentTarget.id);
   }
 
-  redirect () {
-    if (this.props.location.pathname === "/users/tickets") {
-      this.props.router.push("/users/saved-events");
-    } else {
-      this.props.router.push("/users/tickets");
-    }
+  redirect = () => {
+    const { location, router } = this.props;
+    location.pathName === "/users/tickets" ? router.push("/users/saved-events") : router.push("/users/tickets");
   }
 
-  savedEventEls() {
+  renderSavedEvents = () => {
     return this.props.events.map(event => {
       let startDateTime = event.formatted_start_date_time
         .slice(0, event.formatted_start_date_time.length - 6);
@@ -52,7 +42,7 @@ class UserSavedEvents extends React.Component {
     });
   }
 
-  tabEls () {
+  renderTab = () => {
     if (this.props.location.pathname === "/users/tickets") {
       return (
         <div>
@@ -75,7 +65,6 @@ class UserSavedEvents extends React.Component {
           <li onClick={ this.redirect } className="u-e-tab">
             <ul>
               <li onClick={ this.redirect }>Your Events</li>
-
             </ul>
           </li>
           <li className="u-e-tab-active">
@@ -89,27 +78,20 @@ class UserSavedEvents extends React.Component {
   }
 
   render () {
-    let tabEls = this.tabEls();
-    let userName = "";
-    let savedEventEls = "";
-    if (this.props.events) savedEventEls = this.savedEventEls();
-    if (this.props.currentUser) userName =
-      `${this.props.currentUser.fname} ${this.props.currentUser.lname}`;
-    let loader;
-    if (this.state.loading === true) loader = <div className="loader"></div>;
+    const { currentUser, events } = this.props;
 
     return (
       <div className="users-events group">
         <header>
-          <h2>{ userName }</h2>
+          <h2>{ currentUser ? `${currentUser.fname} ${currentUser.lname}` : '' }</h2>
           <ul className="u-e-header group">
-            { tabEls }
+            { this.renderTab() }
           </ul>
         </header>
         <span className="user-saved-events group">
           <main>
-            { loader }
-            { savedEventEls }
+            { this.state.loading ? <div className="loader" /> : null }
+            { events ? this.renderSavedEvents() : null }
           </main>
         </span>
       </div>

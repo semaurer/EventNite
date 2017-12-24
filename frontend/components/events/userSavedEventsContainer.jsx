@@ -6,7 +6,7 @@ import { selectEvents } from '../../reducers/selectors';
 
 const mapStateToProps = ({ events, search, session }) => {
   return {
-    events: selectEvents(events, search),
+    events: events.events ? selectEvents(events, search) : [],
     currentUser: session.currentUser,
   };
 };
@@ -20,7 +20,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserSavedEvents);
+export default connect(mapStateToProps, mapDispatchToProps)(UserSavedEvents);
