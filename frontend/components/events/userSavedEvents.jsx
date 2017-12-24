@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import classNames from 'classnames';
 
 class UserSavedEvents extends React.Component {
   state = { loading: true }
@@ -20,13 +21,15 @@ class UserSavedEvents extends React.Component {
   }
 
   renderSavedEvents = () => {
-    return this.props.events.map(event => {
-      let startDateTime = event.formatted_start_date_time
-        .slice(0, event.formatted_start_date_time.length - 6);
+    const { events } = this.props;
+
+    return events.map(event => {
+      let startDateTime = event.formatted_start_date_time.slice(0, event.formatted_start_date_time.length - 6);
+
       return (
         <div key={ event.id} className="each-saved-event">
           <Link to={ `events/${event.id}` }>
-            <img src={ event.image_url }></img>
+            <img src={ event.image_url } />
             <span className="saved-main-info">
               <article className="saved-time">{ startDateTime } { event.start_time }</article>
               <article className="saved-title">{ event.title }</article>
@@ -34,58 +37,34 @@ class UserSavedEvents extends React.Component {
             </span>
           </Link>
           <span className="bookmark-bar">
-            <button id={ event.id } onClick={ this.unsaveEvent }
-              className="bookmark-saved"></button>
+            <button id={ event.id } onClick={ this.unsaveEvent } className="bookmark-saved" />
           </span>
         </div>
       );
     });
   }
 
-  renderTab = () => {
-    if (this.props.location.pathname === "/users/tickets") {
-      return (
-        <div>
-          <li className="u-e-tab-active">
-            <ul>
-              <li>Your Events</li>
-              <li></li>
-            </ul>
-          </li>
-          <li onClick={ this.redirect } className="u-e-tab">
-            <ul>
-              <li>Saved Events</li>
-            </ul>
-          </li>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <li onClick={ this.redirect } className="u-e-tab">
-            <ul>
-              <li onClick={ this.redirect }>Your Events</li>
-            </ul>
-          </li>
-          <li className="u-e-tab-active">
-            <ul>
-              <li>Saved Events</li>
-            </ul>
-          </li>
-        </div>
-      );
-    }
-  }
-
   render () {
-    const { currentUser, events } = this.props;
+    const { currentUser, events, location } = this.props;
+    const isTicketsView = location.pathname.includes('tickets');
 
     return (
       <div className="users-events group">
         <header>
           <h2>{ currentUser ? `${currentUser.fname} ${currentUser.lname}` : '' }</h2>
           <ul className="u-e-header group">
-            { this.renderTab() }
+            <li
+              className={classNames('u-e-tab', {"u-e-tab-active": isTicketsView})}
+              onClick={isTicketsView ? null : this.redirect}
+            >
+              <li>Your Events</li>
+            </li>
+            <li
+              className={classNames("u-e-tab", {'u-e-tab-active': !isTicketsView})}
+              onClick={!isTicketsView ? null : this.redirect }
+            >
+              <li>Saved Events</li>
+            </li>
           </ul>
         </header>
         <span className="user-saved-events group">
