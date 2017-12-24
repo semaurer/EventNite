@@ -1,113 +1,113 @@
 .show-page {
   background-color: #F5F5F5;
-  height: 900px;
-  width: 100%;
+  height: 56.25rem;
   position: relative;
+  width: 100%;
 }
 
 .show-page-bg {
   background-image: image-url("event_show_bg.png");
-  height: 500px;
-  width: 100%;
   background-size: cover;
+  height: 31.25rem;
+  width: 100%;
 }
 
 .show-template {
-  width: 1055px;
-  height: auto;
   background-color: #fff;
-  position: absolute;
-  margin-left: -527px;
-  left: 50%;
-  top: 40px;
-  border-radius: 5px;
+  border-radius: 0.4rem;
   border: 1px solid #ccc;
+  height: auto;
+  left: 50%;
+  margin-left: -32.9rem;
+  position: absolute;
+  top: 2.5rem;
+  width: 66rem;
 }
 
 .image-and-info {
-  width: 1055px;
-  height: 350px;
-  display: block;
   border-bottom: 1px solid #ccc;
+  display: block;
+  height: 21.9rem;
+  width: 66rem;
 }
 
 .event-img {
-  width: 700px;
-  height: 350px;
+  height: 21.88rem;
   float: left;
+  width: 43.75rem;
 }
 
 .title-date-host-price-container {
-  width: 355px;
-  height: 349px;
   background-color: #eee;
   float: right;
+  height: 21.8rem;
+  width: 22.19rem;
 }
 
 .bookmark-register {
-  width: 1055px;
-  height: 60px;
-  display: block;
   border-bottom: 1px solid #ccc;
+  display: block;
+  height: 3.75rem;
   position: relative;
+  width: 65.94rem;
 }
 
 .bookmark {
+  color: #eee;
+  cursor: pointer;
+  font-size: 2em;
+  left: 0px;
+  line-height: 0.5em;
   position: absolute;
   top: 36px;
-  left: 0px;
-  z-index: 1;
-  color: #eee;
-  font-size: 2em;
-  cursor: pointer;
-  width: 1.5em;
-  line-height: 0.5em;
-  -webkit-transition: line-height 0.5s;
   transition: line-height 0.5s;
+  -webkit-transition: line-height 0.5s;
+  width: 1.5em;
+  z-index: 1;
 }
 
 .bookmark:after {
+  border: 7px solid #1E90FF;
+  border-bottom-color: transparent;
+  border-top-width: 15px;
   content: "";
   font-size: 0.5em;
-  position: absolute;
   height: 0px;
-  border: 7px solid #1E90FF;
-  z-index: -1;
-  top: -1em;
-  border-top-width: 15px;
-  border-bottom-color: transparent;
+  position: absolute;
   right: 0;
-  -webkit-transition: height 0.5s;
+  top: -1em;
   transition: height 0.5s;
+  -webkit-transition: height 0.5s;
+  z-index: -1;
 }
 
 .bookmark-cover {
+  color: #eee;
+  cursor: pointer;
+  font-size: 2em;
+  left: -2px;
+  line-height: 0.5em;
   position: absolute;
   top: 38px;
-  left: -2px;
-  z-index: 1;
-  color: #eee;
-  font-size: 2em;
-  cursor: pointer;
-  width: 1.5em;
-  line-height: 0.5em;
   -webkit-transition: line-height 0.5s;
+  width: 1.5em;
   transition: line-height 0.5s;
+  z-index: 1;
 }
 
 .bookmark-cover:after {
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-top-width: 10px;
   content: "";
   font-size: 0.5em;
-  position: absolute;
   height: 0px;
-  border: 5px solid #fff;
-  z-index: -1;
-  top: -1em;
-  border-top-width: 10px;
-  border-bottom-color: transparent;
+  position: absolute;
   right: 0;
-  -webkit-transition: height 0.5s;
+  top: -1em;
   transition: height 0.5s;
+  -webkit-transition: height 0.5s;
+  z-index: -1;
 }
 
 .bookmark-cover-false {
@@ -115,100 +115,104 @@
 }
 
 .ticket-submit {
-  float: right;
-  margin-top: 8px;
-  margin-right: 14px;
   background-color: #228B22;
-  padding: 12px 135px;
-  border-radius: 5px;
+  border-radius: 0.4rem;
   color: white;
+  cursor: pointer;
+  float: right;
+  font-size: 1.1rem;
   font-weight: bold;
-  font-size: 17px;
+  margin-right: 0.9rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem 8.44rem;
 }
 
 .ticket-submit:hover {
-  cursor: pointer;
   background-color: #008000;
 }
 
 .t-d-h-p-container-list {
-  padding: 25px 30px;
   color: #696969;
+  padding: 1.56rem 1.86rem;
   position: relative;
 }
 
 .t-d-h-p-month {
-  text-transform: uppercase;
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .t-d-h-p-day {
-  font-size: 18px;
+  font-size: 1.1rem;
   padding: 3px 5px;
 }
 
 .t-d-h-p-title {
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 20px;
   color: #000;
-  margin-bottom: 20px;
-  height: 140px;
+  font-size: 1.88rem;
+  font-weight: bold;
+  height: 8.75rem;
+  margin-bottom: 1.25rem;
+  margin-top: 1.25rem;
 }
 
 .t-d-h-p-author {
-  position: absolute;
   bottom: 0;
+  position: absolute;
 }
 
 .pricing {
+  bottom: -3.75rem;
   position: absolute;
-  bottom: -60px;
 }
 
 .description-date-loc {
-  width: 100%;
   display: block;
   height: auto;
+  width: 100%;
 }
 
 .info-left {
-  width: 60%;
   display: block;
   float: left;
-
+  width: 60%;
 }
 
 .description-info-list {
-  padding: 20px 110px;
-  font-size: 16px;
-  width: 100px;
+  font-size: 1rem;
+  padding: 1.25rem 6.875rem;
+  width: 6.25rem;
 
 }
 
 .d-i-description {
-  width: 400px;
   display: block;
   height: auto;
+  width: 25rem;
 }
 
 .info-right {
-  width: 40%;
   display: block;
   float: right;
+  width: 40%;
 }
 
 .info-right section {
   display: block;
   float: left;
+  margin-left: 5rem;
+  margin-top: 1.25rem;
   width: 100%;
-  margin-left: 80px;
-  margin-top: 20px;
 }
 
 .info-right info {
   display: block;
-  margin-top: 5px;
-  width: 300px;
+  margin-top: 0.4rem;
+  width: 18.75rem;
 }
+
+.bottom-info-section {
+  margin-bottom: 2rem;
+}
+

@@ -101,22 +101,20 @@ class EventShow extends React.Component {
                   <info>{ event.formatted_start_date_time } { event.start_time } -</info>
                   <info>{ event.formatted_end_date_time } { event.end_time }</info>
                 </section>
-                <section>
+                <section className="bottom-info-section">
                   <h3>Location</h3>
                   <info>{ event.location }</info>
-                </section>
-                <section>
-                  <h3></h3>
                 </section>
               </div>
             </span>
           </div>
         </div>
         <Modal
+          contentLabel=""
+          isOpen={ this.state.modalOpen }
           onAfterOpen={ this.onModalOpen }
-          style={ ModalStyle }
-          contentLabel="" isOpen={ this.state.modalOpen }
           onRequestClose={ this.closeModal }
+          style={ ModalStyle }
         >
           <TicketModal
             router={ router}
