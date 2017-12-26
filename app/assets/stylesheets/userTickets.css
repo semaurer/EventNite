@@ -1,64 +1,64 @@
 .users-events {
-  width: 100%;
-  height: auto;
   display: block;
+  height: auto;
+  width: 100%;
 }
 
 .users-events header {
-  width: 100%;
-  height: auto;
-  display: block;
   background-color: #fff;
   border-bottom: 1px solid #ccc;
+  display: block;
+  height: auto;
+  width: 100%;
 }
 
 .users-events h2 {
-  width: 100%;
-  height: auto;
   display: block;
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 30px;
-  font-size: 36px;
+  font-size: 2rem;
   font-weight: bold;
+  height: auto;
+  margin-bottom: 1.9rem;
+  margin-top: 2.5rem;
+  text-align: center;
+  width: 100%;
 }
 
 .u-e-header {
-  width: 100%;
+  font-size: 0.9rem;
   height: auto;
   text-align: center;
   text-transform: uppercase;
-  font-size: 14px;
+  width: 100%;
 }
 
 .u-e-tab {
-  height: auto;
-  width: 15%;
-  margin: 0 auto;
-  display: inline-block;
   color: #696969;
-  padding-bottom: 10px;
-  padding-top: 40px;
-}
-
-.u-e-tab-active {
-  height: auto;
-  width: 15%;
-  margin: 0 auto;
-  display: inline-block;
-  color: #696969;
-  border-bottom: 3px solid #1E90FF;
-  padding-bottom: 10px;
-  padding-top: 40px;
-}
-
-.u-e-tab-active:hover {
   cursor: pointer;
-  color: #1E90FF;
+  display: inline-block;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 0.6rem;
+  padding-top: 2.5rem;
+  width: 15%;
 }
 
 .u-e-tab:hover {
+  color: #1E90FF;
+}
+
+.u-e-tab-active {
+  border-bottom: 3px solid #1E90FF;
+  color: #696969;
   cursor: pointer;
+  display: inline-block;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 0.6rem;
+  padding-top: 2.5rem;
+  width: 15%;
+}
+
+.u-e-tab-active:hover {
   color: #1E90FF;
 }
 
@@ -68,34 +68,34 @@
 }
 
 .user-events-bottom {
-  width: 100%;
-  height: auto;
+  background-color: #f7f7ff;
   display: block;
   float: left;
-  background-color: #f7f7ff;
+  height: auto;
+  width: 100%;
 }
 
 .each-ticket {
+  display: block;
+  height: auto;
   margin: 0 auto;
   width: 50%;
-  height: auto;
-  display: block;
 }
 
 .ticket {
-  height: auto;
-  width: 100%;
-  display: block;
-  margin: 10px;
-  float: left;
-  border-bottom: 1px solid #ccc;
   background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  display: block;
+  float: left;
+  height: auto;
+  margin: 0.63rem;
+  width: 100%;
 }
 
 .ticket-left img {
-  width: 200px;
-  height: 100px;
-  padding: 10px;
+  height: 6.25rem;
+  padding: 0.63rem;
+  width: 12.5rem;
 }
 
 .ticket-left {
@@ -104,15 +104,15 @@
 
 .ticket-right {
   float: left;
-  margin-top: 20px;
-  margin-left: 5px;
+  margin-left: 0.31rem;
+  margin-top: 1.25rem;
 }
 
 .start-date {
-  text-transform: uppercase;
-  font-size: 15px;
   color: #0d1419;
-  margin-bottom: 15px;
+  font-size: 0.95rem;
+  margin-bottom: 0.95rem;
+  text-transform: uppercase;
 }
 
 .ticket-p-title {
@@ -120,7 +120,7 @@
 }
 
 .ticket-purchase {
-  font-size: 14px;
-  margin-top: 15px;
   color: #aaa;
+  font-size: 0.9rem;
+  margin-top: 0.95rem;
 }
