@@ -1,90 +1,77 @@
 import React from 'react';
 
 class CategoryExtension extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = { subEls: false, parentId: null };
-    this.parentCatEls = this.parentCatEls.bind(this);
-    this.updateSubsToggle = this.updateSubsToggle.bind(this);
-    this.subCatEls = this.subCatEls.bind(this);
-    this.updateSubId= this.updateSubId.bind(this);
-  }
+  state = { showSubCategories: false, parentCategoryId: null };
 
-  updateSubId(e) {
-    this.props.categories.forEach(category => {
-      if (category.name === e.currentTarget.value) {
-        this.props.setSubCategoryId(category.id);
-      }
+  updateSubCategoryId = (e) => {
+    const { categories, setSubCategoryId } = this.props;
+
+    categories.forEach(category => {
+      if (category.name === e.currentTarget.value) setSubCategoryId(category.id);
     });
   }
 
-  updateSubsToggle(e) {
-    this.props.categories.forEach(category => {
+  updateSubCategoriesToggle = (e) => {
+    const { categories, setParentCategoryId } = this.props;
+
+    categories.forEach(category => {
       if (category.name === e.currentTarget.value) {
-        this.setState({ parentId: category.id });
-        this.props.setParentCategoryId(category.id);
+        this.setState({ parentCategoryId: category.id });
+        setParentCategoryId(category.id);
       }
     });
+
     if (e.currentTarget.value !== "Select a topic") {
-      this.setState({ subEls: true });
+      this.setState({ showSubCategories: true });
     } else {
-      this.setState({ subEls: false });
+      this.setState({ showSubCategories: false });
     }
   }
 
-  parentCatEls() {
-    const parentEls = [];
+  renderParentCategories = () => {
+    const parentCategories = [];
+
     this.props.categories.forEach(category => {
-      if (category.parent_category_id === null) {
-        parentEls.push(<option key={ category.id }>{ category.name }</option>);
+      if (!category.parent_category_id) {
+        parentCategories.push(<option key={ category.id }>{ category.name }</option>);
       }
     });
-    return parentEls;
+    return parentCategories;
   }
 
-  subCatEls() {
-    const parentId = this.state.parentId;
-    const subEls = [];
+  renderSubCategories = () => {
+    const subCategories = [];
+
     this.props.categories.forEach(category => {
-      if (category.parent_category_id !== null) {
-        if (category.parent_category_id === parentId) {
-          subEls.push(<option key={ category.id }>{ category.name }</option>);
-        }
+      if (category.parent_category_id === this.state.parentCategoryId) {
+        subCategories.push(<option key={ category.id }>{ category.name }</option>);
       }
     });
 
     return (
       <span className="sub-topic">
         <h3>EVENT SUB-TOPIC</h3>
-        <select onChange={ this.updateSubId } className="sub-topic-select">
+        <select onChange={ this.updateSubCategoryId } className="sub-topic-select">
           <option>Select a sub-topic</option>
-          { subEls }
+          { subCategories }
         </select>
       </span>
     );
   }
 
   render () {
-    const parentCatEls = this.parentCatEls();
-    let subCatEls = "";
-    if (this.state.subEls !== false) {
-      subCatEls = this.subCatEls();
-    }
-
     return (
       <div className="additional-settings">
         <span className="topics">
           <h3>EVENT TOPIC</h3>
-          <select className="topic-select"
-            onChange={ this.updateSubsToggle }>
+          <select className="topic-select" onChange={ this.updateSubCategoriesToggle }>
             <option>Select a topic</option>
-            { parentCatEls }
+            { this.renderParentCategories() }
           </select>
-          { subCatEls }
+          { this.state.showSubCategories ? this.renderSubCategories : null }
         </span>
       </div>
     );
-
   }
 }
 
