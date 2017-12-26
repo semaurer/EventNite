@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import classNames from 'classnames';
 import Modal from 'react-modal';
 import ModalStyle from '../../../app/assets/stylesheets/ticket_modal_style';
-import TicketModal from '../tickets/ticket_modal';
+import TicketModal from '../tickets/ticketModal';
 
 class EventShow extends React.Component {
   state = { modalOpen: false, bookmarked: false }
