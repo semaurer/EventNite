@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import CategoryExtension from '../categories/event_create_category_extension';
+import CategoryExtension from '../categories/categoryExtension';
 
 class EventCreateForm extends React.Component {
   state = {
