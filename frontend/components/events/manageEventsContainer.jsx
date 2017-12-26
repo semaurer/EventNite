@@ -4,9 +4,9 @@ import ManageEvents from './manageEvents';
 import { fetchEvents, deleteEvent } from '../../actions/event_actions';
 import { selectCurrentUserEvents } from '../../reducers/selectors';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ events, session }) => {
   return {
-    currentUserEvents: selectCurrentUserEvents(state),
+    currentUserEvents: events.events ? selectCurrentUserEvents(events, session) : [],
   };
 };
 
