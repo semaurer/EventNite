@@ -5,53 +5,53 @@
 }
 
 .manage-main {
-  margin: 0 auto;
   display: block;
+  margin: 0 auto;
   height: auto;
-  width: 1062px;
+  width: 66.375rem;
 }
 
 .manage-events-div {
-  width: 79%;
   display: block;
   float: left;
-  height: auto;
-  margin-top: 35px;
-  margin-bottom: 60px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
+  height: auto;
+  margin-bottom: 3.75rem;
+  margin-top: 2.1875rem;
+  width: 79%;
 }
 
 .manage-main h2 {
-  margin-top: 35px;
-  margin-bottom: 60px;
-  font-size: 35px;
+  font-size: 2.12rem;
   font-weight: bold;
+  margin-bottom: 3.75rem;
+  margin-top: 2.12rem;
 }
 
 .manage-events-container {
   border-top: 1px solid #ccc;
-  width: 100%;
   display: block;
-  height: auto;
   float: left;
+  height: auto;
+  width: 100%;
 }
 
 .manage-events-container li {
-  width: 100%;
-  height: auto;
   background-color: #fff;
-  display: block;
   border-bottom: 1px solid #eee;
-  margin-top: 10px;
+  display: block;
   float: left;
+  height: auto;
+  margin-top: 0.6rem;
+  width: 100%;
 }
 
 .manage-events-container li h3 {
   color: #4682B4;
-  margin: 0px;
   display: block;
-  padding: 15px 0 5px 10px;
+  margin: 0px;
+  padding: 0.95rem 0 0.4rem 0.63rem;
 }
 
 .manage-events-container li h3:hover {
@@ -59,26 +59,26 @@
 }
 
 .manage-event-time {
-  padding-left: 10px;
-  display: block;
-  height: auto;
-  float: left;
-  width: 100%;
   color: #aaa;
+  display: block;
+  float: left;
+  height: auto;
+  padding-left: 0.63rem;
+  width: 100%;
 }
 
 .management-links {
-  display: block;
-  width: 100%;
-  height: auto;
-  float: left;
-  padding: 15px 0 10px 15px;
-  font-size: 15px;
   color: #aaa;
+  display: block;
+  font-size: 0.9rem;
+  float: left;
+  height: auto;
+  padding: 0.95rem 0 0.63rem 0.95rem;
+  width: 100%;
 }
 
 .management-links a {
-  padding-right: 15px;
+  padding-right: 0.95rem;
 }
 
 .management-links a:hover {
@@ -86,60 +86,59 @@
   text-decoration: underline;
 }
 
-.e-m-modal-b:hover {
+.e-m-modal-b {
   cursor: pointer;
 }
 
 .manage-modal-header {
-  text-align: center;
   display: block;
-  font-size: 22px;
+  font-size: 1.375rem;
+  text-align: center;
 }
 
 .warning {
-  text-align: center;
-  display: block;
-  font-size: 14px;
   color: red;
-  margin-bottom: 40px;
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 .delete-buttons {
-  width: 100%;
   text-align: center;
-
+  width: 100%;
 }
 
 .delete-buttons button {
-  padding: 10px 20px;
+  padding: 0.63rem 1.25rem;
 }
 
 .really-delete {
+  background-color: none;
   border: 2px solid red;
   color: red;
-  margin-right: 25px;
-  background-color: none;
-  transition: background-color 0.5s;
+  cursor: pointer;
   font-weight: bold;
+  margin-right: 1.56rem;
+  transition: background-color 0.5s;
 }
 
 .really-delete:hover {
-  cursor: pointer;
   background-color: red;
   color: #fff;
   transition: background-color 0.5s;
 }
 
 .delete-cancel {
+  background-color: none;
   border: 2px solid #4682B4;
   color: #4682B4;
-  background-color: none;
-  transition: background-color 0.5s;
+  cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.5s;
 }
 
 .delete-cancel:hover {
-  cursor: pointer;
   background-color: #4682B4;
   color: #fff;
   transition: background-color 0.5s;

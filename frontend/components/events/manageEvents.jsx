@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
-import ModalStyle from '../../../app/assets/stylesheets/manage_modal_style';
+import ModalStyle from '../../../app/assets/stylesheets/manageModalStyling';
 
 class ManageEvents extends React.Component {
   state = { modalOpen: false, currentEventId: null, loading: true };
