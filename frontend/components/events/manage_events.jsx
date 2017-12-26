@@ -3,29 +3,20 @@ import { Link } from 'react-router';
 import Modal from 'react-modal';
 import ModalStyle from '../../../app/assets/stylesheets/manage_modal_style';
 
-
 class ManageEvents extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { modalOpen: false, currentEventId: null, loading: true };
-    this.eventEls = this.eventEls.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.sendDeleteRequest = this.sendDeleteRequest.bind(this);
-    this.sendEventId = this.sendEventId.bind(this);
-  }
+    state = { modalOpen: false, currentEventId: null, loading: true };
 
-  openModal() {
+  openModal = () => {
     this.setState({ modalOpen: true });
   }
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ modalOpen: false });
-    ModalStyle.content.top = "-300px";
+    ModalStyle.content.top = "-18.75rem";
   }
 
   onModalOpen () {
-    ModalStyle.content.top = "95px";
+    ModalStyle.content.top = "5.94rem";
   }
 
   componentDidMount () {
@@ -33,67 +24,59 @@ class ManageEvents extends React.Component {
       .then(() => this.setState({ loading: false }));
   }
 
-  sendEventId(e) {
-    const eventId = e.currentTarget.id;
-    this.setState({ currentEventId: eventId });
+  sendEventId = (e) => {
+    this.setState({ currentEventId: e.currentTarget.id });
     this.openModal();
   }
 
-  sendDeleteRequest () {
+  sendDeleteRequest = () => {
     this.props.deleteEvent(this.state.currentEventId);
     this.closeModal();
   }
 
-  eventEls () {
+  renderEvents = () => {
     return this.props.currentUserEvents.map((event, _idx) => {
       const startDate = new Date(event.start_date_time).toDateString();
       return (
-      <li key={ _idx }>
-        <Link to={ `events/${event.id}` }>
-          <h3>{ event.title }</h3>
-        </Link>
-        <div className="manage-event-time">{ startDate } { event.start_time }</div>
-        <ul className="management-links">
-          <Link id={ event.id } className="e-m-modal-b" onClick={ this.sendEventId }>Delete</Link>
-          <Link to={ `events/${event.id}/edit`}>Edit</Link>
-          <Link to={ `events/${event.id}` }>View</Link>
-        </ul>
-      </li>
+        <li key={ _idx }>
+          <Link to={ `events/${event.id}` }>
+            <h3>{ event.title }</h3>
+          </Link>
+          <div className="manage-event-time">{ startDate } { event.start_time }</div>
+          <ul className="management-links">
+            <Link id={ event.id } className="e-m-modal-b" onClick={ this.sendEventId }>Delete</Link>
+            <Link to={ `events/${event.id}/edit`}>Edit</Link>
+            <Link to={ `events/${event.id}` }>View</Link>
+          </ul>
+        </li>
       );
     });
   }
 
   render () {
-    const events = this.eventEls();
-    let loader;
-    if (this.state.loading === true) loader = <div className="loader"></div>;
-
     return (
       <div className="manage-events-page group">
         <main className="manage-main">
           <div className="manage-events-div">
             <h2>Manage Events</h2>
             <ul className="manage-events-container">
-              { loader }
-              { events }
+              { this.state.loading ?  <div className="loader" /> : null }
+              { this.renderEvents() }
             </ul>
           </div>
-          <aside>
-
-          </aside>
         </main>
-
-        <Modal onAfterOpen={ this.onModalOpen }
-          contentLabel="" isOpen={ this.state.modalOpen }
+        <Modal
+          contentLabel=""
+          isOpen={ this.state.modalOpen }
+          onAfterOpen={ this.onModalOpen }
           onRequestClose={ this.closeModal }
-          style={ ModalStyle }>
+          style={ ModalStyle }
+        >
           <h3 className="manage-modal-header">Delete this event?</h3>
           <h4 className="warning">(These changes can not be undone)</h4>
           <div className="delete-buttons">
-            <button className="really-delete"
-              onClick={ this.sendDeleteRequest }>Delete</button>
-            <button className="delete-cancel"
-              onClick={ this.closeModal }>Cancel</button>
+            <button className="really-delete" onClick={ this.sendDeleteRequest }>Delete</button>
+            <button className="delete-cancel" onClick={ this.closeModal }>Cancel</button>
           </div>
         </Modal>
       </div>
