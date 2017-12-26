@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UserTicketPage from './user_ticket_page';
+import userTickets from './userTickets';
 import { selectTickets } from '../../reducers/selectors';
 import { fetchTickets } from '../../actions/ticket_actions';
 
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserTicketPage);
+)(userTickets);
