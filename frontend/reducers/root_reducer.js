@@ -4,7 +4,7 @@ import EventReducer from './event_reducer';
 import EventsReducer from './events_reducer';
 import TicketReducer from './ticket_reducer';
 import TicketsReducer from './tickets_reducer';
-import CategoriesReducer from './categories_reducer';
+import CategoriesReducer from './categoriesReducer';
 import SearchReducer from './search_reducer';
 
 const rootReducer = combineReducers({
