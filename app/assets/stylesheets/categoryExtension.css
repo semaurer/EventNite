@@ -1,54 +1,48 @@
 .additional-settings {
-  width: 100%;
-  height: auto;
   display: block;
   float: left;
+  height: auto;
   position: relative;
+  width: 100%;
 }
 
 .topics {
-  width: 100%;
-  height: auto;
   display: block;
+  height: auto;
+  width: 100%;
 }
 
 .additional-settings h3 {
-  font-size: 16px;
-  margin-top: 40px;
+  font-size: 1rem;
+  margin-top: 2.5rem;
 }
 
 .topic-select {
-  width: 35%;
-  height: 35px;
   background-color: #fff;
   border: 1px solid #aaa;
-  font-size: 16px;
-  padding: 5px 5px;
-}
-
-.topic-select:hover {
   cursor: pointer;
+  font-size: 1rem;
+  height: 2.19rem;
+  padding: 0.4rem;
+  width: 35%;
 }
 
 .topic-select option {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .sub-topic {
-  position: absolute;
   bottom: 0;
-  left: 400px;
+  left: 25rem;
+  position: absolute;
 }
 
 .sub-topic-select {
-  width: 322px;
-  height: 35px;
   background-color: #fff;
   border: 1px solid #aaa;
-  font-size: 16px;
-  padding: 5px 5px;
-}
-
-.sub-topic-select:hover {
   cursor: pointer;
+  font-size: 1rem;
+  height: 2.19rem;
+  padding: 0.4rem;
+  width: 20.13rem;
 }

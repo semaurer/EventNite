@@ -68,7 +68,7 @@ class CategoryExtension extends React.Component {
             <option>Select a topic</option>
             { this.renderParentCategories() }
           </select>
-          { this.state.showSubCategories ? this.renderSubCategories : null }
+          { this.state.showSubCategories ? this.renderSubCategories() : null }
         </span>
       </div>
     );
