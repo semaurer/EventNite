@@ -6,8 +6,8 @@ import { clearErrors } from '../../actions/session_actions';
 
 const mapStateToProps = ({ event }) => {
   return {
-    event: event.event,
-    errors: event.errors,
+    event: event.event ? event.event : {},
+    errors: event.errors ? event.errors : [],
   };
 };
 
@@ -19,7 +19,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EventUpdate);
+export default connect(mapStateToProps, mapDispatchToProps)(EventUpdate);
