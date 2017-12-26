@@ -6,12 +6,12 @@ import { clearErrors } from '../../actions/session_actions';
 import { fetchCategories } from '../../actions/category_actions';
 import { selectCategories } from '../../reducers/selectors';
 
-const mapStateToProps = ( state ) => {
+const mapStateToProps = ({ categories, event }) => {
 
   return {
-    event: state.event.event,
-    errors: state.event.errors,
-    categories: selectCategories(state),
+    event: event.event,
+    errors: event.errors ? event.errors : [],
+    categories: categories.categories ? selectCategories(categories) : [],
   };
 };
 
@@ -23,7 +23,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EventCreateForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EventCreateForm);
