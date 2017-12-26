@@ -10,10 +10,10 @@ const style = {
   },
   content : {
     position        : 'fixed',
-    height          : '290px',
-    width           : '450px',
+    height          : '18.12rem',
+    width           : '28.13rem',
     margin          : '0 auto',
-    top             : '-300px',
+    top             : '-18.75rem',
     border          : '1px solid #ccc',
     padding         : '0',
     zIndex          : 11,

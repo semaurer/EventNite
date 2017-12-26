@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import Modal from 'react-modal';
-import ModalStyle from '../../../app/assets/stylesheets/ticket_modal_style';
+import ModalStyle from '../../../app/assets/stylesheets/ticketModalStyling';
 import TicketModal from '../tickets/ticketModal';
 
 class EventShow extends React.Component {
