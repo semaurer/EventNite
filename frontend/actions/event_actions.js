@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/event_api_util';
+import * as APIUtil from '../util/eventAPIUtil';
 import { receiveErrors } from './session_actions';
 
 export const RECEIVE_EVENT = "RECEIVE_EVENT";

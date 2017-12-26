@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/ticket_api_util';
+import * as APIUtil from '../util/ticketAPIUtil';
 
 export const RECEIVE_TICKET = "RECEIVE_TICKET";
 export const RECEIVE_TICKETS = "RECEIVE_TICKETS";
