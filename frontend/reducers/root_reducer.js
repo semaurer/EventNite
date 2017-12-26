@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import SessionReducer from './session_reducer';
 import EventReducer from './eventReducer';
-import EventsReducer from './events_reducer';
+import EventsReducer from './eventsReducer';
 import TicketReducer from './ticket_reducer';
 import TicketsReducer from './tickets_reducer';
 import CategoriesReducer from './categoriesReducer';
