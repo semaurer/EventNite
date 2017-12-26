@@ -1,5 +1,4 @@
 import React from 'react';
-import { merge, assign } from 'lodash';
 import { CLEAR_ERRORS, RECEIVE_CURRENT_USER, RECEIVE_ERRORS, SWAP_MODAL_DISPLAY } from '../actions/session_actions';
 import { REMOVE_SAVED_EVENT, RECEIVE_SAVED_EVENT } from '../actions/event_actions';
 import { removeSavedEvent } from './selectors';

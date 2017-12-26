@@ -10,12 +10,15 @@ const ticketReducer = (state = defaultState, action) => {
 
   switch(action.type) {
     case RECEIVE_TICKET:
-      const ticket = action.ticket;
-      const oldState = merge({}, state, { ticket });
-      return oldState;
+      return {
+        ...state,
+        ticket: action.ticket
+      };
 
     default:
-      return state;
+      return {
+        ...state
+      };
   }
 };
 

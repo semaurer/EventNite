@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import SessionReducer from './sessionReducer';
 import EventReducer from './eventReducer';
 import EventsReducer from './eventsReducer';
-import TicketReducer from './ticket_reducer';
+import TicketReducer from './ticketReducer';
 import TicketsReducer from './tickets_reducer';
 import CategoriesReducer from './categoriesReducer';
 import SearchReducer from './searchReducer';
