@@ -1,47 +1,38 @@
 import React from 'react';
 
 class TicketModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { ticketQuantity: 0, totalCost: 0 };
-    this.updateTickets = this.updateTickets.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  state = { ticketQuantity: 0, totalCost: 0 };
 
-  updateTickets(e) {
+  updateTickets = (e) => {
+    const { price } = this.props;
     this.setState({ ticketQuantity: e.currentTarget.value });
-    if (this.props.price !== "free") {
-      let currentPrice = String((parseInt(e.currentTarget.value) *
-        parseInt(this.props.price.slice(1))));
+
+    if (price !== "free") {
+      let currentPrice = String((parseInt(e.currentTarget.value) * parseInt(price.slice(1))));
       this.setState({ totalCost: currentPrice });
     }
   }
 
-  handleSubmit() {
+  handleSubmit = () => {
+    const { createTicket, eventId, router } = this.props;
+
     for (let i = 0; i < this.state.ticketQuantity; i++) {
-      this.props.createTicket({ event_id: this.props.eventId  })
+      createTicket({ event_id: eventId  })
         .then(() => {
-          if (i === this.state.ticketQuantity - 1) {
-            this.props.router.push("/users/tickets");
-          }
+          if (i === this.state.ticketQuantity - 1) router.push("/users/tickets");
         });
     }
   }
 
   render () {
-    let priceText = "Free";
-    let ticketText = this.props.ticketText;
-    let totalCostText = "0";
-    if (this.props.price !== "free") {
-      ticketText = "Select " + ticketText;
-      priceText = this.props.price;
-      totalCostText = this.state.totalCost;
-    }
+    const { endDate, price, ticketText } = this.props;
+    const { totalCost, ticketQuantity } = this.state;
+    const isFree = price === 'free';
 
     return (
       <div className="ticket-modal group">
         <header>
-          <h2>{ ticketText }</h2>
+          <h2>{ isFree ? ticketText : `Select ${ticketText}` }</h2>
         </header>
         <main>
           <ul className="ticket-options">
@@ -49,7 +40,7 @@ class TicketModal extends React.Component {
               <span className="t-o-top-bar">
                 <div>
                   <h3>General Admission</h3>
-                  <h4>{ priceText }</h4>
+                  <h4>{ isFree ? "Free" : price }</h4>
                 </div>
                 <div>
                   <select onChange={ this.updateTickets }className="ticket-quantity">
@@ -63,14 +54,14 @@ class TicketModal extends React.Component {
                 </div>
               </span>
               <span className="t-o-bot-bar">
-                <article>Sales end on { this.props.endDate }</article>
+                <article>Sales end on { endDate }</article>
               </span>
             </li>
           </ul>
         </main>
         <footer>
-          <article>QTY: {this.state.ticketQuantity }</article>
-          <article className="total-price">${ totalCostText }</article>
+          <article>QTY: { ticketQuantity }</article>
+          <article className="total-price">${ isFree ? '0' : totalCost }</article>
           <div className="footer-button-div">
             <button onClick={ this.handleSubmit }>PLACE ORDER</button>
           </div>
