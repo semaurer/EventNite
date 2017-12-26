@@ -3,7 +3,7 @@ import SessionReducer from './sessionReducer';
 import EventReducer from './eventReducer';
 import EventsReducer from './eventsReducer';
 import TicketReducer from './ticketReducer';
-import TicketsReducer from './tickets_reducer';
+import TicketsReducer from './ticketsReducer';
 import CategoriesReducer from './categoriesReducer';
 import SearchReducer from './searchReducer';
 

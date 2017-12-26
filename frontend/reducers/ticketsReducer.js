@@ -1,5 +1,4 @@
 import React from 'react';
-import { merge, assign } from 'lodash';
 import { RECEIVE_TICKETS } from '../actions/ticket_actions';
 
 const defaultState = Object.assign({
@@ -10,12 +9,15 @@ const ticketsReducer = (state = defaultState, action) => {
 
   switch(action.type) {
     case RECEIVE_TICKETS:
-      const tickets = action.tickets;
-      const oldState = Object.assign({}, state, { tickets });
-      return oldState;
+      return {
+        ...state,
+        tickets: action.tickets
+      }
 
     default:
-      return state;
+      return {
+        ...state
+      };
   }
 };
 
