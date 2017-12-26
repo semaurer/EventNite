@@ -13,7 +13,7 @@ class CategoryExtension extends React.Component {
   updateSubId(e) {
     this.props.categories.forEach(category => {
       if (category.name === e.currentTarget.value) {
-        this.props.setSubId(category.id);
+        this.props.setSubCategoryId(category.id);
       }
     });
   }
@@ -22,7 +22,7 @@ class CategoryExtension extends React.Component {
     this.props.categories.forEach(category => {
       if (category.name === e.currentTarget.value) {
         this.setState({ parentId: category.id });
-        this.props.setParentId(category.id);
+        this.props.setParentCategoryId(category.id);
       }
     });
     if (e.currentTarget.value !== "Select a topic") {
