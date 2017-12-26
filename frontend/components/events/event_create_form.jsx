@@ -12,7 +12,7 @@ class EventCreateForm extends React.Component {
     price: "free",
     imageFile: "",
     imageUrl: "",
-    pricingToggle: "",
+    pricingFree: true,
     parentCategoryId: null,
     subCategoryId: null,
   }
@@ -70,44 +70,20 @@ class EventCreateForm extends React.Component {
     this.props.router.push(`/events/${event.id}`)
   }
 
-  pricingEls = (e) => {
+  setPricing = (e) => {
     e.preventDefault();
     if (e.currentTarget.className === "free-button") {
-      this.setState({ price: "free", pricingToggle: "freeEls" });
+      this.setState({ price: "free", pricingFree: true });
     } else {
-      this.setState({ pricingToggle: "pricingEls"});
+      this.setState({ pricingFree: false });
     }
   }
 
 
   renderCreateFields = () => {
-    let imageElsToggle = "img-absolute";
-    let previewToggle = "disp-none";
-    if ( this.state.imageUrl !== "" ) {
-      imageElsToggle = "img-none"
-      previewToggle = "img-preview";
-    }
-
-    let pricingEls = <div></div>;
-    if (this.state.pricingToggle === "freeEls") {
-      pricingEls =
-        <div className="freeEls">
-          <h4>Your event will be free!</h4>
-        </div>
-    } else if (this.state.pricingToggle === "pricingEls") {
-      pricingEls =
-        <div className="pricedEls">
-          <input type="text" placeholder="0"
-            onChange={ this.updateEventState("price")}>
-          </input>
-        </div>
-    }
-    let categoryExtension = "";
-
-    if (this.props.categories.length !== 0) {
-      categoryExtension = <CategoryExtension categories={ this.props.categories }
-        setParentCategoryId={ this.setParentCategoryId } setSubCategoryId={ this.setSubCategoryId }/>;
-    }
+    const { categories } = this.props;
+    const { pricingFree } = this.state;
+    const srcLength = this.state.imageUrl.length;
 
     return (
       <div className="c-e-form group">
@@ -156,8 +132,8 @@ class EventCreateForm extends React.Component {
           <span className="image-container">
             <div className="image-area">
               <input className="image-file-input" type="file" onChange={ this.updateFile } />
-              <img className={ previewToggle } src={ this.state.imageUrl }/>
-              <div className={ imageElsToggle }>
+              <img className={ srcLength ? 'img-preview' : 'disp-none' } src={ this.state.imageUrl }/>
+              <div className={ srcLength ? 'img-none' : 'img-absolute' }>
                 <li className="image-thumb"></li>
                 <li className="image-header">ADD EVENT IMAGE</li>
                 <li className="image-text">Choose a compelling image that brings your event to life.</li>
@@ -180,16 +156,30 @@ class EventCreateForm extends React.Component {
         <form className="ticket-pricing">
           <h4>Set a price for your tickets</h4>
           <div className="pricing-buttons">
-            <button className="free-button" onClick={ this.pricingEls }>Free</button>
-            <button className="priced-button" onClick={ this.pricingEls }>Priced</button>
-            { pricingEls }
+            <button className="free-button" onClick={ this.setPricing }>Free</button>
+            <button className="priced-button" onClick={ this.setPricing }>Priced</button>
+            { pricingFree ? (
+              <div className="freeEls">
+                <h4>Your event will be free!</h4>
+              </div>
+            ) : (
+              <div className="pricedEls">
+                <input type="text" placeholder="0" onChange={ this.updateEventState("price")} />
+              </div>
+            )}
           </div>
         </form>
         <section className="c-e-form-header-3">
           <article className="form-step">3</article>
           <h3 className="form-section-header-bot">Additional Settings</h3>
         </section>
-        { categoryExtension }
+        { !categories.length ? null : (
+          <CategoryExtension
+            categories={ this.props.categories }
+            setParentCategoryId={ this.setParentCategoryId }
+            setSubCategoryId={ this.setSubCategoryId }
+          />
+        )}
       </div>
     );
   }
