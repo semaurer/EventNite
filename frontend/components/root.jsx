@@ -6,7 +6,7 @@ import HomePageContainer from './home_page/homePageContainer';
 import EventCreateContainer from './events/event_create_container';
 import EventShowContainer from './events/eventShowContainer';
 import EventIndexContainer from './events/eventIndexContainer';
-import EventUpdateContainer from './events/event_update_container';
+import EventUpdateContainer from './events/eventUpdateContainer';
 import ManageEventsContainer from './events/manageEventsContainer';
 import UserTicketContainer from './tickets/userTicketsContainer';
 import UserSavedEventsContainer from './events/userSavedEventsContainer';

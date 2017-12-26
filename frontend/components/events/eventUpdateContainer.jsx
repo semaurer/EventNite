@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import EventUpdate from './event_update';
+import EventUpdate from './eventUpdate';
 import { updateEvent, fetchEvent } from '../../actions/event_actions';
 import { clearErrors } from '../../actions/session_actions';
 
