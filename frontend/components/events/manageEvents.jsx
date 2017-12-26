@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import ModalStyle from '../../../app/assets/stylesheets/manage_modal_style';
 
 class ManageEvents extends React.Component {
-    state = { modalOpen: false, currentEventId: null, loading: true };
+  state = { modalOpen: false, currentEventId: null, loading: true };
 
   openModal = () => {
     this.setState({ modalOpen: true });
