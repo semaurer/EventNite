@@ -15,27 +15,30 @@ class UserTicketPage extends React.Component {
     location.pathname === "/users/tickets" ? router.push("/users/saved-events") : router.push("/users/tickets");
   }
 
-  TicketsPerEventEls = () => {
-    return this.props.tickets.map((condensedTicket, _idx) => {
-      let ticketText = "ticket";
-      let spacing = " ";
-      if (condensedTicket.ticketCount > 1) ticketText = "tickets";
+  renderTickets = () => {
+    const { tickets } = this.props;
+
+    return tickets.map((condensedTicket, _idx) => {
+      const ticketText = condensedTicket.ticketCount > 1 ? "tickets" : 'ticket';
       return (
         <span key={ _idx } className="ticket">
           <Link to={ `events/${condensedTicket.tickets[0].event_id}`}>
             <div className="ticket-left">
-              <img src={ condensedTicket.tickets[0].event_image_url}></img>
+              <img src={ condensedTicket.tickets[0].event_image_url} />
             </div>
           </Link>
           <div className="ticket-right">
             <li className="start-date">
-              { condensedTicket.tickets[0].event_start_date } -{ spacing }
-              { condensedTicket.tickets[0].event_start_time}</li>
+              { condensedTicket.tickets[0].event_start_date } -{ ' ' }
+              { condensedTicket.tickets[0].event_start_time}
+            </li>
             <li className="ticket-p-title">
-              { condensedTicket.tickets[0].event_title }</li>
+              { condensedTicket.tickets[0].event_title }
+            </li>
             <li className="ticket-purchase">
               Order of { condensedTicket.ticketCount } {ticketText} on
-              { spacing }{ condensedTicket.tickets[0].formatted_date }</li>
+              { ' ' }{ condensedTicket.tickets[0].formatted_date }
+            </li>
           </div>
         </span>
       );
@@ -45,14 +48,6 @@ class UserTicketPage extends React.Component {
   render () {
     const { currentUser, location } = this.props;
     const isTicketsView = location.pathname.includes('tickets');
-
-    let userName = "";
-    let TicketsPerEventEls = "";
-    if (this.props.tickets) TicketsPerEventEls = this.TicketsPerEventEls();
-    if (this.props.currentUser) userName =
-      `${this.props.currentUser.fname} ${this.props.currentUser.lname}`;
-    let loader;
-    if (this.state.loading === true) loader = <div className="loader"></div>;
 
     return (
       <div className="users-events group">
@@ -76,8 +71,8 @@ class UserTicketPage extends React.Component {
         <span className="user-events-bottom group">
           <main>
             <ul className="each-ticket">
-              { loader }
-              { TicketsPerEventEls }
+              { this.state.loading ? <div className="loader" /> : null }
+              { this.renderTickets() }
             </ul>
           </main>
         </span>
