@@ -57,13 +57,13 @@ class UserSavedEvents extends React.Component {
               className={classNames('u-e-tab', {"u-e-tab-active": isTicketsView})}
               onClick={isTicketsView ? null : this.redirect}
             >
-              <li>Your Events</li>
+              Your Events
             </li>
             <li
               className={classNames("u-e-tab", {'u-e-tab-active': !isTicketsView})}
               onClick={!isTicketsView ? null : this.redirect }
             >
-              <li>Saved Events</li>
+              Saved Events
             </li>
           </ul>
         </header>

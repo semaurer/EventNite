@@ -1,37 +1,37 @@
 .user-saved-events {
-  display: block;
-  width: 100%;
-  height: auto;
   background-color: #f5f8fb;
+  display: block;
   float: left;
+  height: auto;
+  width: 100%;
 }
 
 .user-saved-events main {
-  margin: 0 auto;
-  width: 80%;
   display: block;
   height: auto;
+  margin: 0 auto;
+  width: 80%;
 }
 
 .each-saved-event {
-  width: 30%;
-  height: 310px;
-  float: left;
-  margin: 20px 15px 20px 15px;
   background-color: #fff;
+  float: left;
+  height: 19.4rem;
+  margin: 1.25rem 0.95rem;
+  width: 30%;
 }
 
 .each-saved-event img {
-  width: 100%;
-  height: 170px;
   display: block;
+  height: 10.63rem;
+  width: 100%;
 }
 
 .saved-main-info {
-  width: 100%;
-  height: 100px;
-  display: block;
   border-bottom: 1px solid #eee;
+  display: block;
+  height: 6.25rem;
+  width: 100%;
 }
 
 .saved-main-info article {
@@ -39,31 +39,31 @@
 }
 
 .saved-time {
-  padding-top: 10px;
-  text-transform: uppercase;
   color: #4d4d4d;
-  font-size: 14px;
-  margin-bottom: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  padding-top: 0.6rem;
+  text-transform: uppercase;
 }
 
 .saved-title {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .saved-location {
-  font-size: 13px;
-  margin-right: 10px;
-  margin-top: 25px;
   color: #666666;
+  font-size: 0.8rem;
+  margin-right: 0.6rem;
+  margin-top: 1.5rem;
 }
 
 .bookmark-bar {
-  width: 100%;
-  height: 40px;
   display: block;
-  border-bottom: 0.5px solid #ccc;
+  border-bottom: 0.4rem solid #ccc;
+  height: 2.5rem;
   position: relative;
+  width: 100%;
 }
 
 .bookmark-saved {
@@ -81,16 +81,16 @@
 }
 
 .bookmark-saved:after {
+  border: 7px solid #1E90FF;
+  border-bottom-color: transparent;
+  border-top-width: 15px;
   content: "";
   font-size: 0.5em;
-  position: absolute;
   height: 0px;
-  border: 7px solid #1E90FF;
-  z-index: -1;
-  top: -1em;
-  border-top-width: 15px;
-  border-bottom-color: transparent;
+  position: absolute;
   right: 0;
-  -webkit-transition: height 0.5s;
+  top: -1em;
   transition: height 0.5s;
+  -webkit-transition: height 0.5s;
+  z-index: -1;
 }
