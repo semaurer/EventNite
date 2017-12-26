@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import EventCreateForm from './event_create_form';
+import EventCreateForm from './eventCreate';
 import { createEvent } from '../../actions/event_actions';
 import { clearErrors } from '../../actions/session_actions';
 import { fetchCategories } from '../../actions/category_actions';

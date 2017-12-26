@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import AppContainer from './appContainer';
 import HomePageContainer from './home_page/homePageContainer';
-import EventCreateContainer from './events/event_create_container';
+import EventCreateContainer from './events/eventCreateContainer';
 import EventShowContainer from './events/eventShowContainer';
 import EventIndexContainer from './events/eventIndexContainer';
 import EventUpdateContainer from './events/eventUpdateContainer';
