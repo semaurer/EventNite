@@ -4,12 +4,12 @@
 }
 
 .c-e-form {
-  margin: 0 auto;
-  width: 920px;
   display: block;
-  height: 600px;
-  padding-top: 20px;
-  margin-bottom: 20px;
+  height: 37.5rem;
+  margin: 0 auto;
+  margin-bottom: 1.25rem;
+  padding-top: 1.25rem;
+  width: 57.5rem;
 }
 
 .header-container-c-e {
@@ -17,48 +17,48 @@
 }
 
 .c-e-errors-top {
-  position: absolute;
   color: red;
-  left: 395px;
-  top: 20px;
+  left: 24.69rem;
+  position: absolute;
+  top: 1.25rem;
 }
 
 .event-create-page header {
   margin: 0 auto;
-  width: 1040px;
+  width: 65rem;
 }
 
 .event-create-header {
   float: left;
-  font-size: 34px;
+  font-size: 2.13rem;
   font-weight: bold;
-  margin-top: 40px
+  margin-top: 2.5rem;
 }
 
 .header-e-create-submit {
-  float: right;
-  padding: 15px;
   background-color: #228B22;
-  color: #fff;
   border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  float: right;
+  font-size: 0.95rem;
   font-weight: bold;
-  font-size: 15px;
-  margin-top: 30px;
+  padding: 0.95rem;
+  margin-top: 1.88rem;
 }
 
 .header-e-create-submit:hover {
   background-color: #008000;
-  cursor: pointer;
 }
 
 .header-form-divider {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  height: 1px;
   background-color: #000;
-  width: 100%;
   display: block;
   float: left;
+  height: 1px;
+  margin-bottom: 1.25rem;
+  margin-top: 1.25rem;
+  width: 100%;
 }
 
 .create-event-form {
@@ -68,48 +68,48 @@
 }
 
 .form-step {
-  float: left;
   background-color: #1E90FF;
   color: #fff;
-  padding: 8px 16px;
-  font-size: 32px;
-  margin-right: 10px;
+  float: left;
+  font-size: 2rem;
+  margin-right: 0.6rem;
+  padding: 0.5rem 1.5rem;
 }
 
 h3.form-section-header {
-  padding-top: 87px;
-  margin-bottom: -2px;
-  font-size: 24px;
-  font-weight: 300;
   color: #000;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: -2px;
+  padding-top: 5.44rem;
 }
 
 .field-header {
-  float: left;
   display: block;
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  float: left;
+  font-size: 0.95rem;
   font-weight: bold;
-  font-size: 15px;
+  margin-bottom: 0.4rem;
+  margin-top: 1.25rem;
+  width: 100%;
 }
 
 .c-e-item {
-  float: left;
-  display: block;
   background-color: #fff;
   border: 1px solid #ccc;
-  padding: 10px 10px;
-  width: 700px;
-  border-radius: 5px;
+  border-radius: 0.4rem;
+  display: block;
+  float: left;
+  padding: 0.63rem;
+  width: 43.75rem;
 }
 
 .time-headers {
   display: block;
   float: left;
-  width: 100%;
-  margin-top: 40px;
   font-weight: bold;
+  margin-top: 2.5rem;
+  width: 100%;
 }
 
 .time-header-l {
@@ -122,40 +122,40 @@ h3.form-section-header {
 
 .time-header-r {
   float: left;
-  margin-left: 208px;
+  margin-left: 13rem;
 }
 
 .c-e-item-time {
-  border-radius: 5px;
   background-color: #fff;
   border: 1px solid #ccc;
-  width: 230px;
-  margin-right: 27px;
-  margin-top: 5px;
-  padding: 10px 5px;
+  border-radius: 0.4rem;
+  margin-right: 1.69rem;
+  margin-top: 0.4rem;
+  padding: 0.4rem;
+  width: 14.38rem;
 }
 
 .image-container {
-  float: left;
   background-color: #fff;
-  margin-top: 10px;
-  border-radius: 4px;
+  border-radius: 0.3rem;
   border: 1px solid #ccc;
-  width: 400px;
-  height: 200px;
   cursor: pointer;
+  float: left;
+  height: 12.5rem;
+  margin-top: 0.63rem;
+  width: 25rem;
 }
 
 .e-i {
-  margin-top: 40px;
+  margin-top: 2.5rem;
 }
 
 .image-area {
   border: 2px dashed #ccc;
   height: 90%;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
   width: 95%;
-  margin-left: 8px;
-  margin-top: 8px;
 }
 
 .image-area li {
@@ -167,91 +167,91 @@ h3.form-section-header {
 }
 
 .image-thumb {
-  text-align: center;
   display: block;
-  margin-top: 20px;
+  margin-top: 1.25rem;
+  text-align: center;
 }
 .image-header {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 22px;
   color: #1E90FF;
+  font-size: 1.35rem;
+  margin-top: 1.25rem;
+  text-align: center;
 }
 
 .image-text {
-  font-size: 12px;
-  text-align: center;
   color: #aaa;
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 .c-e-descript {
   background-color: #fff;
   border-radius: 1px;
   border: 1px solid #ccc;
-  padding: 10px;
   float: left;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
+  padding: 0.63rem;
 }
 
 .ta {
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .footer-container-c-e {
-  float: left;
-  display: block;
-  width: 100%;
-  height: 230px;
   background-color: #fff;
   border-top: 1px solid #ccc;
-  margin-top: 80px;
+  display: block;
+  float: left;
+  height: 14.44rem;
+  margin-top: 5rem;
   position: relative;
+  width: 100%;
 }
 
 .create-event-header {
-  text-align: center;
   display: block;
-  margin-top: 60px;
-  font-size: 34px;
+  font-size: 2.3rem;
   font-weight: bold;
+  margin-top: 3.7rem;
+  text-align: center;
 }
 
 .footer-e-create-submit {
-  margin: 20px auto;
-  display: block;
   background-color: #228B22;
+  border-radius: 0.4rem;
   color: #fff;
-  padding: 15px 20px;
+  cursor: pointer;
+  display: block;
+  font-size: 0.95rem;
   font-weight: bold;
-  font-size: 15px;
-  border-radius: 5px;
+  margin: 1.25rem auto;
+  padding: 0.95rem 1.25rem;
 }
 
 .footer-e-create-submit:hover {
   background-color: #008000;
-  cursor: pointer;
 }
 
 .c-e-errors-bot {
-  display: block;
   color: red;
+  bottom: 3.75rem;
+  display: block;
   float: left;
+  left: 8.44rem;
   position: absolute;
-  bottom: 60px;
-  left: 135px;
 }
 
 .image-file-input {
-  height: 180px;
-  width: 380px;
-  position: absolute;
-  opacity: 0;
   cursor: pointer;
+  height: 11.25rem;
+  opacity: 0;
+  position: absolute;
+  width: 23.75rem;
 }
 
 .img-preview {
-  height: 180px;
-  width: 380px;
+  height: 11.25rem;
+  width: 23.75rem;
 }
 
 .disp-none {
@@ -263,115 +263,115 @@ h3.form-section-header {
 }
 
 .img-absolute {
-  height: 180px;
-  width: 380px;
-  margin-top: 40px;
+  height: 11.25rem;
+  margin-top: 2.5rem;
+  width: 23.75rem;
 }
 
 .c-e-form-header-2 {
-  width: 100%;
-  height: auto;
-  float: left;
-  display: block;
   border-bottom: 1px solid #ccc;
+  display: block;
+  float: left;
+  height: auto;
+  width: 100%;
 }
 
 .form-section-header-middle {
-  padding: 0;
-  margin: 12px 0 0 0;
-  font-size: 24px;
-  font-weight: 300;
   color: #000;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0.75rem 0 0 0;
+  padding: 0;
 }
 
 .ticket-pricing {
   display: block;
   float: left;
+  height: 12.5rem;
   width: 100%;
-  height: 200px;
 }
 
 .ticket-pricing h4 {
+  font-size: 1.13rem;
+  margin-bottom: 2.5rem;
+  margin-left: 0.4rem;
+  margin-top: 2.5rem;
   text-align: center;
-  font-size: 18px;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  margin-left: 5px;
 }
 
 .pricing-buttons {
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
 .free-button {
-  margin-right: 40px;
-  margin-left: 50px;
+  background-color: none;
   border: 2px solid #4682B4;
   color: #4682B4;
-  background-color: none;
-  transition: background-color 0.5s;
+  cursor: pointer;
   font-weight: bold;
-  padding: 5px 15px;
+  margin-left: 3.125rem;
+  margin-right: 2.5rem;
+  padding: 0.4rem 0.95rem;
+  transition: background-color 0.5s;
 }
 
 .free-button:hover {
-  cursor: pointer;
   background-color: #4682B4;
   color: #fff;
   transition: background-color 0.5s;
 }
 
 .priced-button {
-  margin-right: 40px;
+  background-color: none;
   border: 2px solid #4682B4;
   color: #4682B4;
-  background-color: none;
-  transition: background-color 0.5s;
+  cursor: pointer;
   font-weight: bold;
-  padding: 5px 15px;
+  margin-right: 2.5rem;
+  padding: 0.4rem 0.95rem;
+  transition: background-color 0.5s;
 }
 
 .priced-button:hover {
-  cursor: pointer;
   background-color: #4682B4;
   color: #fff;
   transition: background-color 0.5s;
 }
 
 .freeEls h4 {
-  font-size: 16px;
   color: #aaa;
-  margin: 30px 0 0 5px;
+  font-size: 1rem;
+  margin: 1.88rem 0 0 0.4rem;
 }
 
 .pricedEls {
-  width: 100%;
   display: block;
-  margin-top: 25px;
+  margin-top: 1.55rem;
   position: relative;
+  width: 100%;
 }
 
 .pricedEls input {
-  width: 190px;
-  height: 30px;
   background-color: #fff;
   border: 1px solid #ccc;
-  margin-left: 7px;
+  height: 1.88rem;
+  margin-left: 0.45rem;
+  width: 11.875rem;
 }
 
 .c-e-form-header-3 {
-  width: 100%;
+  border-bottom: 1px solid #ccc;
+  display: block;
   height: auto;
   float: left;
-  display: block;
-  border-bottom: 1px solid #ccc;
+  width: 100%;
 }
 
 .form-section-header-bot {
-  padding: 0;
-  margin: 12px 0 0 0;
-  font-size: 24px;
-  font-weight: 300;
   color: #000;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0.75rem 0 0 0;
+  padding: 0;
 }
