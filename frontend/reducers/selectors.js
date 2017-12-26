@@ -23,20 +23,12 @@ export const selectCurrentUserEvents = (state) => {
   return events;
 };
 
-export const selectTickets = (state) => {
-  let condensedTickets = {};
-  if (state.tickets.tickets !== null) {
-    condensedTickets = condenseTickets(state.tickets.tickets);
-  }
+export const selectTickets = ({ tickets }) => {
+  const condensedTickets = condenseTickets(tickets);
 
-  const ticketsPerEvent = [];
-
-  if (condensedTickets !== null) {
-    Object.keys(condensedTickets).forEach(eventId => {
-      ticketsPerEvent.push(condensedTickets[eventId]);
-    });
-  }
-  return ticketsPerEvent;
+  return Object.keys(condensedTickets).map(eventId => {
+    return condensedTickets[eventId];
+  });
 };
 
 function condenseTickets(tickets) {

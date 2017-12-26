@@ -4,10 +4,10 @@ import userTickets from './userTickets';
 import { selectTickets } from '../../reducers/selectors';
 import { fetchTickets } from '../../actions/ticket_actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ session, tickets }) => {
   return {
-    tickets: selectTickets(state),
-    currentUser: state.session.currentUser,
+    tickets: tickets.tickets ? selectTickets(tickets) : [],
+    currentUser: session.currentUser,
   };
 };
 
@@ -17,7 +17,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(userTickets);
+export default connect(mapStateToProps, mapDispatchToProps)(userTickets);
