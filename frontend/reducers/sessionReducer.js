@@ -1,11 +1,6 @@
 import React from 'react';
 import { merge, assign } from 'lodash';
-import {
-  CLEAR_ERRORS,
-  RECEIVE_CURRENT_USER,
-  RECEIVE_ERRORS,
-  SWAP_MODAL_DISPLAY
-} from '../actions/session_actions';
+import { CLEAR_ERRORS, RECEIVE_CURRENT_USER, RECEIVE_ERRORS, SWAP_MODAL_DISPLAY } from '../actions/session_actions';
 import { REMOVE_SAVED_EVENT, RECEIVE_SAVED_EVENT } from '../actions/event_actions';
 import { removeSavedEvent } from './selectors';
 
@@ -24,22 +19,30 @@ const sessionReducer = (state = defaultState, action) => {
       };
 
     case RECEIVE_ERRORS:
-      let errors = action.errors;
-      return merge({}, state, { errors });
+      return {
+        ...state,
+        errors: action.errors
+      };
 
     case CLEAR_ERRORS:
-      errors = [];
-      return Object.assign({}, state, { errors });
+      return {
+        ...state,
+        errors: []
+      };
 
     case RECEIVE_SAVED_EVENT:
       let eventId = action.event.id;
-      let newState = Object.assign({}, state);
+      let newState = {
+        ...state,
+      };
       newState.currentUser.saved_events.push(eventId);
       return newState;
 
     case REMOVE_SAVED_EVENT:
       eventId = action.event.id;
-      newState = Object.assign({}, state);
+      newState = {
+        ...state,
+      };
       const mergedState = removeSavedEvent(newState, eventId);
       return mergedState;
 
