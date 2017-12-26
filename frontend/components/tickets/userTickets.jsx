@@ -1,29 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router';
+import classNames from 'classnames';
 
 class UserTicketPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-    this.TicketsPerEventEls = this.TicketsPerEventEls.bind(this);
-    this.tabEls = this.tabEls.bind(this);
-    this.redirect = this.redirect.bind(this);
-  }
+  state = { loading: true };
 
   componentDidMount () {
     this.props.fetchTickets()
       .then(() => this.setState({ loading: false }));
   }
 
-  redirect () {
-    if (this.props.location.pathname === "/users/tickets") {
-      this.props.router.push("/users/saved-events");
-    } else {
-      this.props.router.push("/users/tickets");
-    }
+  redirect = () => {
+    const { location, router } = this.props;
+    location.pathname === "/users/tickets" ? router.push("/users/saved-events") : router.push("/users/tickets");
   }
 
-  TicketsPerEventEls() {
+  TicketsPerEventEls = () => {
     return this.props.tickets.map((condensedTicket, _idx) => {
       let ticketText = "ticket";
       let spacing = " ";
@@ -50,44 +42,10 @@ class UserTicketPage extends React.Component {
     });
   }
 
-  tabEls () {
-    if (this.props.location.pathname === "/users/tickets") {
-      return (
-        <div>
-          <li className="u-e-tab-active">
-            <ul>
-              <li>Your Events</li>
-              <li></li>
-            </ul>
-          </li>
-          <li onClick={ this.redirect } className="u-e-tab">
-            <ul>
-              <li>Saved Events</li>
-            </ul>
-          </li>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <li className="u-e-tab">
-            <ul>
-              <li>Your Events</li>
-              <li></li>
-            </ul>
-          </li>
-          <li onClick={ this.redirect } className="u-e-tab-active">
-            <ul>
-              <li onClick={ this.redirect }>Saved Events</li>
-            </ul>
-          </li>
-        </div>
-      );
-    }
-  }
-
   render () {
-    let tabEls = this.tabEls();
+    const { currentUser, location } = this.props;
+    const isTicketsView = location.pathname.includes('tickets');
+
     let userName = "";
     let TicketsPerEventEls = "";
     if (this.props.tickets) TicketsPerEventEls = this.TicketsPerEventEls();
@@ -95,14 +53,26 @@ class UserTicketPage extends React.Component {
       `${this.props.currentUser.fname} ${this.props.currentUser.lname}`;
     let loader;
     if (this.state.loading === true) loader = <div className="loader"></div>;
+
     return (
       <div className="users-events group">
         <header>
-          <h2>{ userName }</h2>
-          <ul className="u-e-header group">
-            { tabEls }
-          </ul>
-        </header>
+        <h2>{ currentUser ? `${currentUser.fname} ${currentUser.lname}` : '' }</h2>
+        <ul className="u-e-header group">
+          <li
+            className={classNames('u-e-tab', {"u-e-tab-active": isTicketsView})}
+            onClick={isTicketsView ? null : this.redirect}
+          >
+            Your Events
+          </li>
+          <li
+            className={classNames("u-e-tab", {'u-e-tab-active': !isTicketsView})}
+            onClick={!isTicketsView ? null : this.redirect }
+          >
+            Saved Events
+          </li>
+        </ul>
+      </header>
         <span className="user-events-bottom group">
           <main>
             <ul className="each-ticket">

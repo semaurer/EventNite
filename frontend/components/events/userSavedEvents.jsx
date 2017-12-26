@@ -17,7 +17,7 @@ class UserSavedEvents extends React.Component {
 
   redirect = () => {
     const { location, router } = this.props;
-    location.pathName === "/users/tickets" ? router.push("/users/saved-events") : router.push("/users/tickets");
+    location.pathname === "/users/tickets" ? router.push("/users/saved-events") : router.push("/users/tickets");
   }
 
   renderSavedEvents = () => {
