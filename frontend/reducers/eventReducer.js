@@ -1,5 +1,4 @@
 import React from 'react';
-import { merge, assign } from 'lodash';
 import { RECEIVE_EVENT, CLEAR_EVENT } from '../actions/event_actions';
 import { RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/session_actions';
 
@@ -12,22 +11,32 @@ const eventReducer = (state = defaultState, action) => {
 
   switch(action.type) {
     case RECEIVE_EVENT:
-      const event = action.event;
-      return merge({}, state, { event });
+      return {
+        ...state,
+        event: action.event
+      }
 
     case CLEAR_EVENT:
-      return defaultState;
+      return {
+        ...defaultState
+      };
 
     case RECEIVE_ERRORS:
-      let errors = action.errors;
-      return merge({}, state, { errors });
+      return {
+        ...state,
+        errors: action.errors
+      }
 
     case CLEAR_ERRORS:
-      errors = [];
-      return Object.assign({}, state, { errors });
+      return {
+        ...state,
+        errors: []
+      }
 
     default:
-      return state;
+      return {
+        ...state
+      };
   }
 };
 
